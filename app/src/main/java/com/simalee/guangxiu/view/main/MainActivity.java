@@ -9,8 +9,12 @@ import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
+<<<<<<< HEAD
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.history.OriginActivity;
+=======
+import com.simalee.guangxiu.view.technique.TechniqueActivity;
+>>>>>>> f3ea3b55f77a881179c7b5934cb76e2ea3aee447
 
 public class MainActivity extends BaseMVPActivity<MainPresenter> implements MainContract.MainView{
 
@@ -127,6 +131,8 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     public void onTechniqueClick() {
         Log.d(TAG, "onTechniqueClick: ");
         shortToast("点击了技艺");
+        Intent intent = new Intent(this, TechniqueActivity.class);
+        startActivity(intent);
     }
 
     @Override

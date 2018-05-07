@@ -16,7 +16,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="广绣志"
-        android:textSize="30sp"
+        android:textSize="32sp"
         android:textColor="@color/colorPrimary"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"

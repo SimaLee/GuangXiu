@@ -11,12 +11,12 @@
 
     <!-- 首页的text背景 v21以上 -->
     <style name="TextBackgroundStyle">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingLeft">6dp</item>
-        <item name="android:paddingRight">6dp</item>
-        <item name="android:paddingBottom">3dp</item>
-        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:paddingTop">6dp</item>
         <item name="android:background">@drawable/bg_text</item>
         <item name="android:elevation">2dp</item>
     </style>

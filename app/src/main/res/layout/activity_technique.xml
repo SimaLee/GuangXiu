@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="广绣技艺"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        style="@style/TitleTextStyle"/>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/tv_art"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/line"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="艺术特点"
+        style="@style/TextBackgroundStyle" />
+
+    <TextView
+        android:id="@+id/tv_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/line"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="广绣材料"
+        style="@style/TextBackgroundStyle" />
+
+
+    <TextView
+        android:id="@+id/tv_embroidery_kind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:text="广绣绣种"
+        style="@style/TextBackgroundStyle" />
+
+    <TextView
+        android:id="@+id/tv_stitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="广绣针法"
+        style="@style/TextBackgroundStyle" />
+
+</RelativeLayout>

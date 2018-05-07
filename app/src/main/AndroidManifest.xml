@@ -20,6 +20,7 @@
 
         <activity android:name=".view.main.IntroductionActivity"/>
 
+<<<<<<< HEAD
         <activity android:name=".view.history.HistoryIntroductionActivity"/>
 
         <activity android:name=".view.history.OriginActivity"/>
@@ -29,6 +30,12 @@
         <activity android:name=".view.history.FutureDevelopmentActivity"/>
 
         <activity android:name=".view.history.CulturalMeaningActivity"/>
+=======
+        <activity android:name=".view.technique.TechniqueActivity"/>
+        <activity android:name=".view.technique.ArtFeatureActivity"/>
+        <activity android:name=".view.technique.MaterialActivity"/>
+
+>>>>>>> f3ea3b55f77a881179c7b5934cb76e2ea3aee447
     </application>
 
 </manifest>
