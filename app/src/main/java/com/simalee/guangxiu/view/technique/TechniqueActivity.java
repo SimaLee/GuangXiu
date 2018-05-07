@@ -64,6 +64,8 @@ public class TechniqueActivity extends BaseMVPActivity<TechniquePresenter> imple
     @Override
     public void onStitchClick() {
         Log.d(TAG, "onStitchClick: 针法介绍");
+        Intent intent = new Intent(this,StitchInfoActivity.class);
+        startActivity(intent);
     }
 
     @Override

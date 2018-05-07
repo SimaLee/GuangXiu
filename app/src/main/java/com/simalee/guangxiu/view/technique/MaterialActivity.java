@@ -1,5 +1,6 @@
 package com.simalee.guangxiu.view.technique;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -38,16 +39,22 @@ public class MaterialActivity extends BaseMVPActivity<MaterialPresenter> impleme
     @Override
     public void onPergolaClick() {
         Log.d(TAG, "onPergolaClick: ");
+        Intent intent = new Intent(this,PergolaIntroductionActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onStitchClick() {
         Log.d(TAG, "onStitchClick: ");
+        Intent intent = new Intent(this,StitchIntroductionActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onThreadClick() {
         Log.d(TAG, "onThreadClick: ");
+        Intent intent = new Intent(this,ThreadListActivity.class);
+        startActivity(intent);
     }
 
     @Override

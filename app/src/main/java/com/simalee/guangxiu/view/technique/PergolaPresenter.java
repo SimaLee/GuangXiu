@@ -1,9 +1,8 @@
 package com.simalee.guangxiu.view.technique;
 
-import android.widget.ImageView;
-
+import com.bumptech.glide.util.LogTime;
 import com.simalee.guangxiu.base.BasePresenter;
-import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.TextImageItem;
 
 import java.util.ArrayList;
@@ -13,22 +12,20 @@ import java.util.List;
  * Created by Lee Sima on 2018/5/7.
  */
 
-public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeatureView> implements TechniqueContract.IArtFeaturePresenter {
-    private static final String TAG = "ArtFeaturePresenter";
+public class PergolaPresenter extends BasePresenter<TechniqueContract.PergolaView> implements TechniqueContract.IPergolaPresenter {
+    private static final String TAG = "PergolaPresenter";
 
-    public ArtFeaturePresenter(){
-
+    public PergolaPresenter() {
     }
 
     @Override
-    public void loadArtFeature() {
-
+    public void loadPergolaIntroduction() {
         if (isViewAttached()){
-            mView.showArtFeature(testMultiItemContainer());
+            mView.showPergolaIntroduction(testMultiItemContainer());
         }
     }
 
-    private ArtFeature testMultiItemContainer() {
+    private PergolaIntroduction testMultiItemContainer() {
 
         List<TextImageItem> itemList = new ArrayList<>();
 
@@ -59,9 +56,8 @@ public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeat
         item4.setText("\t\t这是第四个Text");
         itemList.add(item4);
 
-        ArtFeature feature = new ArtFeature();
-        feature.setItemList(itemList);
-        return feature;
+        PergolaIntroduction introduction = new PergolaIntroduction();
+        introduction.setItemList(itemList);
+        return introduction;
     }
-
 }
