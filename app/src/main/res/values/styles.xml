@@ -10,13 +10,25 @@
 
     <!-- 首页的text背景 -->
     <style name="TextBackgroundStyle">
-        <item name="android:textSize">24sp</item>
+    <item name="android:textSize">30sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:paddingBottom">6dp</item>
+    <item name="android:paddingTop">6dp</item>
+    <item name="android:background">@drawable/bg_text</item>
+</style>
+
+    <style name="TitleTextStyle">
+        <item name="android:textSize">38sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">6dp</item>
         <item name="android:paddingRight">6dp</item>
         <item name="android:paddingBottom">3dp</item>
         <item name="android:paddingTop">3dp</item>
-        <item name="android:background">@drawable/bg_text</item>
+        <item name="android:background">@color/colorYellow</item>
     </style>
+
+
 
 </resources>
