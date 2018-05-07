@@ -19,6 +19,16 @@
         </activity>
 
         <activity android:name=".view.main.IntroductionActivity"/>
+
+        <activity android:name=".view.history.HistoryIntroductionActivity"/>
+
+        <activity android:name=".view.history.OriginActivity"/>
+
+        <activity android:name=".view.history.DevelopmentActivity"/>
+
+        <activity android:name=".view.history.FutureDevelopmentActivity"/>
+
+        <activity android:name=".view.history.CulturalMeaningActivity"/>
     </application>
 
 </manifest>

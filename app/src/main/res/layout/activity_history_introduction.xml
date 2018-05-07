@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <Button
+               android:id="@+id/originBtn"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:text="@string/origin"
+               android:textSize="18sp"/>
+           <Button
+               android:layout_marginLeft="20dp"
+               android:id="@+id/developmentBtn"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:text="@string/development"
+               android:textSize="18sp"/>
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_marginTop="20dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <Button
+               android:id="@+id/futureDevelopmentBtn"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:text="@string/future_development"
+               android:textSize="18sp"/>
+           <Button
+               android:layout_marginLeft="20dp"
+               android:id="@+id/culturalMeaningBtn"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
+               android:text="@string/cultural_meaning"
+               android:textSize="18sp"/>
+       </LinearLayout>
+
+   </LinearLayout>
+
+</RelativeLayout>

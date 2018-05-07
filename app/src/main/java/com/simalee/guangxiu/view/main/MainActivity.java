@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
+import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
+import com.simalee.guangxiu.view.history.OriginActivity;
 
 public class MainActivity extends BaseMVPActivity<MainPresenter> implements MainContract.MainView{
 
@@ -117,6 +119,8 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     public void onHistoryClick() {
         Log.d(TAG, "onHistoryClick: ");
         shortToast("点击了历史");
+        Intent intent = new Intent(MainActivity.this, HistoryIntroductionActivity.class);
+        startActivity(intent);
     }
 
     @Override
