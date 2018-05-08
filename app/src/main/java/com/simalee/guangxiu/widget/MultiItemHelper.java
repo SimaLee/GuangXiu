@@ -23,6 +23,10 @@ public class MultiItemHelper {
 
     private static final String TAG = "MultiItemHelper";
 
+
+    private static final String SEPERATOR = "GX/";
+    private static final String TEXT_PREFIX = "\t\t";
+
     private MultiItemContainer mContainer;
 
     private List<TextImageItem> mItemList;
@@ -61,7 +65,7 @@ public class MultiItemHelper {
         ImageView imageView = new ImageView(mContainer.getContext());
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(itemInfo.getWidth(),itemInfo.getHeight());
-        layoutParams.setMargins(10,10,10,10);
+        layoutParams.setMargins(50,10,10,10);
 
         imageView.setLayoutParams(layoutParams);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -78,13 +82,14 @@ public class MultiItemHelper {
     }
 
     private void createAndAddTextView(TextImageItem itemInfo) {
-        String seperator = "100-100";
-        String[] splits = itemInfo.getText().split(seperator);
+
+        String[] splits = itemInfo.getText().split(SEPERATOR);
         TextView textView;
         for (int i = 0; i < splits.length; i++){
             textView = new TextView(mContainer.getContext());
-            textView.setText(splits[i]);
-            textView.setPadding(10,10,10,10);
+            //添加换行符
+            textView.setText(TEXT_PREFIX + splits[i]);
+            textView.setPadding(20,10,20,10);
             textView.setTextSize(20f);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             textView.setLayoutParams(layoutParams);

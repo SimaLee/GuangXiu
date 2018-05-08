@@ -1,8 +1,10 @@
 package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +23,28 @@ public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeat
     @Override
     public void loadArtFeature() {
 
-        if (isViewAttached()){
-            mView.showArtFeature(fakeArtFeature());
-        }
+        DataManager.getInstance().getArtFeature(new DataCallback<ArtFeature>() {
+            @Override
+            public void onSuccess(ArtFeature data) {
+                if (isViewAttached()){
+                    mView.showArtFeature(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     private ArtFeature fakeArtFeature() {
@@ -33,7 +54,7 @@ public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeat
         TextImageItem item1 = new TextImageItem();
         item1.setSequence(0);
         item1.setType(TextImageItem.TYPE_TEXT);
-        item1.setText("\t\t这是第一个Text100-100\t\t唐朝开元年间（713-741年），政府改变了以往丝绸对外贸易只许官方专营的做法，允许外国商人与本国居民进行民间贸易，在广州设立市舶使负责管理，并设立“蕃坊”供外商居住，方便贸易开展。丝织业在内的纺织业发展带动了刺绣发展，岭南绣品种类繁多，工艺精湛，深受皇族钟爱。");
+        item1.setText("\t\t这是第一个TextGX/唐朝开元年间（713-741年），政府改变了以往丝绸对外贸易只许官方专营的做法，允许外国商人与本国居民进行民间贸易，在广州设立市舶使负责管理，并设立“蕃坊”供外商居住，方便贸易开展。丝织业在内的纺织业发展带动了刺绣发展，岭南绣品种类繁多，工艺精湛，深受皇族钟爱。");
         itemList.add(item1);
 
         TextImageItem item2 = new TextImageItem();

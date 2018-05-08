@@ -1,6 +1,8 @@
 package com.simalee.guangxiu.data.model;
 
 import com.simalee.guangxiu.data.DataSource;
+import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.Version;
 
@@ -24,6 +26,16 @@ public class LocalDataSource implements DataSource {
     @Override
     public void getVersionCode(DataCallback<Version> callback) {
         //
+    }
+
+    @Override
+    public void getArtFeature(DataCallback<ArtFeature> callback) {
+
+    }
+
+    @Override
+    public void getPergolaIntroduction(DataCallback<PergolaIntroduction> callback) {
+
     }
 
 }

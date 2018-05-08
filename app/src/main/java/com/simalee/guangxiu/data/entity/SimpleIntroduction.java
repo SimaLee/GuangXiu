@@ -31,7 +31,8 @@ public class SimpleIntroduction {
     }
 
     public SimpleIntroduction(){
-
+        description = "";
+        backgroundImg = "";
     }
 
     public SimpleIntroduction(String description, String backgroundImg) {

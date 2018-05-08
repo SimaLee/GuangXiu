@@ -1,8 +1,10 @@
 package com.simalee.guangxiu.view.main;
 
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
@@ -17,7 +19,7 @@ public class IntroductionActivity extends BaseMVPActivity<IntroductionPresenter>
 
 
     private TextView mIntroduction;
-    private TextView mImage;
+    private ImageView mImage;
 
     @Override
     public void showLoading() {
@@ -38,7 +40,11 @@ public class IntroductionActivity extends BaseMVPActivity<IntroductionPresenter>
     public void showIntroduction(SimpleIntroduction introduction) {
         Log.d(TAG, "showIntroduction: " + introduction);
         mIntroduction.setText(introduction.getDescription());
-        mImage.setText(introduction.getBackgroundImg());
+        Glide.with(this)
+                .load(introduction.getBackgroundImg())
+                .fitCenter()
+                .error(R.mipmap.bg_introduction_default)
+                .into(mImage);
     }
 
     @Override
@@ -54,7 +60,7 @@ public class IntroductionActivity extends BaseMVPActivity<IntroductionPresenter>
     @Override
     protected void initViews() {
         mIntroduction = findViewById(R.id.tv_introduction);
-        mImage = findViewById(R.id.tv_image);
+        mImage = findViewById(R.id.iv_image);
     }
 
     @Override

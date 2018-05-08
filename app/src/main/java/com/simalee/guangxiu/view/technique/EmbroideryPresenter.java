@@ -73,7 +73,7 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
         TextImageItem item4 = new TextImageItem();
         item4.setSequence(3);
         item4.setType(TextImageItem.TYPE_TEXT);
-        item4.setText("\t\t这是第四个Text");
+        item4.setText("这是第四个Text");
         itemList.add(item4);
 
         EmbroideryIntroduction introduction = new EmbroideryIntroduction();

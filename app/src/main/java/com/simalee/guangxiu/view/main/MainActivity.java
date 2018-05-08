@@ -8,10 +8,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
+import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
 
 
 public class MainActivity extends BaseMVPActivity<MainPresenter> implements MainContract.MainView{
@@ -149,6 +154,11 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     public void onTeachingClick() {
         Log.d(TAG, "onTeachingClick: ");
         shortToast("点击了教学");
+    }
+
+    @Override
+    public void showToast(String msg) {
+        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
     @Override
