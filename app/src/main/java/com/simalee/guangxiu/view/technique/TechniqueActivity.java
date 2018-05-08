@@ -58,7 +58,9 @@ public class TechniqueActivity extends BaseMVPActivity<TechniquePresenter> imple
 
     @Override
     public void onEmbroideryKindClick() {
-        Log.d(TAG, "onEmbroideryKindClick: 绣种");
+        Log.d(TAG, "onEmbroideryKindClick: 绣种介绍");
+        Intent intent = new Intent(this,EmbroideryActivity.class);
+        startActivity(intent);
     }
 
     @Override

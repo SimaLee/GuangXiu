@@ -1,7 +1,5 @@
 package com.simalee.guangxiu.view.technique;
 
-import android.widget.ImageView;
-
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.TextImageItem;
@@ -24,11 +22,11 @@ public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeat
     public void loadArtFeature() {
 
         if (isViewAttached()){
-            mView.showArtFeature(testMultiItemContainer());
+            mView.showArtFeature(fakeArtFeature());
         }
     }
 
-    private ArtFeature testMultiItemContainer() {
+    private ArtFeature fakeArtFeature() {
 
         List<TextImageItem> itemList = new ArrayList<>();
 

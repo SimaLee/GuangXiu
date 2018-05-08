@@ -2,6 +2,7 @@ package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BaseView;
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
@@ -89,11 +90,17 @@ public interface TechniqueContract {
 
     //绣种介绍
     interface EmbroideryView extends BaseView{
-        void showEmbroideryList();
+        void openIntroduction(String id,String name);
+
+        void showEmbroideryIntroduction(EmbroideryIntroduction introduction);
     }
 
     interface  IEmbroideryPresenter{
-        void loadEmbroideryList();
+        void performDailyClick();
+        void performAppreciateClick();
+        void performSacrificeClick();
+
+        void loadEmbroideryIntroduction(String id);
     }
 
     //针法介绍
