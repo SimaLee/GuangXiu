@@ -2,6 +2,8 @@ package com.simalee.guangxiu.view.history;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
+import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.widget.MultiItemContainer;
 
 /**
  * Created by zb.yang on 2018/5/7.
@@ -9,6 +11,8 @@ import com.simalee.guangxiu.base.BaseMVPActivity;
 
 public class FutureDevelopmentActivity extends BaseMVPActivity<FutureDevelopmentPresenter> implements FutureDevelopmentContract.FuturalDevelopmentView {
     public static final String TAG = "FutureDevelopmentActivity";
+
+    private MultiItemContainer multiItemContainer;
     @Override
     public void showLoading() {
 
@@ -31,7 +35,7 @@ public class FutureDevelopmentActivity extends BaseMVPActivity<FutureDevelopment
 
     @Override
     protected void initViews() {
-
+        multiItemContainer = (MultiItemContainer)findViewById(R.id.container);
     }
 
     @Override
@@ -41,11 +45,17 @@ public class FutureDevelopmentActivity extends BaseMVPActivity<FutureDevelopment
 
     @Override
     protected void initData() {
-
+        mPresenter.loadFutureDevelopment();
     }
 
     @Override
     protected void createPresenter() {
+        mPresenter = new FutureDevelopmentPresenter();
+        mPresenter.attachView(this);
+    }
 
+    @Override
+    public void showFuturalDevelopment(ArtFeature artFeature) {
+        multiItemContainer.addItems(artFeature.getItemList());
     }
 }
