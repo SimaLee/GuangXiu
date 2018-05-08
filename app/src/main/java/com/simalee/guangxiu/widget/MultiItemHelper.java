@@ -67,7 +67,8 @@ public class MultiItemHelper {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         //todo 图片加载
         Glide.with(mContainer.getContext())
-                .load(R.mipmap.ic_launcher)
+                .load(itemInfo.getImageurl())
+                .error(R.mipmap.ic_launcher)
                 .override(itemInfo.getWidth(),itemInfo.getHeight())
                 .into(imageView);
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绣针介绍"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
+        style="@style/TitleTextStyle"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="10dp">
+
+        <com.simalee.guangxiu.widget.MultiItemContainer
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.simalee.guangxiu.widget.MultiItemContainer>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

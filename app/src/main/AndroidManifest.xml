@@ -28,6 +28,12 @@
         <activity android:name=".view.technique.TechniqueActivity"/>
         <activity android:name=".view.technique.ArtFeatureActivity"/>
         <activity android:name=".view.technique.MaterialActivity"/>
+        <activity android:name=".view.technique.PergolaIntroductionActivity"/>
+        <activity android:name=".view.technique.StitchIntroductionActivity"/>
+        <activity android:name=".view.technique.ThreadListActivity"/>
+        <activity android:name=".view.technique.ThreadIntroductionActivity"/>
+        <activity android:name=".view.technique.StitchInfoActivity"/>
+        <activity android:name=".view.technique.StitchInfoDetailActivity"/>
 
     </application>
 
