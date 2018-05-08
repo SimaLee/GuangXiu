@@ -2,6 +2,8 @@ package com.simalee.guangxiu.view.history;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
+import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.widget.MultiItemContainer;
 
 /**
  * Created by zb.yang on 2018/5/7.
@@ -10,6 +12,7 @@ import com.simalee.guangxiu.base.BaseMVPActivity;
 public class CulturalMeaningActivity extends BaseMVPActivity<CulturalMeaningPresenter> implements CulturalMeaningContract.CulturalView {
     public static final String TAG = "CulturalMeaningActivity";
 
+    private MultiItemContainer multiItemContainer;
     @Override
     public void showLoading() {
 
@@ -32,7 +35,7 @@ public class CulturalMeaningActivity extends BaseMVPActivity<CulturalMeaningPres
 
     @Override
     protected void initViews() {
-
+        multiItemContainer = (MultiItemContainer)findViewById(R.id.container);
     }
 
     @Override
@@ -42,11 +45,17 @@ public class CulturalMeaningActivity extends BaseMVPActivity<CulturalMeaningPres
 
     @Override
     protected void initData() {
-
+        mPresenter.loadCulturalMeaning();
     }
 
     @Override
     protected void createPresenter() {
+        mPresenter = new CulturalMeaningPresenter();
+        mPresenter.attachView(this);
+    }
 
+    @Override
+    public void showCulturalMeaning(ArtFeature artFeature) {
+        multiItemContainer.addItems(artFeature.getItemList());
     }
 }
