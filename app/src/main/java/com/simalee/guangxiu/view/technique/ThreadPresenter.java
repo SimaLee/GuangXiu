@@ -1,9 +1,11 @@
 package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.TextImageItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,22 +22,61 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
 
     @Override
     public void loadThreadList() {
-        if (isViewAttached()) {
-            mView.showThreadList(fakeThreadList());
-        }
+        DataManager.getInstance().getThreadList(new DataCallback<List<ThreadItem>>() {
+            @Override
+            public void onSuccess(List<ThreadItem> data) {
+                if (isViewAttached()){
+                    mView.showThreadList(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     @Override
     public void loadThreadIntroduction(String threadId) {
-        if (isViewAttached()){
-            mView.showThreadIntroduction(fakeThreadIntroduction());
-        }
+        DataManager.getInstance().getThreadWithId(threadId,new DataCallback<ThreadIntroduction>() {
+            @Override
+            public void onSuccess(ThreadIntroduction data) {
+                if (isViewAttached()){
+                    mView.showThreadIntroduction(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
+
 
     private List<ThreadItem> fakeThreadList() {
         List<ThreadItem> list = new ArrayList<>();
         ThreadItem item;
-        for (int i =0; i< 30; i++){
+        for (int i = 0; i< 30; i++){
             item = new ThreadItem();
             item.setId(i+"");
             item.setName(i+"股线");

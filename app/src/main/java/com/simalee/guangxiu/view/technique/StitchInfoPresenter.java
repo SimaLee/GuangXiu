@@ -1,9 +1,11 @@
 package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchItem;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,16 +24,54 @@ public class StitchInfoPresenter extends BasePresenter<TechniqueContract.StitchI
 
     @Override
     public void loadStitchList() {
-        if (isViewAttached()){
-            mView.showStitchList(fakeStitchList());
-        }
+        DataManager.getInstance().getStitchList(new DataCallback<List<StitchItem>>() {
+            @Override
+            public void onSuccess(List<StitchItem> data) {
+                if (isViewAttached()){
+                    mView.showStitchList(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     @Override
     public void loadStitchInfo(String stitchId) {
-        if (isViewAttached()){
-            mView.showStitchInfo(fakeStitchInfoDetail());
-        }
+        DataManager.getInstance().getStitchInfoWithId(stitchId, new DataCallback<StitchInfoDetail>() {
+            @Override
+            public void onSuccess(StitchInfoDetail data) {
+                if (isViewAttached()){
+                    mView.showStitchInfo(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     private List<StitchItem> fakeStitchList() {

@@ -1,5 +1,6 @@
 package com.simalee.guangxiu.view.technique;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class ThreadIntroductionActivity extends BaseMVPActivity<ThreadPresenter> implements TechniqueContract.ThreadView {
 
-    private static final String TAG = "ThreadIntroductionActivity";
+    private static final String TAG = "ThreadIntroActivity";
 
     private MultiItemContainer mContainer;
     private TextView mTitleView;
@@ -57,6 +58,7 @@ public class ThreadIntroductionActivity extends BaseMVPActivity<ThreadPresenter>
     protected void initData() {
         String id = getIntent().getStringExtra("id");
         String title = getIntent().getStringExtra("name");
+        Log.d(TAG, "initData: id:"+id);
         mTitleView.setText(title);
         mPresenter.loadThreadIntroduction(id);
     }

@@ -1,8 +1,10 @@
 package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,9 +49,30 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
 
     @Override
     public void loadEmbroideryIntroduction(String id) {
-        if (isViewAttached()){
-            mView.showEmbroideryIntroduction(fakeIntroduction());
-        }
+
+        DataManager.getInstance().getEmbroideryWithId(id, new DataCallback<EmbroideryIntroduction>() {
+            @Override
+            public void onSuccess(EmbroideryIntroduction data) {
+                if (isViewAttached()){
+                    mView.showEmbroideryIntroduction(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
+
     }
 
     private EmbroideryIntroduction fakeIntroduction() {

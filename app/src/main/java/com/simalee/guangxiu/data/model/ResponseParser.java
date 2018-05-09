@@ -1,9 +1,15 @@
 package com.simalee.guangxiu.data.model;
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
+import com.simalee.guangxiu.data.entity.StitchInfoDetail;
+import com.simalee.guangxiu.data.entity.StitchIntroduction;
+import com.simalee.guangxiu.data.entity.StitchItem;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.entity.ThreadIntroduction;
+import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
 
 import org.json.JSONArray;
@@ -11,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -51,11 +58,86 @@ public class ResponseParser {
 
 
     public static PergolaIntroduction parsePergolaIntroduction(JSONObject jsonObject) throws JSONException{
-        PergolaIntroduction pergolaIntroduction = new PergolaIntroduction();
-        pergolaIntroduction.setItemList(parseItemList(jsonObject));
-        return pergolaIntroduction;
+        PergolaIntroduction introduction = new PergolaIntroduction();
+        introduction.setItemList(parseItemList(jsonObject));
+        return introduction;
     }
 
+    public static StitchIntroduction parseStitchIntroduction(JSONObject jsonObject) throws JSONException{
+        StitchIntroduction introduction = new StitchIntroduction();
+        introduction.setItemList(parseItemList(jsonObject));
+        return introduction;
+    }
+
+    /**
+     * 绣线列表解析
+     * @param jsonArray
+     * @return
+     * @throws JSONException
+     */
+    public static List<ThreadItem> parseThreadList(JSONArray jsonArray) throws JSONException{
+        List<ThreadItem> itemList = new ArrayList<>();
+        int len = jsonArray.length();
+        ThreadItem item ;
+        JSONObject jsonObject;
+        for ( int i =0; i< len;i++){
+
+            jsonObject = jsonArray.getJSONObject(i);
+
+            item = new ThreadItem();
+            item.setId(jsonObject.getString("id"));
+            item.setName(jsonObject.getString("name"));
+            item.setImage(jsonObject.getString("image"));
+
+            itemList.add(item);
+        }
+        return itemList;
+    }
+
+    /**
+     * 针法列表解析
+     * @param jsonArray
+     * @return
+     * @throws JSONException
+     */
+    public static List<StitchItem> parseStitichItemList(JSONArray jsonArray) throws JSONException{
+
+        List<StitchItem> itemList = new ArrayList<>();
+        int len = jsonArray.length();
+        StitchItem item ;
+        JSONObject jsonObject;
+        for ( int i =0; i< len;i++){
+
+            jsonObject = jsonArray.getJSONObject(i);
+
+            item = new StitchItem();
+            item.setId(jsonObject.getString("id"));
+            item.setName(jsonObject.getString("name"));
+            item.setImage(jsonObject.getString("image"));
+
+            itemList.add(item);
+        }
+        return itemList;
+    }
+
+
+    public static ThreadIntroduction parseThreadIntroduction(JSONObject jsonObject) throws JSONException{
+        ThreadIntroduction introduction = new ThreadIntroduction();
+        introduction.setItemList(parseItemList(jsonObject));
+        return introduction;
+    }
+
+    public static EmbroideryIntroduction parseEmbroideryIntroduction(JSONObject jsonObject) throws JSONException{
+        EmbroideryIntroduction introduction = new EmbroideryIntroduction();
+        introduction.setItemList(parseItemList(jsonObject));
+        return introduction;
+    }
+
+    public static StitchInfoDetail parseStitchInfoDetail(JSONObject jsonObject) throws JSONException{
+        StitchInfoDetail stitchInfoDetail = new StitchInfoDetail();
+        stitchInfoDetail.setItemList(parseItemList(jsonObject));
+        return stitchInfoDetail;
+    }
 
     private static List<TextImageItem> parseItemList(JSONObject jsonObject) throws JSONException{
 
@@ -79,6 +161,7 @@ public class ResponseParser {
 
             textImageItemList.add(textImageItem);
         }
+        Collections.sort(textImageItemList);
         return textImageItemList;
     }
 }

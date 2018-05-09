@@ -1,8 +1,10 @@
 package com.simalee.guangxiu.view.technique;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +21,30 @@ public class StitchPresenter extends BasePresenter<TechniqueContract.StitchView>
 
     @Override
     public void loadStitchIntroduction() {
-        if (isViewAttached()){
-            mView.showStitchIntroduction(testMultiItemContainer());
-        }
+
+        DataManager.getInstance().getStitchIntroduction(new DataCallback<StitchIntroduction>() {
+            @Override
+            public void onSuccess(StitchIntroduction data) {
+                if (isViewAttached()){
+                    mView.showStitchIntroduction(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
+
     }
 
     private StitchIntroduction testMultiItemContainer() {

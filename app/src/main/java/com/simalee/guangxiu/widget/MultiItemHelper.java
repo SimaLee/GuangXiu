@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
+import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.entity.TextImageItem;
 
 import java.util.ArrayList;
@@ -71,8 +72,8 @@ public class MultiItemHelper {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         //todo 图片加载
         Glide.with(mContainer.getContext())
-                .load(itemInfo.getImageurl())
-                .error(R.mipmap.ic_launcher)
+                .load(UrlConstants.BASE_FILE_URL+itemInfo.getImageurl())
+                .error(R.mipmap.embroidery_default)
                 .override(itemInfo.getWidth(),itemInfo.getHeight())
                 .into(imageView);
 

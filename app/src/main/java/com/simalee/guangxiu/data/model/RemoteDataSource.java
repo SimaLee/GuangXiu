@@ -5,15 +5,25 @@ import android.util.Log;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.DataSource;
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
+import com.simalee.guangxiu.data.entity.StitchInfoDetail;
+import com.simalee.guangxiu.data.entity.StitchIntroduction;
+import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.ThreadIntroduction;
+import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -177,5 +187,222 @@ public class RemoteDataSource implements DataSource {
                 });
     }
 
+    @Override
+    public void getStitchIntroduction(final DataCallback<StitchIntroduction> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_STITCH_INTRODUCTION)
+                .addParams("version","11")
+                .addParams("id","6")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
 
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getStitchInstruction" + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseStitchIntroduction(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getThreadList(final DataCallback<List<ThreadItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_THREAD_LIST)
+                .addParams("version","11")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: "+ e.toString());
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getThreadList:" + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseThreadList(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getThreadWithId(String threadId, final DataCallback<ThreadIntroduction> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_THREAD_INTRODUCTION)
+                .addParams("version","11")
+                .addParams("id",threadId)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: "+ e.toString());
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getThreadWithId: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseThreadIntroduction(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getEmbroideryWithId(String embroideryId, final DataCallback<EmbroideryIntroduction> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_EMBROIDERY_INTRODUCTION)
+                .addParams("version","11")
+                .addParams("id",embroideryId)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getEmbroideryWithId:" + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseEmbroideryIntroduction(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getStitchList(final DataCallback<List<StitchItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_STITCH_LIST)
+                .addParams("version","11")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ",e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getStitchList:" + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseStitichItemList(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getStitchInfoWithId(String stitchId, final DataCallback<StitchInfoDetail> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_STITCH_INFO)
+                .addParams("version","11")
+                .addParams("id",stitchId)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getStitchInfoWithId: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseStitchInfoDetail(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
 }
