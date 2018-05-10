@@ -39,6 +39,8 @@
         <activity android:name=".view.technique.StitchInfoDetailActivity"/>
         <activity android:name=".view.technique.EmbroideryActivity"/>
         <activity android:name=".view.technique.EmbroideryIntroductionActivity"/>
+        <activity android:name=".view.artist.ArtistListActivity"/>
+        <activity android:name=".view.artist.ArtistInfoActivity"/>
 
     </application>
 
