@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".app.GuangXiuApp"
@@ -27,6 +28,16 @@
         <activity android:name=".view.history.DevelopmentActivity"/>
         <activity android:name=".view.history.FutureDevelopmentActivity"/>
         <activity android:name=".view.history.CulturalMeaningActivity"/>
+        <activity android:name=".view.teaching.TeachingActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".view.cartoon.GalleryActivity"
+            android:configChanges="orientation|keyboard"
+            android:screenOrientation="portrait"/>
+
+
 
         <activity android:name=".view.technique.TechniqueActivity"/>
         <activity android:name=".view.technique.ArtFeatureActivity"/>
