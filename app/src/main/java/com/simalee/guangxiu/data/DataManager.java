@@ -1,11 +1,13 @@
 package com.simalee.guangxiu.data;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
+
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
+import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
@@ -16,6 +18,7 @@ import com.simalee.guangxiu.data.entity.Version;
 import com.simalee.guangxiu.data.model.DataCallback;
 import com.simalee.guangxiu.data.model.LocalDataSource;
 import com.simalee.guangxiu.data.model.RemoteDataSource;
+import com.simalee.guangxiu.data.model.database.dao.VersionDao;
 import com.simalee.guangxiu.utils.NetUtils;
 
 import java.util.List;
@@ -38,7 +41,7 @@ public class DataManager implements DataSource{
 
 
     private DataManager(){
-        mLocalDataSource = new LocalDataSource();
+        mLocalDataSource = new LocalDataSource(mApplicationContext);
         mRemoteDataSource = new RemoteDataSource();
     }
 
@@ -60,7 +63,11 @@ public class DataManager implements DataSource{
 
     @Override
     public void getIntroduction(final DataCallback<SimpleIntroduction> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        boolean hasNewVersion = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_DESC).hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
 
             mLocalDataSource.getIntroduction(callback);
 
@@ -86,9 +93,29 @@ public class DataManager implements DataSource{
     }
 
     @Override
-    public void getVersionCode(DataCallback<Version> callback) {
+    public void getVersionCode(final DataCallback<Version> callback) {
+
+        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+            return;
+        }
         //获取资料的版本号
-        mRemoteDataSource.getVersionCode(callback);
+        mRemoteDataSource.getVersionCode(new DataCallback<Version>() {
+            @Override
+            public void onSuccess(Version data) {
+                mLocalDataSource.saveVersion(data);
+                callback.onSuccess(data);
+            }
+
+            @Override
+            public void onFailure(String msg) {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
     }
 
     @Override
@@ -292,6 +319,89 @@ public class DataManager implements DataSource{
 
                 }
             });
+        }
+    }
+
+    @Override
+    public void getArtistList(final DataCallback<List<Artist>> callback) {
+        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+            mLocalDataSource.getArtistList(callback);
+        }else{
+           mRemoteDataSource.getArtistList(new DataCallback<List<Artist>>() {
+               @Override
+               public void onSuccess(List<Artist> data) {
+                   callback.onSuccess(data);
+                   //todo 数据保存
+               }
+
+               @Override
+               public void onFailure(String msg) {
+                    mLocalDataSource.getArtistList(callback);
+               }
+
+               @Override
+               public void onError() {
+
+               }
+           });
+        }
+    }
+
+    @Override
+    public void getArtistInfoWithId(final String artistId, final DataCallback<Artist> callback) {
+
+        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+
+            mLocalDataSource.getArtistInfoWithId(artistId,callback);
+
+        }else{
+            mRemoteDataSource.getArtistInfoWithId(artistId, new DataCallback<Artist>() {
+                @Override
+                public void onSuccess(Artist data) {
+                    callback.onSuccess(data);
+                    //todo 数据保存
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    mLocalDataSource.getArtistInfoWithId(artistId,callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+    }
+
+    @Override
+    public void getQuizList(final DataCallback<List<QuizItem>> callback) {
+
+        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+
+            mLocalDataSource.getQuizList(callback);
+
+        }else{
+
+            mRemoteDataSource.getQuizList(new DataCallback<List<QuizItem>>() {
+                @Override
+                public void onSuccess(List<QuizItem> data) {
+                    callback.onSuccess(data);
+                    //todo 数据保存
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    mLocalDataSource.getQuizList(callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+
         }
     }
 }

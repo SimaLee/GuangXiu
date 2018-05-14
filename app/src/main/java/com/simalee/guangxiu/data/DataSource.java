@@ -2,8 +2,10 @@ package com.simalee.guangxiu.data;
 
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
+import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
@@ -66,7 +68,7 @@ public interface DataSource{
 
     /**
      * 获取指定绣种的描述
-     * @param embroideryId
+     * @param embroideryId 绣种id
      * @param callback
      */
     void getEmbroideryWithId(String embroideryId, DataCallback<EmbroideryIntroduction> callback);
@@ -77,5 +79,29 @@ public interface DataSource{
      */
     void getStitchList(DataCallback<List<StitchItem>> callback);
 
+    /**
+     * 获取针法的介绍
+     * @param stitchId
+     * @param callback
+     */
     void getStitchInfoWithId(String stitchId, DataCallback<StitchInfoDetail> callback);
+
+    /**
+     * 获取名家列表
+     * @param callback
+     */
+    void getArtistList(DataCallback<List<Artist>> callback);
+
+    /**
+     * 获取指定名家介绍
+     * @param artistId
+     * @param callback
+     */
+    void getArtistInfoWithId(String artistId,DataCallback<Artist> callback);
+
+    /**
+     * 获取答卷数据
+     * @param callback
+     */
+    void getQuizList(DataCallback<List<QuizItem>> callback);
 }
