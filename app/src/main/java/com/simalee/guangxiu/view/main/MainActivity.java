@@ -12,6 +12,7 @@ import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 
 import com.simalee.guangxiu.view.cartoon.GalleryActivity;
+import com.simalee.guangxiu.view.artist.ArtistListActivity;
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.teaching.TeachingActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
@@ -144,6 +145,8 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     public void onArtistClick() {
         Log.d(TAG, "onArtistClick: ");
         shortToast("点击了名家");
+        Intent intent = new Intent(this, ArtistListActivity.class);
+        startActivity(intent);
     }
 
     @Override

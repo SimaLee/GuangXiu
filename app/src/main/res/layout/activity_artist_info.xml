@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_introduction_default"
+        android:alpha="0.30"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="姓名:"
+        android:textSize="20sp"
+        android:padding="1dp"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iv_artist_avatar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@id/tv_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/avatar_default"/>
+
+    <TextView
+        android:id="@+id/tv_artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_toRightOf="@id/tv_name"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@id/tv_name"
+        android:text="李狗蛋"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_alignStart="@+id/tv_name"
+        android:layout_below="@+id/tv_artist_name"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="联系地址:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_artist_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_toRightOf="@id/tv_address"
+        android:layout_marginLeft="2dp"
+        android:layout_toLeftOf="@id/iv_artist_avatar"
+        android:layout_marginRight="8dp"
+        android:padding="3dp"
+        android:layout_alignTop="@id/tv_address"
+        android:textSize="20sp"
+        android:text="广东省广州市番禺区小谷围华南理工大学"
+        android:gravity="center|left" />
+
+    <TextView
+        android:id="@+id/tv_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_alignStart="@+id/tv_name"
+        android:layout_below="@+id/tv_artist_address"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="联系方式:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_artist_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_toRightOf="@id/tv_contact"
+        android:layout_marginLeft="2dp"
+        android:layout_alignBottom="@id/tv_contact"
+        android:textSize="20sp"
+        android:padding="3dp"
+        android:text="12345678901"
+        android:gravity="center|left" />
+
+    <TextView
+        android:id="@+id/tv_introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_alignStart="@+id/tv_name"
+        android:layout_below="@+id/tv_artist_contact"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="个人简介:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_artist_introduction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_toRightOf="@id/tv_introduction"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_alignTop="@id/tv_introduction"
+        android:textSize="20sp"
+        android:padding="3dp"
+        android:text="广州广绣第五批非物质文化遗产传承人梁雪珍出生于番禺区新造镇北亭村（现属小谷围）。北亭村自古就有广绣传统，梁雪珍自小受着良好的广绣艺术环境熏陶，从12岁时就开始绣花赚钱，好学而不倦的她，很快就掌握了各种特殊的针法，并运用到刺绣的不同种生活物品上，如：墙壁挂画，戏服，手帕，床单等。至今，梁雪珍的刺绣经验已超过半个世纪，可谓艺海老仙。"
+        android:gravity="top|left" />
+
+    <TextView
+        android:id="@+id/tv_honor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_alignStart="@+id/tv_name"
+        android:layout_below="@+id/tv_artist_introduction"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="获得荣誉:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_artist_honor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_introduction"
+        android:layout_toRightOf="@id/tv_honor"
+        android:layout_alignTop="@id/tv_honor"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:textSize="20sp"
+        android:padding="3dp"
+        android:text="（3）2012年10月，作品《纯洁》、《气贯山河》在由广州工艺美术行业协会主办的广州市传统工艺博览会暨第八届广州工艺美术精品评比中分别获得了金奖和银奖。\n （4）2012年12月，作品《荷趣》、《春晖图》在广州市传统工艺博览会中分别获得金奖和银奖，其中《荷趣》同时在由中国礼品产业协会等主办的第四届中国广州国际工艺品艺术品收藏品及红木文化博览会上，获得首届“中国.金艺奖”国际工艺美术创新设计大奖金奖。"
+        android:gravity="center|left" />
+
+            <TextView
+                android:id="@+id/tv_work_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_introduction"
+                android:layout_alignStart="@+id/tv_name"
+                android:layout_below="@+id/tv_artist_honor"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="名家作品:"
+                android:textSize="20sp" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_work_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_introduction"
+                    android:layout_below="@id/tv_work_list"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="2dp">
+
+                </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
