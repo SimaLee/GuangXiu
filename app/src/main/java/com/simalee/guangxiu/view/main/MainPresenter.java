@@ -51,13 +51,18 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
     }
 
     @Override
+    public void performQuizClick() {
+        mView.onQuizClick();
+    }
+
+    @Override
     public void checkVersion() {
 
         DataManager.getInstance().getVersionCode(new DataCallback<Version>() {
             @Override
             public void onSuccess(Version data) {
                 Log.d(TAG, "onSuccess: " + data);
-                mView.showToast("当前版本号:"+data.getVersionCode());
+                mView.showToast("获取版本号成功！");
             }
 
             @Override

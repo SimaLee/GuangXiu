@@ -14,6 +14,7 @@ import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.view.artist.ArtistListActivity;
 import com.simalee.guangxiu.view.artist.ArtistListAdapter;
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
+import com.simalee.guangxiu.view.quiz.QuizActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -31,6 +32,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     private TextView mArtistsView;
     private TextView mCartoonView;
     private TextView mTeachingView;
+    private TextView mQuizView;
 
 
     @Override
@@ -56,6 +58,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
         mArtistsView = findViewById(R.id.tv_artists);
         mCartoonView = findViewById(R.id.tv_cartoon);
         mTeachingView = findViewById(R.id.tv_teaching);
+        mQuizView = findViewById(R.id.tv_quiz);
 
     }
 
@@ -102,11 +105,19 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
                 mPresenter.performTeachingClick();
             }
         });
+
+        mQuizView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPresenter.performQuizClick();
+            }
+        });
+
     }
 
     @Override
     protected void initData() {
-
+        mPresenter.checkVersion();
     }
 
     @Override
@@ -158,6 +169,13 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     public void onTeachingClick() {
         Log.d(TAG, "onTeachingClick: ");
         shortToast("点击了教学");
+    }
+
+    @Override
+    public void onQuizClick() {
+        shortToast("点击了答题模块");
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
     }
 
     @Override

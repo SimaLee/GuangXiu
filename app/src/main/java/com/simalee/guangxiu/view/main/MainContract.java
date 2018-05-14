@@ -17,6 +17,7 @@ public interface MainContract {
         void onArtistClick();
         void onCartoonClick();
         void onTeachingClick();
+        void onQuizClick();
 
         void showToast(String msg);
     }
@@ -32,6 +33,7 @@ public interface MainContract {
         void performArtistClick();
         void performCartoonClick();
         void performTeachingClick();
+        void performQuizClick();
 
         void checkVersion();
     }

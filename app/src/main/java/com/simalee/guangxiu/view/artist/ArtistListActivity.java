@@ -69,6 +69,7 @@ public class ArtistListActivity extends BaseMVPActivity<ArtistPresenter> impleme
             public void onItemClick(int position, Artist item) {
                 Log.d(TAG, "onItemClick: " + item);
                 Intent intent = new Intent(ArtistListActivity.this,ArtistInfoActivity.class);
+                intent.putExtra("id",item.getId());
                 startActivity(intent);
             }
         });

@@ -17,6 +17,6 @@ public interface ArtistContract {
 
     interface IArtistPresenter {
         void loadArtistList();
-        void loadArtistWithId(String id);
+        void loadArtistWithId(String artistId);
     }
 }

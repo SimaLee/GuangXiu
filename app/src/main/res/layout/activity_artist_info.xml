@@ -130,7 +130,7 @@
         android:layout_alignTop="@id/tv_introduction"
         android:textSize="20sp"
         android:padding="3dp"
-        android:text="广州广绣第五批非物质文化遗产传承人梁雪珍出生于番禺区新造镇北亭村（现属小谷围）。北亭村自古就有广绣传统，梁雪珍自小受着良好的广绣艺术环境熏陶，从12岁时就开始绣花赚钱，好学而不倦的她，很快就掌握了各种特殊的针法，并运用到刺绣的不同种生活物品上，如：墙壁挂画，戏服，手帕，床单等。至今，梁雪珍的刺绣经验已超过半个世纪，可谓艺海老仙。"
+        android:text="名家介绍内容"
         android:gravity="top|left" />
 
     <TextView
@@ -158,7 +158,7 @@
         android:layout_marginLeft="2dp"
         android:textSize="20sp"
         android:padding="3dp"
-        android:text="（3）2012年10月，作品《纯洁》、《气贯山河》在由广州工艺美术行业协会主办的广州市传统工艺博览会暨第八届广州工艺美术精品评比中分别获得了金奖和银奖。\n （4）2012年12月，作品《荷趣》、《春晖图》在广州市传统工艺博览会中分别获得金奖和银奖，其中《荷趣》同时在由中国礼品产业协会等主办的第四届中国广州国际工艺品艺术品收藏品及红木文化博览会上，获得首届“中国.金艺奖”国际工艺美术创新设计大奖金奖。"
+        android:text="荣誉描述"
         android:gravity="center|left" />
 
             <TextView
