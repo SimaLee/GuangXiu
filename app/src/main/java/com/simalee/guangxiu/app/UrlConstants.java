@@ -73,6 +73,9 @@ public interface UrlConstants {
     public static final String URL_GET_QUIZ_LIST = BASE_URL + "/Answering/answer";
 
 
+    //---------------------------------------------------------------
+    public static final String URL_GET_ORIGIN = BASE_URL + "/GraphicItem/";
+
 
 
 }

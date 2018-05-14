@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorYellow">#efd345</color>
+    <color name="buttonClickColor">#FFBBA9</color>
+    <color name="buttonUnClickColor">#8F8F8F</color>
 </resources>
