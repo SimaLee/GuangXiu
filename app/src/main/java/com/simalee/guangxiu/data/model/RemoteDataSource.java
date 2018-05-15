@@ -5,8 +5,10 @@ import android.util.Log;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.DataSource;
 import com.simalee.guangxiu.data.entity.ArtFeature;
+import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
+import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
@@ -16,13 +18,11 @@ import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
-import com.zhy.http.okhttp.request.RequestCall;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.List;
 
 import okhttp3.Call;
@@ -89,7 +89,7 @@ public class RemoteDataSource implements DataSource {
 
                     @Override
                     public void onResponse(String response, int id) {
-
+                        Log.d(TAG, "onResponse: response "+response);
                         try {
                             JSONObject object = new JSONObject(response);
                             String code = object.getString("code");
@@ -357,7 +357,7 @@ public class RemoteDataSource implements DataSource {
                             if (code.equals("200")){
 
                                 JSONArray data = jsonObject.getJSONArray("data");
-                                callback.onSuccess(ResponseParser.parseStitichItemList(data));
+                                callback.onSuccess(ResponseParser.parseStitchItemList(data));
 
                             }else{
                                 callback.onFailure(msg);
@@ -395,6 +395,120 @@ public class RemoteDataSource implements DataSource {
 
                                 JSONObject data = jsonObject.getJSONObject("data");
                                 callback.onSuccess(ResponseParser.parseStitchInfoDetail(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getArtistList(final DataCallback<List<Artist>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_ARTIST_LIST)
+                .addParams("version","11")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getArtistList: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseArtistList(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getArtistInfoWithId(String artistId, final DataCallback<Artist> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_ARTIST_INFO)
+                .addParams("id",artistId)
+                .addParams("version","11")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getArtistWithId: " +response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseArtistInfo(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+    }
+
+    @Override
+    public void getQuizList(final DataCallback<List<QuizItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_QUIZ_LIST)
+                .addParams("version","11")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "onResponse: getQuizList " + response);
+
+                        Log.d(TAG, "onResponse: getArtistWithId: " +response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseQuizList(data));
 
                             }else{
                                 callback.onFailure(msg);

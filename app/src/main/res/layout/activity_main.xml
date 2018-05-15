@@ -16,15 +16,15 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="广绣志"
-        android:textSize="32sp"
         android:textColor="@color/colorPrimary"
+        android:textSize="32sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <TextView
         android:id="@+id/tv_history"
@@ -33,11 +33,11 @@
         android:layout_height="wrap_content"
         android:text="广绣历史"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/tv_technique"
@@ -45,52 +45,63 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="广绣技艺"
-        app:layout_constraintTop_toBottomOf="@id/tv_history"
         app:layout_constraintBottom_toTopOf="@id/tv_artists"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
+        app:layout_constraintTop_toBottomOf="@id/tv_history"
+        app:layout_constraintVertical_bias="0.015" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="名家介绍"
         android:id="@+id/tv_artists"
         style="@style/TextBackgroundStyle"
-        app:layout_constraintTop_toBottomOf="@id/tv_technique"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:text="名家介绍"
         app:layout_constraintBottom_toTopOf="@id/tv_cartoon"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.268"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
+        app:layout_constraintTop_toBottomOf="@id/tv_technique"
         app:layout_constraintVertical_bias="0.06" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="动画展示"
         android:id="@+id/tv_cartoon"
         style="@style/TextBackgroundStyle"
-        app:layout_constraintTop_toBottomOf="@id/tv_artists"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="作品展示"
         app:layout_constraintBottom_toTopOf="@id/tv_teaching"
-        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_artists"
         app:layout_constraintVertical_bias="0.06" />
 
     <TextView
+        android:id="@+id/tv_teaching"
+        style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="广绣教学"
-        android:id="@+id/tv_teaching"
-        style="@style/TextBackgroundStyle"
-        app:layout_constraintTop_toBottomOf="@id/tv_cartoon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintBottom_toTopOf="@id/tv_quiz"
+        app:layout_constraintHorizontal_bias="0.283"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cartoon"
         app:layout_constraintVertical_bias="0.06" />
+
+    <TextView
+        android:id="@+id/tv_quiz"
+        style="@style/TextBackgroundStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="广绣知多少"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_teaching" />
 
 
 </android.support.constraint.ConstraintLayout>

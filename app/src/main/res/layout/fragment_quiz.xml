@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_quiz_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="1.广绣属于以下哪种刺绣呢？"
+        android:textSize="20sp"
+        android:padding="4dp"
+        android:gravity="center|left"
+        android:textColor="@color/colorAccent"/>
+
+    <ImageView
+        android:id="@+id/iv_quiz_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/tv_quiz_question"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/avatar_default"
+        android:visibility="gone"/>
+
+    <ListView
+        android:id="@+id/lv_options"
+        android:layout_below="@id/iv_quiz_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_introduction">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/tv_quiz_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lv_options"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/bg_introduction"
+        android:text="粤绣属于中国四大名绣之一，包含潮绣和广绣，各有特色"
+        android:maxLines="5"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"/>
+</RelativeLayout>
