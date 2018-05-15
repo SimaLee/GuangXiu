@@ -9,6 +9,8 @@ public interface DBConstants {
     String DATABASE_NAME = "guangxiu.db";
     int DATABASE_VERSION = 1;
 
+    String SEPERATOR = ",";
+
     //版本信息表
     interface TableVersion {
 
@@ -23,10 +25,10 @@ public interface DBConstants {
         String SQL_CREATE_TABLE_VERSION =
                 "create table if not exists " +TABLE_NAME +
                         "("
-                        +COLUMN_ID + " integer primary key autoincrement"
-                        +COLUMN_NAME + " text NOT NULL"
-                        +COLUMN_OLD_VERSION + " integer NOT NULL"
-                        +COLUMN_NEW_VERSION + " integer NOT NULL"
+                        +COLUMN_ID + " integer primary key autoincrement" + SEPERATOR
+                        +COLUMN_NAME + " text NOT NULL"+ SEPERATOR
+                        +COLUMN_OLD_VERSION + " integer NOT NULL "+ SEPERATOR
+                        +COLUMN_NEW_VERSION + " integer NOT NULL "+ SEPERATOR
                         +COLUMN_DESCRIPTION + " text"
                         +")";
 

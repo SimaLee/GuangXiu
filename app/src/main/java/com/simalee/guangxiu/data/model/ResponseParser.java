@@ -44,7 +44,7 @@ public class ResponseParser {
         Version version = new Version();
 
         version.setVer_origin(jsonObject.getInt("ver_origin"));
-        version.setVer_meaning(jsonObject.getInt("ver_meaning"));
+        version.setVer_meaning(jsonObject.getInt("ver_meanning"));
         version.setVer_phase(jsonObject.getInt("ver_phase"));
         version.setVer_development(jsonObject.getInt("ver_development"));
         version.setVer_art(jsonObject.getInt("ver_art"));
@@ -218,9 +218,9 @@ public class ResponseParser {
 
             tempItem = new QuizItem();
 
-            tempItem.setId("");//没有返回id
+            tempItem.setId(object.getInt("id") + "");
             tempItem.setSequence(object.getInt("seq"));
-            tempItem.setQuestion(object.getString("name"));
+            tempItem.setQuestion(object.getString("question"));
             tempItem.setImage(object.getString("image"));
             tempItem.setAnswerId(object.getInt("answer"));
             tempItem.setExplanation(object.getString("explanation"));
@@ -229,6 +229,7 @@ public class ResponseParser {
             quizItemList.add(tempItem);
 
         }
+        Collections.sort(quizItemList);
         return quizItemList;
     }
 

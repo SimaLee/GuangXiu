@@ -40,10 +40,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getIntroduction(final DataCallback<SimpleIntroduction> callback) {
+    public void getIntroduction(int version,final DataCallback<SimpleIntroduction> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_DESCRIPTION)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -89,7 +89,7 @@ public class RemoteDataSource implements DataSource {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        Log.d(TAG, "onResponse: response "+response);
+                        Log.d(TAG, "onResponse: getVersionCode "+response);
                         try {
                             JSONObject object = new JSONObject(response);
                             String code = object.getString("code");
@@ -112,10 +112,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getArtFeature(final DataCallback<ArtFeature> callback) {
+    public void getArtFeature(int version,final DataCallback<ArtFeature> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_ART_FEATURE)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id","4")
                 .build()
                 .execute(new StringCallback() {
@@ -152,10 +152,10 @@ public class RemoteDataSource implements DataSource {
      * @param callback
      */
     @Override
-    public void getPergolaIntroduction(final DataCallback<PergolaIntroduction> callback) {
+    public void getPergolaIntroduction(int version,final DataCallback<PergolaIntroduction> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_PERGOLA_INTRODUCTION)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id","5")
                 .build()
                 .execute(new StringCallback() {
@@ -188,10 +188,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getStitchIntroduction(final DataCallback<StitchIntroduction> callback) {
+    public void getStitchIntroduction(int version,final DataCallback<StitchIntroduction> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_STITCH_INTRODUCTION)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id","6")
                 .build()
                 .execute(new StringCallback() {
@@ -224,10 +224,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getThreadList(final DataCallback<List<ThreadItem>> callback) {
+    public void getThreadList(int version,final DataCallback<List<ThreadItem>> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_THREAD_LIST)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -260,10 +260,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getThreadWithId(String threadId, final DataCallback<ThreadIntroduction> callback) {
+    public void getThreadWithId(int version,String threadId, final DataCallback<ThreadIntroduction> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_THREAD_INTRODUCTION)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id",threadId)
                 .build()
                 .execute(new StringCallback() {
@@ -297,10 +297,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getEmbroideryWithId(String embroideryId, final DataCallback<EmbroideryIntroduction> callback) {
+    public void getEmbroideryWithId(int version,String embroideryId, final DataCallback<EmbroideryIntroduction> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_EMBROIDERY_INTRODUCTION)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id",embroideryId)
                 .build()
                 .execute(new StringCallback() {
@@ -334,10 +334,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getStitchList(final DataCallback<List<StitchItem>> callback) {
+    public void getStitchList(int version,final DataCallback<List<StitchItem>> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_STITCH_LIST)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -370,10 +370,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getStitchInfoWithId(String stitchId, final DataCallback<StitchInfoDetail> callback) {
+    public void getStitchInfoWithId(int version,String stitchId, final DataCallback<StitchInfoDetail> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_STITCH_INFO)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .addParams("id",stitchId)
                 .build()
                 .execute(new StringCallback() {
@@ -407,10 +407,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getArtistList(final DataCallback<List<Artist>> callback) {
+    public void getArtistList(int version,final DataCallback<List<Artist>> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_ARTIST_LIST)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -443,11 +443,11 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getArtistInfoWithId(String artistId, final DataCallback<Artist> callback) {
+    public void getArtistInfoWithId(int version,String artistId, final DataCallback<Artist> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_ARTIST_INFO)
                 .addParams("id",artistId)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -482,10 +482,10 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getQuizList(final DataCallback<List<QuizItem>> callback) {
+    public void getQuizList(int version,final DataCallback<List<QuizItem>> callback) {
         OkHttpUtils.post()
                 .url(UrlConstants.URL_GET_QUIZ_LIST)
-                .addParams("version","11")
+                .addParams("version",String.valueOf(version))
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -497,9 +497,6 @@ public class RemoteDataSource implements DataSource {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.d(TAG, "onResponse: getQuizList " + response);
-
-                        Log.d(TAG, "onResponse: getArtistWithId: " +response);
-
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String code = jsonObject.getString("code");

@@ -1,6 +1,7 @@
 package com.simalee.guangxiu.data.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.simalee.guangxiu.data.DataSource;
 import com.simalee.guangxiu.data.entity.ArtFeature;
@@ -38,68 +39,69 @@ public class LocalDataSource implements DataSource {
         mVersionDao = new VersionDao(context);
     }
 
-    @Override
-    public void getIntroduction(DataCallback<SimpleIntroduction> callback) {
-
-    }
 
     @Override
     public void getVersionCode(DataCallback<Version> callback) {
-        //do nothing
-    }
-
-    @Override
-    public void getArtFeature(DataCallback<ArtFeature> callback) {
 
     }
 
     @Override
-    public void getPergolaIntroduction(DataCallback<PergolaIntroduction> callback) {
+    public void getIntroduction(int version, DataCallback<SimpleIntroduction> callback) {
 
     }
 
     @Override
-    public void getStitchIntroduction(DataCallback<StitchIntroduction> callback) {
+    public void getArtFeature(int version, DataCallback<ArtFeature> callback) {
 
     }
 
     @Override
-    public void getThreadList(DataCallback<List<ThreadItem>> callback) {
+    public void getPergolaIntroduction(int version, DataCallback<PergolaIntroduction> callback) {
 
     }
 
     @Override
-    public void getThreadWithId(String threadId, DataCallback<ThreadIntroduction> callback) {
+    public void getStitchIntroduction(int version, DataCallback<StitchIntroduction> callback) {
 
     }
 
     @Override
-    public void getEmbroideryWithId(String embroideryId, DataCallback<EmbroideryIntroduction> callback) {
+    public void getThreadList(int version, DataCallback<List<ThreadItem>> callback) {
 
     }
 
     @Override
-    public void getStitchList(DataCallback<List<StitchItem>> callback) {
+    public void getThreadWithId(int version, String threadId, DataCallback<ThreadIntroduction> callback) {
 
     }
 
     @Override
-    public void getStitchInfoWithId(String stitchId, DataCallback<StitchInfoDetail> callback) {
+    public void getEmbroideryWithId(int version, String embroideryId, DataCallback<EmbroideryIntroduction> callback) {
 
     }
 
     @Override
-    public void getArtistList(DataCallback<List<Artist>> callback) {
+    public void getStitchList(int version, DataCallback<List<StitchItem>> callback) {
 
     }
 
     @Override
-    public void getArtistInfoWithId(String artistId, DataCallback<Artist> callback) {
+    public void getStitchInfoWithId(int version, String stitchId, DataCallback<StitchInfoDetail> callback) {
 
     }
 
     @Override
-    public void getQuizList(DataCallback<List<QuizItem>> callback) {
+    public void getArtistList(int version, DataCallback<List<Artist>> callback) {
+
+    }
+
+    @Override
+    public void getArtistInfoWithId(int version, String artistId, DataCallback<Artist> callback) {
+
+    }
+
+    @Override
+    public void getQuizList(int version, DataCallback<List<QuizItem>> callback) {
 
     }
 
@@ -112,9 +114,11 @@ public class LocalDataSource implements DataSource {
     public void saveVersion(Version version){
         if (isFirstRequest()){
             mVersionDao.initVersion(version);
+            Log.d(TAG, "saveVersion: isFirst");
             markNotFirstRequest();
         }else{
             mVersionDao.saveNewVersion(version);
+            Log.d(TAG, "saveVersion: isNotFirst");
         }
     }
 
