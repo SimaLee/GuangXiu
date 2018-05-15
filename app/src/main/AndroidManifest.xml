@@ -30,12 +30,11 @@
         <activity android:name=".view.history.CulturalMeaningActivity"/>
         <activity android:name=".view.teaching.TeachingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".view.cartoon.GalleryActivity"
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.cartoon.EmbroideryContentActivity"/>
 
 
 

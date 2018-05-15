@@ -3,13 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="horizontal">
     <Button
         android:layout_margin="10dp"
-        android:id="@+id/selectTeachingTypeBtn"
+        android:id="@+id/filterBtn"
+        android:background="@drawable/bg_filter_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:background="@drawable/bg_teaching_type_button"
         android:textSize="16sp"/>
 </LinearLayout>

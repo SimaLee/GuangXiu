@@ -2,10 +2,55 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="@color/drawerContentColor"
+    >
     <TextView
-        android:text=""
+        android:id="@+id/dailyNecessitiesTV"
+        android:layout_margin="10dp"
+        android:text="用途"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#000"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/dailyNecessitiesTV"
+        android:id="@+id/useRCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_below="@+id/useRCV"
+        android:id="@+id/themeTV"
+        android:layout_margin="10dp"
+        android:text="题材"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#000"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/themeTV"
+        android:id="@+id/themeRCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/resetBtn"
+            android:text="重置"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18sp"
+            android:background="#ffffff"/>
+        <Button
+            android:id="@+id/sureBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="确定"
+            android:textSize="16sp"
+            android:background="@color/buttonClickColor"/>
+    </LinearLayout>
 </RelativeLayout>

@@ -3,22 +3,27 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:background="@color/buttonClickColor">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:fitsSystemWindows="true">
         <TextView
             android:id="@+id/screenTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="200dp"
-            android:text="防京东筛选"
+            android:text="筛选"
             android:textSize="20sp" />
-    </FrameLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/worksRCV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/navView"
