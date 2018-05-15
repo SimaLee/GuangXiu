@@ -19,29 +19,33 @@ public class QuizPresenter extends BasePresenter<QuizContract.QuizView> implemen
 
     @Override
     public void loadQuizList() {
-        mView.showQuizList(fakeQuizList());
-//        DataManager.getInstance().getQuizList(new DataCallback<List<QuizItem>>() {
-//            @Override
-//            public void onSuccess(List<QuizItem> data) {
-//                if (isViewAttached()){
-//                    mView.showQuizList(data);
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(String msg) {
-//                if (isViewAttached()){
-//                    mView.showError();
-//                }
-//            }
-//
-//            @Override
-//            public void onError() {
-//                if (isViewAttached()){
-//                    mView.showError();
-//                }
-//            }
-//        });
+
+        DataManager.getInstance().getQuizList(new DataCallback<List<QuizItem>>() {
+            @Override
+            public void onSuccess(List<QuizItem> data) {
+                if (isViewAttached()){
+                    if (data == null || data.size() == 0){
+                        mView.showQuizList(fakeQuizList());
+                    }else{
+                        mView.showQuizList(data);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     private List<QuizItem> fakeQuizList() {

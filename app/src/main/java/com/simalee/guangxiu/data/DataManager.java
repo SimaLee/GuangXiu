@@ -1,6 +1,7 @@
 package com.simalee.guangxiu.data;
 
 import android.content.Context;
+import android.util.Log;
 
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
@@ -19,6 +20,7 @@ import com.simalee.guangxiu.data.model.DataCallback;
 import com.simalee.guangxiu.data.model.LocalDataSource;
 import com.simalee.guangxiu.data.model.RemoteDataSource;
 import com.simalee.guangxiu.data.model.database.dao.VersionDao;
+import com.simalee.guangxiu.data.model.database.dao.VersionPair;
 import com.simalee.guangxiu.utils.NetUtils;
 
 import java.util.List;
@@ -28,7 +30,7 @@ import java.util.List;
  *
  */
 
-public class DataManager implements DataSource{
+public class DataManager {
 
     private static final String TAG = "DataManager";
 
@@ -61,18 +63,23 @@ public class DataManager implements DataSource{
     }
 
 
-    @Override
+    /**
+     * 获取广绣简要介绍
+     * @param callback
+     */
     public void getIntroduction(final DataCallback<SimpleIntroduction> callback) {
 
         boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
-        boolean hasNewVersion = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_DESC).hasNewVersion();
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_DESC);
+        Log.d(TAG, "getIntroduction: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
 
         if (!isNetworkConnected || !hasNewVersion ){
 
-            mLocalDataSource.getIntroduction(callback);
+            mLocalDataSource.getIntroduction(versionPair.getOldVersion(),callback);
 
         }else{
-            mRemoteDataSource.getIntroduction(new DataCallback<SimpleIntroduction>() {
+            mRemoteDataSource.getIntroduction(versionPair.getOldVersion(),new DataCallback<SimpleIntroduction>() {
                 @Override
                 public void onSuccess(SimpleIntroduction data) {
                     //todo 数据保存
@@ -81,7 +88,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getIntroduction(callback);
+                    mLocalDataSource.getIntroduction(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -92,7 +99,11 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取版本号信息
+     * @param callback
+     */
     public void getVersionCode(final DataCallback<Version> callback) {
 
         if (!NetUtils.isNetworkConnected(mApplicationContext)){
@@ -118,14 +129,23 @@ public class DataManager implements DataSource{
         });
     }
 
-    @Override
+
+    /**
+     * 获取广绣艺术特点
+     * @param callback
+     */
     public void getArtFeature(final DataCallback<ArtFeature> callback) {
-        //后续需要判断版本号
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getArtFeature(callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_ART);
+        Log.d(TAG, "getArtFeature: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getArtFeature(versionPair.getOldVersion(),callback);
         }else{
 
-            mRemoteDataSource.getArtFeature(new DataCallback<ArtFeature>() {
+            mRemoteDataSource.getArtFeature(versionPair.getOldVersion(),new DataCallback<ArtFeature>() {
                 @Override
                 public void onSuccess(ArtFeature data) {
                     //todo 数据保存
@@ -135,7 +155,7 @@ public class DataManager implements DataSource{
                 @Override
                 public void onFailure(String msg) {
                     //网络获取失败时 使用本地数据
-                    mLocalDataSource.getArtFeature(callback);
+                    mLocalDataSource.getArtFeature(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -146,22 +166,31 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取花架信息
+     * @param callback
+     */
     public void getPergolaIntroduction(final DataCallback<PergolaIntroduction> callback) {
 
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getPergolaIntroduction(callback);
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_PERGOLA);
+        Log.d(TAG, "getPergolaIntroduction: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getPergolaIntroduction(versionPair.getOldVersion(),callback);
         }else{
-            mRemoteDataSource.getPergolaIntroduction(new DataCallback<PergolaIntroduction>() {
+            mRemoteDataSource.getPergolaIntroduction(versionPair.getOldVersion(),new DataCallback<PergolaIntroduction>() {
                 @Override
                 public void onSuccess(PergolaIntroduction data) {
                     callback.onSuccess(data);
-                    //todo 数据保存
+                    //todo 数据保存 版本更新
                 }
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getPergolaIntroduction(callback);
+                    mLocalDataSource.getPergolaIntroduction(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -172,12 +201,22 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取绣针介绍
+     * @param callback
+     */
     public void getStitchIntroduction(final DataCallback<StitchIntroduction> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getStitchIntroduction(callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_NEEDLE);
+        Log.d(TAG, "getStitchIntroduction: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getStitchIntroduction(versionPair.getOldVersion(),callback);
         }else{
-            mRemoteDataSource.getStitchIntroduction(new DataCallback<StitchIntroduction>() {
+            mRemoteDataSource.getStitchIntroduction(versionPair.getOldVersion(),new DataCallback<StitchIntroduction>() {
                 @Override
                 public void onSuccess(StitchIntroduction data) {
                     callback.onSuccess(data);
@@ -186,7 +225,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getStitchIntroduction(callback);
+                    mLocalDataSource.getStitchIntroduction(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -197,21 +236,32 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取绣线列表
+     * @param callback
+     */
     public void getThreadList(final DataCallback<List<ThreadItem>> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getThreadList(callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_THREAD);
+        Log.d(TAG, "getThreadList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getThreadList(versionPair.getOldVersion(),callback);
         }else{
-            mRemoteDataSource.getThreadList(new DataCallback<List<ThreadItem>>() {
+            mRemoteDataSource.getThreadList(versionPair.getOldVersion(),new DataCallback<List<ThreadItem>>() {
                 @Override
                 public void onSuccess(List<ThreadItem> data) {
                     callback.onSuccess(data);
-                    //todo 保存数据
+                    //todo 保存数据 这里的版本更新需要考虑二级数据的处理
                 }
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getThreadList(callback);
+                    mLocalDataSource.getThreadList(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -222,12 +272,23 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+    /**
+     * 获取指定绣线内容
+     * @param threadId
+     * @param callback
+     */
     public void getThreadWithId(final String threadId, final DataCallback<ThreadIntroduction> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getThreadWithId(threadId,callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_THREAD);
+        Log.d(TAG, "getThreadWithId: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getThreadWithId(versionPair.getOldVersion(),threadId,callback);
         }else{
-            mRemoteDataSource.getThreadWithId(threadId, new DataCallback<ThreadIntroduction>() {
+            mRemoteDataSource.getThreadWithId(versionPair.getOldVersion(),threadId, new DataCallback<ThreadIntroduction>() {
                 @Override
                 public void onSuccess(ThreadIntroduction data) {
                     callback.onSuccess(data);
@@ -236,7 +297,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getThreadWithId(threadId,callback);
+                    mLocalDataSource.getThreadWithId(versionPair.getOldVersion(),threadId,callback);
                 }
 
                 @Override
@@ -247,12 +308,24 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取指定绣线介绍
+     * @param embroideryId
+     * @param callback
+     */
     public void getEmbroideryWithId(final String embroideryId, final DataCallback<EmbroideryIntroduction> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getEmbroideryWithId(embroideryId,callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_EMBROIDERY_);
+        Log.d(TAG, "getEmbroideryWithId: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getEmbroideryWithId(versionPair.getOldVersion(),embroideryId,callback);
         }else{
-            mRemoteDataSource.getEmbroideryWithId(embroideryId, new DataCallback<EmbroideryIntroduction>() {
+            mRemoteDataSource.getEmbroideryWithId(versionPair.getOldVersion(),embroideryId, new DataCallback<EmbroideryIntroduction>() {
                 @Override
                 public void onSuccess(EmbroideryIntroduction data) {
                     callback.onSuccess(data);
@@ -261,7 +334,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getEmbroideryWithId(embroideryId,callback);
+                    mLocalDataSource.getEmbroideryWithId(versionPair.getOldVersion(),embroideryId,callback);
                 }
 
                 @Override
@@ -272,12 +345,23 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取针法列表
+     * @param callback
+     */
     public void getStitchList(final DataCallback<List<StitchItem>> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getStitchList(callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_STITCH);
+        Log.d(TAG, "getStitchList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getStitchList(versionPair.getOldVersion(),callback);
         }else{
-            mRemoteDataSource.getStitchList(new DataCallback<List<StitchItem>>() {
+            mRemoteDataSource.getStitchList(versionPair.getOldVersion(),new DataCallback<List<StitchItem>>() {
                 @Override
                 public void onSuccess(List<StitchItem> data) {
                     callback.onSuccess(data);
@@ -286,7 +370,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getStitchList(callback);
+                    mLocalDataSource.getStitchList(versionPair.getOldVersion(),callback);
                 }
 
                 @Override
@@ -297,12 +381,25 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取针法介绍
+     * @param stitchId
+     * @param callback
+     */
     public void getStitchInfoWithId(final String stitchId, final DataCallback<StitchInfoDetail> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getStitchInfoWithId(stitchId,callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_STITCH);
+        Log.d(TAG, "getStitchInfoWithId: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+
+            mLocalDataSource.getStitchInfoWithId(versionPair.getOldVersion(),stitchId,callback);
         }else{
-            mRemoteDataSource.getStitchInfoWithId(stitchId, new DataCallback<StitchInfoDetail>() {
+            mRemoteDataSource.getStitchInfoWithId(versionPair.getOldVersion(),stitchId, new DataCallback<StitchInfoDetail>() {
                 @Override
                 public void onSuccess(StitchInfoDetail data) {
                     callback.onSuccess(data);
@@ -311,7 +408,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getStitchInfoWithId(stitchId,callback);
+                    mLocalDataSource.getStitchInfoWithId(versionPair.getOldVersion(),stitchId,callback);
                 }
 
                 @Override
@@ -322,12 +419,23 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取名家列表
+     * @param callback
+     */
     public void getArtistList(final DataCallback<List<Artist>> callback) {
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
-            mLocalDataSource.getArtistList(callback);
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MASTER);
+        Log.d(TAG, "getArtistList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+            mLocalDataSource.getArtistList(versionPair.getOldVersion(),callback);
         }else{
-           mRemoteDataSource.getArtistList(new DataCallback<List<Artist>>() {
+           mRemoteDataSource.getArtistList(versionPair.getOldVersion(),new DataCallback<List<Artist>>() {
                @Override
                public void onSuccess(List<Artist> data) {
                    callback.onSuccess(data);
@@ -336,7 +444,7 @@ public class DataManager implements DataSource{
 
                @Override
                public void onFailure(String msg) {
-                    mLocalDataSource.getArtistList(callback);
+                    mLocalDataSource.getArtistList(versionPair.getOldVersion(),callback);
                }
 
                @Override
@@ -347,15 +455,26 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取名家介绍
+     * @param artistId
+     * @param callback
+     */
     public void getArtistInfoWithId(final String artistId, final DataCallback<Artist> callback) {
 
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
 
-            mLocalDataSource.getArtistInfoWithId(artistId,callback);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MASTER_DESC);
+        Log.d(TAG, "getArtistInfoWithId: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+
+            mLocalDataSource.getArtistInfoWithId(versionPair.getOldVersion(),artistId,callback);
 
         }else{
-            mRemoteDataSource.getArtistInfoWithId(artistId, new DataCallback<Artist>() {
+            mRemoteDataSource.getArtistInfoWithId(versionPair.getOldVersion(),artistId, new DataCallback<Artist>() {
                 @Override
                 public void onSuccess(Artist data) {
                     callback.onSuccess(data);
@@ -364,7 +483,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getArtistInfoWithId(artistId,callback);
+                    mLocalDataSource.getArtistInfoWithId(versionPair.getOldVersion(),artistId,callback);
                 }
 
                 @Override
@@ -375,16 +494,26 @@ public class DataManager implements DataSource{
         }
     }
 
-    @Override
+
+    /**
+     * 获取答题模块数据
+     * @param callback
+     */
     public void getQuizList(final DataCallback<List<QuizItem>> callback) {
 
-        if (!NetUtils.isNetworkConnected(mApplicationContext)){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
 
-            mLocalDataSource.getQuizList(callback);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_ANSWER);
+        Log.d(TAG, "getQuizList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+
+            mLocalDataSource.getQuizList(versionPair.getOldVersion(),callback);
 
         }else{
 
-            mRemoteDataSource.getQuizList(new DataCallback<List<QuizItem>>() {
+            mRemoteDataSource.getQuizList(versionPair.getOldVersion(),new DataCallback<List<QuizItem>>() {
                 @Override
                 public void onSuccess(List<QuizItem> data) {
                     callback.onSuccess(data);
@@ -393,7 +522,7 @@ public class DataManager implements DataSource{
 
                 @Override
                 public void onFailure(String msg) {
-                    mLocalDataSource.getQuizList(callback);
+                    mLocalDataSource.getQuizList(versionPair.getOldVersion(),callback);
                 }
 
                 @Override

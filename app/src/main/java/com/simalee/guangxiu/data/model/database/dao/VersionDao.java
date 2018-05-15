@@ -52,7 +52,7 @@ public class VersionDao extends BaseDao<VersionPair> {
     public static final int INDEX_VER_DESC = 9;
     public static final int INDEX_VER_MASTER = 10;
     public static final int INDEX_VER_MASTER_DESC = 11;
-    public static final int INDEX_VER_MASTER_WORK_= 12;
+    public static final int INDEX_VER_MASTER_WORK = 12;
     public static final int INDEX_VER_VIDEO = 13;
     public static final int INDEX_VER_ANSWER = 14;
     public static final int INDEX_VER_NEEDLE = 15;
@@ -277,8 +277,8 @@ public class VersionDao extends BaseDao<VersionPair> {
                 pair.setNewVersion(version.getVer_masterdesc());
                 break;
 
-            case INDEX_VER_MASTER_WORK_:
-                pair.setName(nameArray[INDEX_VER_MASTER_WORK_]);
+            case INDEX_VER_MASTER_WORK:
+                pair.setName(nameArray[INDEX_VER_MASTER_WORK]);
                 pair.setOldVersion(-1);
                 pair.setNewVersion(version.getVer_masterwork());
                 break;

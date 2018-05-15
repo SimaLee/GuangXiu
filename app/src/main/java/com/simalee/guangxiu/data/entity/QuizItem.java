@@ -1,5 +1,9 @@
 package com.simalee.guangxiu.data.entity;
 
+import android.support.annotation.NonNull;
+
+import org.hamcrest.core.IsInstanceOf;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -7,7 +11,7 @@ import java.util.List;
  * Created by Lee Sima on 2018/5/11.
  */
 
-public class QuizItem implements Serializable{
+public class QuizItem implements Serializable,Comparable<QuizItem>{
 
     /**
      * 问题id
@@ -108,5 +112,14 @@ public class QuizItem implements Serializable{
                 ", answerId=" + answerId +
                 ", explanation='" + explanation + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(@NonNull QuizItem o) {
+
+        if (o == null || !(o instanceof QuizItem)){
+            return -1;
+        }
+        return this.sequence - o.getSequence();
     }
 }

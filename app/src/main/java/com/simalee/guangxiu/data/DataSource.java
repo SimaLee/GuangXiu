@@ -23,11 +23,6 @@ import java.util.List;
 
 public interface DataSource{
 
-    /**
-     * 获取广绣的简要介绍
-     * @param callback
-     */
-    void getIntroduction(DataCallback<SimpleIntroduction> callback);
 
     /**
      * 获取数据版本号
@@ -36,72 +31,88 @@ public interface DataSource{
     void getVersionCode(DataCallback<Version> callback);
 
     /**
-     * 获取广绣的艺术特点
+     * 获取广绣的简要介绍
+     * @param version
      * @param callback
      */
-    void getArtFeature(DataCallback<ArtFeature> callback);
+    void getIntroduction(int version,DataCallback<SimpleIntroduction> callback);
+
+    /**
+     * 获取广绣的艺术特点
+     * @param version
+     * @param callback
+     */
+    void getArtFeature(int version,DataCallback<ArtFeature> callback);
 
     /**
      * 获取广绣的花架介绍
+     * @param version
      * @param callback
      */
-    void getPergolaIntroduction(DataCallback<PergolaIntroduction> callback);
+    void getPergolaIntroduction(int version,DataCallback<PergolaIntroduction> callback);
 
     /**
      * 获取绣针介绍
+     * @param version
      * @param callback
      */
-    void getStitchIntroduction(DataCallback<StitchIntroduction> callback);
+    void getStitchIntroduction(int version,DataCallback<StitchIntroduction> callback);
 
     /**
      * 获取绣线列表
      * @param callback
      */
-    void getThreadList(DataCallback<List<ThreadItem>> callback);
+    void getThreadList(int version,DataCallback<List<ThreadItem>> callback);
 
     /**
      * 获取指定绣线的简介
+     * @param version
      * @param threadId
      * @param callback
      */
-    void getThreadWithId(String threadId, DataCallback<ThreadIntroduction> callback);
+    void getThreadWithId(int version,String threadId, DataCallback<ThreadIntroduction> callback);
 
     /**
      * 获取指定绣种的描述
+     * @param version
      * @param embroideryId 绣种id
      * @param callback
      */
-    void getEmbroideryWithId(String embroideryId, DataCallback<EmbroideryIntroduction> callback);
+    void getEmbroideryWithId(int version,String embroideryId, DataCallback<EmbroideryIntroduction> callback);
 
     /**
      * 获取针法列表
      * @param callback
      */
-    void getStitchList(DataCallback<List<StitchItem>> callback);
+    void getStitchList(int version,DataCallback<List<StitchItem>> callback);
 
     /**
      * 获取针法的介绍
+     * @param version
      * @param stitchId
      * @param callback
      */
-    void getStitchInfoWithId(String stitchId, DataCallback<StitchInfoDetail> callback);
+    void getStitchInfoWithId(int version,String stitchId, DataCallback<StitchInfoDetail> callback);
 
     /**
      * 获取名家列表
+     * @param version
      * @param callback
      */
-    void getArtistList(DataCallback<List<Artist>> callback);
+    void getArtistList(int version,DataCallback<List<Artist>> callback);
 
     /**
      * 获取指定名家介绍
+     * @param version
      * @param artistId
      * @param callback
      */
-    void getArtistInfoWithId(String artistId,DataCallback<Artist> callback);
+    void getArtistInfoWithId(int version,String artistId,DataCallback<Artist> callback);
 
     /**
      * 获取答卷数据
+     * @param version
      * @param callback
      */
-    void getQuizList(DataCallback<List<QuizItem>> callback);
+    void getQuizList(int version,DataCallback<List<QuizItem>> callback);
 }

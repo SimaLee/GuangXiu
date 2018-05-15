@@ -23,29 +23,29 @@ public class ArtistPresenter extends BasePresenter<ArtistContract.ArtistView> im
 
     @Override
     public void loadArtistList() {
-        mView.showArtistList(fakeArtistList());
-//        DataManager.getInstance().getArtistList(new DataCallback<List<Artist>>() {
-//            @Override
-//            public void onSuccess(List<Artist> data) {
-//                if (isViewAttached()){
-//                    mView.showArtistList(fakeArtistList());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(String msg) {
-//                if (isViewAttached()){
-//                    mView.showError();
-//                }
-//            }
-//
-//            @Override
-//            public void onError() {
-//                if (isViewAttached()){
-//                    mView.showError();
-//                }
-//            }
-//        });
+
+        DataManager.getInstance().getArtistList(new DataCallback<List<Artist>>() {
+            @Override
+            public void onSuccess(List<Artist> data) {
+                if (isViewAttached()){
+                    mView.showArtistList(fakeArtistList());
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if (isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
 
     }
 
