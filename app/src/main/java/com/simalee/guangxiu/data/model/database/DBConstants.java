@@ -22,7 +22,7 @@ public interface DBConstants {
         String COLUMN_DESCRIPTION = "description";
 
         //版本号
-        String SQL_CREATE_TABLE_VERSION =
+        String SQL_CREATE_TABLE =
                 "create table if not exists " +TABLE_NAME +
                         "("
                         +COLUMN_ID + " integer primary key autoincrement" + SEPERATOR
@@ -32,8 +32,33 @@ public interface DBConstants {
                         +COLUMN_DESCRIPTION + " text"
                         +")";
 
+        String SQL_DROP_TABLE = "drop table " + TABLE_NAME;
+
     }
 
+    /**
+     * 广绣简要介绍
+     */
+    interface TableIntroduction{
+
+        String TABLE_NAME = "simpleIntroduction";
+        String COLUMN_ID = "id";
+        String COLUMN_VERSION = "version";
+        String COLUMN_DESCRIPTION = "desc";
+        String COLUMN_BACKGROUND = "backgroundUrl";
+
+        String SQL_CREATE_TABLE =
+                "create table if not exists " +TABLE_NAME +
+                        "("
+                        +COLUMN_ID + " integer primary key autoincrement" + SEPERATOR
+                        +COLUMN_VERSION + " integer UNIQUE NOT NULL"+ SEPERATOR
+                        +COLUMN_DESCRIPTION + " text " + SEPERATOR
+                        +COLUMN_BACKGROUND + " text "
+                        +")";
+
+        String SQL_DROP_TABLE = "drop table " + TABLE_NAME;
+
+    }
 
 
 

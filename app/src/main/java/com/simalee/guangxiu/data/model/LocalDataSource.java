@@ -1,6 +1,7 @@
 package com.simalee.guangxiu.data.model;
 
 import android.content.Context;
+import android.content.IntentFilter;
 import android.util.Log;
 
 import com.simalee.guangxiu.data.DataSource;
@@ -19,6 +20,7 @@ import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
+import com.simalee.guangxiu.data.model.database.dao.SimpleIntroductionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionPair;
 import com.simalee.guangxiu.utils.PreferenceUtil;
@@ -36,21 +38,45 @@ public class LocalDataSource implements DataSource {
 
 
     private VersionDao mVersionDao;
+    private SimpleIntroductionDao mSimpleIntroductionDao;
 
     public LocalDataSource(Context context){
         mContext = context;
         mVersionDao = new VersionDao(context);
+        mSimpleIntroductionDao = new SimpleIntroductionDao(context);
     }
 
 
     @Override
     public void getVersionCode(DataCallback<Version> callback) {
-
+        //本地不需使用
     }
 
     @Override
     public void getIntroduction(int version, DataCallback<SimpleIntroduction> callback) {
 
+        if (callback == null){
+            return;
+        }
+
+        Log.d(TAG, "getIntroduction: version " +version);
+        SimpleIntroduction result = mSimpleIntroductionDao.getSimpleIntroduction(version);
+
+        if (result != null){
+            callback.onSuccess(result);
+        }else{
+            callback.onFailure("加载广绣简要介绍失败！");
+        }
+    }
+
+    /**
+     * 保存广绣简要介绍
+     * @param version
+     * @param introduction
+     */
+    public void saveIntroduction(int version,SimpleIntroduction introduction){
+        Log.d(TAG, "saveIntroduction: " + introduction);
+        mSimpleIntroductionDao.saveSimpleIntroduction(version,introduction);
     }
 
     @Override

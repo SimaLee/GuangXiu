@@ -52,6 +52,37 @@ public abstract class BaseDao<T> {
     }
 
     /**
+     * 插入数据
+     * @param tableName
+     * @param nullColumnHack
+     * @param values
+     * @param conflictAlgorithm 发生冲突时的操作 使用replace 可以在插入unique约束的字段时 如果不存在，则更新，否则插入{@link SQLiteDatabase#CONFLICT_REPLACE}
+     * @return
+     */
+    public long insertWithOnConflict(String tableName, String nullColumnHack,
+                                     ContentValues values,int conflictAlgorithm){
+
+        long ret = 0;
+        SQLiteDatabase database = mHelper.getWritableDatabase();
+        database.beginTransaction();
+
+        try {
+
+            ret = database.insertWithOnConflict(tableName,nullColumnHack,values,conflictAlgorithm);
+            database.setTransactionSuccessful();
+
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+
+        } finally {
+            database.endTransaction();
+        }
+
+        return ret;
+
+    }
+
+    /**
      * 根据条件查询数据
      * @param table
      * @param columns

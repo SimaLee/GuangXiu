@@ -7,7 +7,7 @@ package com.simalee.guangxiu.app;
 
 public interface UrlConstants {
 
-    public static final String BASE_URL = "http://110.64.89.19:8080/GuangXiu";
+    public static final String BASE_URL = "http://119.29.224.50:8080/GuangXiu";
 
     public static final String BASE_FILE_URL = BASE_URL +"/files/";
 

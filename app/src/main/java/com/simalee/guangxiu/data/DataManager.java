@@ -86,6 +86,7 @@ public class DataManager {
                 public void onSuccess(SimpleIntroduction data) {
                     //todo 数据保存
                     callback.onSuccess(data);
+                    mLocalDataSource.saveIntroduction(versionPair.getNewVersion(),data);
                 }
 
                 @Override

@@ -77,6 +77,10 @@ public class VersionDao extends BaseDao<VersionPair> {
 
         for (int i = 0; i < size; i++) {
 
+            if (size == 11){
+                continue;//master_desc弃用
+            }
+
             versionPair = pairList.get(i);
 
             contentValues.put(DBConstants.TableVersion.COLUMN_NAME,versionPair.getName());
