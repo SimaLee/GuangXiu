@@ -468,7 +468,7 @@ public class DataManager {
 
         boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
 
-        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MASTER_DESC);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MASTER);
         Log.d(TAG, "getArtistInfoWithId: versionPair " + versionPair);
         boolean hasNewVersion = versionPair.hasNewVersion();
 
