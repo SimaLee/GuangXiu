@@ -33,7 +33,7 @@ public class VersionDao extends BaseDao<VersionPair> {
                "ver_pergola",//花架版本号
                "ver_desc",//(logo)广绣介绍版本号
                "ver_master",//名家版本号
-               "ver_masterdesc",//名家简介版本号
+               "ver_masterdesc",//名家简介版本号 弃用
                "ver_masterwork",//名家作品版本号
                "ver_video",//视频教学版本号
                "ver_answer",//答题闯关版本号
@@ -51,7 +51,7 @@ public class VersionDao extends BaseDao<VersionPair> {
     public static final int INDEX_VER_PERGOLA = 8;
     public static final int INDEX_VER_DESC = 9;
     public static final int INDEX_VER_MASTER = 10;
-    public static final int INDEX_VER_MASTER_DESC = 11;
+//    public static final int INDEX_VER_MASTER_DESC = 11; 弃用
     public static final int INDEX_VER_MASTER_WORK = 12;
     public static final int INDEX_VER_VIDEO = 13;
     public static final int INDEX_VER_ANSWER = 14;
@@ -270,12 +270,12 @@ public class VersionDao extends BaseDao<VersionPair> {
                 pair.setOldVersion(-1);
                 pair.setNewVersion(version.getVer_master());
                 break;
-
-            case INDEX_VER_MASTER_DESC:
-                pair.setName(nameArray[INDEX_VER_MASTER_DESC]);
-                pair.setOldVersion(-1);
-                pair.setNewVersion(version.getVer_masterdesc());
-                break;
+// 弃用
+//            case INDEX_VER_MASTER_DESC:
+//                pair.setName(nameArray[INDEX_VER_MASTER_DESC]);
+//                pair.setOldVersion(-1);
+//                pair.setNewVersion(version.getVer_masterdesc());
+//                break;
 
             case INDEX_VER_MASTER_WORK:
                 pair.setName(nameArray[INDEX_VER_MASTER_WORK]);
