@@ -2,8 +2,6 @@ package com.simalee.guangxiu.data.entity;
 
 import android.support.annotation.NonNull;
 
-import org.hamcrest.core.IsInstanceOf;
-
 import java.io.Serializable;
 import java.util.List;
 

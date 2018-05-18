@@ -6,7 +6,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
-import com.simalee.guangxiu.widget.MultiItemContainer;
 
 import java.util.ArrayList;
 import java.util.List;

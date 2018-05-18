@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
-import com.simalee.guangxiu.view.technique.EmbroideryActivity;
 import com.unistrong.yang.zb_permission.Permission;
 import com.unistrong.yang.zb_permission.ZbPermission;
 import com.unistrong.yang.zb_permission.ZbPermissionFail;

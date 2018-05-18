@@ -3,13 +3,9 @@ package com.simalee.guangxiu.view.history;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
-import com.simalee.guangxiu.base.BaseView;
-
-import java.sql.BatchUpdateException;
 
 /**
  * Created by zb.yang on 2018/5/7.

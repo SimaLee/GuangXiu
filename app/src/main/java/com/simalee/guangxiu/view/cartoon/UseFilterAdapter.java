@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.simalee.guangxiu.R;
-import com.simalee.guangxiu.data.entity.ThemeFilterItem;
 import com.simalee.guangxiu.data.entity.UseWorkFilterItem;
 
 import java.util.ArrayList;

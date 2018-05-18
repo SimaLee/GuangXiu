@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.SuperKotlin.pictureviewer.ImagePagerActivity;
+import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.app.UrlConstants;
@@ -125,6 +127,29 @@ public class QuizFragment extends Fragment {
                     .load(UrlConstants.BASE_FILE_URL + mQuizItem.getImage())
                     .error(R.mipmap.embroidery_default)
                     .into(mQuizImageView);
+
+            mQuizImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Log.d(TAG, "onClick: quizImage: " + mQuizItem.getImage());
+                    ArrayList<String> imageUrlList = new ArrayList<>();
+                    if (mQuizItem != null){
+                        imageUrlList.add(UrlConstants.BASE_FILE_URL + mQuizItem.getImage());
+                    }
+
+                    PictureConfig config = new PictureConfig.Builder()
+                            .setListData(imageUrlList)//图片数据List<String> list
+                            .setPosition(0)//图片下标（从第position张图片开始浏览）
+                            .setDownloadPath("pictureviewer")//图片下载文件夹地址
+                            .setIsShowNumber(false)//是否显示数字下标
+                            .needDownload(true)//是否支持图片下载
+                            .setPlacrHolder(R.mipmap.embroidery_default)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
+                            .build();
+
+                    ImagePagerActivity.startActivity(getContext(), config);
+                }
+            });
         }
 
         mOptionListAdapter = new QuizOptionListAdapter(view.getContext(),mQuizItem.getOptions());

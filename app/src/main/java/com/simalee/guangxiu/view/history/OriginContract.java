@@ -1,6 +1,5 @@
 package com.simalee.guangxiu.view.history;
 
-import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.base.BaseView;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 

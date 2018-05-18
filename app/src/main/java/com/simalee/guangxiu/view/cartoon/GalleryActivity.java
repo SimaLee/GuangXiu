@@ -1,9 +1,7 @@
 package com.simalee.guangxiu.view.cartoon;
 
-import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
-import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.ThemeFilterItem;
 import com.simalee.guangxiu.data.entity.UseWorkFilterItem;

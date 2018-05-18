@@ -7,11 +7,6 @@ import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
-import com.simalee.guangxiu.data.entity.TextImageItem;
-import com.simalee.guangxiu.widget.MultiItemContainer;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Lee Sima on 2018/5/6.

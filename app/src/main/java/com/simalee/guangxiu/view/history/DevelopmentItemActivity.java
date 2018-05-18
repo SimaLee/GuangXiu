@@ -9,8 +9,6 @@ import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.widget.MultiItemContainer;
 
-import java.util.List;
-
 /**
  * Created by zb.yang on 2018/5/17.
  */

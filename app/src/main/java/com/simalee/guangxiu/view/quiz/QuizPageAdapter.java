@@ -3,8 +3,6 @@ package com.simalee.guangxiu.view.quiz;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.simalee.guangxiu.data.entity.QuizItem;
 

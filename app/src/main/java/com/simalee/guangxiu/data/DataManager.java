@@ -3,7 +3,6 @@ package com.simalee.guangxiu.data;
 import android.content.Context;
 import android.util.Log;
 
-
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;

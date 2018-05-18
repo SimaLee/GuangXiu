@@ -1,6 +1,5 @@
 package com.simalee.guangxiu.view.technique;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,7 +13,6 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

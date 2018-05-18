@@ -14,7 +14,9 @@ import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.entity.TextImageItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Lee Sima on 2018/5/7.
@@ -31,12 +33,17 @@ public class MultiItemHelper {
     private MultiItemContainer mContainer;
 
     private List<TextImageItem> mItemList;
+    private ArrayList<String> mImageUrlList;
+    private Map<View,Integer> mViewIndexMap;
 
     private static int viewCounter;
+    private static int imageCounter = 0;
+
 
     public MultiItemHelper(MultiItemContainer container){
         mContainer = container;
         viewCounter = 0;
+        imageCounter = 0;
     }
 
     /**
@@ -63,7 +70,34 @@ public class MultiItemHelper {
     }
 
     private void createAndAddImageView(TextImageItem itemInfo) {
+
+        if (mImageUrlList == null){
+            mImageUrlList = new ArrayList<>();
+        }
+        if (mViewIndexMap == null){
+            mViewIndexMap = new HashMap<>();
+        }
+
         ImageView imageView = new ImageView(mContainer.getContext());
+
+        mViewIndexMap.put(imageView,imageCounter);
+        //添加列表
+        mImageUrlList.add(imageCounter,UrlConstants.BASE_FILE_URL + itemInfo.getImageurl());
+        imageCounter++;
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v instanceof ImageView){
+                    int position = mViewIndexMap.get(v);
+
+                    Log.d(TAG, "onClick: position: " + position + " size: " +mImageUrlList.size());
+                    if (mOnImageClickListener != null){
+                        mOnImageClickListener.onImageClick(mImageUrlList,position);
+                    }
+                }
+            }
+        });
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(itemInfo.getWidth(),itemInfo.getHeight());
         layoutParams.setMargins(50,10,10,10);
@@ -115,8 +149,18 @@ public class MultiItemHelper {
     }
 
     public void clear(){
-        mItemList.clear();
+
+        if (mItemList != null) {
+            mItemList.clear();
+        }
+        if (mImageUrlList != null) {
+            mImageUrlList.clear();
+        }
+        if (mViewIndexMap != null){
+            mViewIndexMap.clear();
+        }
         viewCounter = 0;
+        imageCounter = 0;
     }
     /**
      * 根据item info 生成对应的view并设置属性
@@ -131,5 +175,16 @@ public class MultiItemHelper {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
         textView.setLayoutParams(params);
         return textView;
+    }
+
+
+    public void setOnImageClickListener(OnImageClickListener onImageClickListener) {
+        mOnImageClickListener = onImageClickListener;
+    }
+
+    private OnImageClickListener mOnImageClickListener;
+
+    public interface OnImageClickListener{
+        void onImageClick(ArrayList<String> imageUrlList,int position);
     }
 }

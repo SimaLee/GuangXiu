@@ -1,7 +1,6 @@
 package com.simalee.guangxiu.utils;
 
 import android.content.Context;
-import android.icu.text.IDNA;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 

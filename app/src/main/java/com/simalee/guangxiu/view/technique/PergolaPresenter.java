@@ -1,6 +1,5 @@
 package com.simalee.guangxiu.view.technique;
 
-import com.bumptech.glide.util.LogTime;
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;

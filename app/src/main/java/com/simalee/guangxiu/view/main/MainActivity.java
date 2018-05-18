@@ -8,19 +8,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
-import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
-
-import com.simalee.guangxiu.view.cartoon.GalleryActivity;
 import com.simalee.guangxiu.view.artist.ArtistListActivity;
+import com.simalee.guangxiu.view.cartoon.GalleryActivity;
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.quiz.QuizActivity;
 import com.simalee.guangxiu.view.teaching.TeachingActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
-
-import okhttp3.Call;
 
 
 public class MainActivity extends BaseMVPActivity<MainPresenter> implements MainContract.MainView{

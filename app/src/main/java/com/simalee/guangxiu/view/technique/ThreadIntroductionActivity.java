@@ -9,8 +9,6 @@ import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.widget.MultiItemContainer;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 /**

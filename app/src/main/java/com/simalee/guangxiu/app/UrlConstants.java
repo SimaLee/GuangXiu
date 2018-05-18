@@ -1,6 +1,5 @@
 package com.simalee.guangxiu.app;
 
-import com.simalee.guangxiu.base.BaseMVPActivity;
 
 /**
  * Created by Lee Sima on 2018/5/8.

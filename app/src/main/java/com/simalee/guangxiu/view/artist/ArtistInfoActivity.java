@@ -2,7 +2,6 @@ package com.simalee.guangxiu.view.artist;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,17 +51,17 @@ public class ArtistInfoActivity extends BaseMVPActivity<ArtistPresenter> impleme
     @Override
     public void showArtist(Artist artist) {
 
-//        mArtistNameView.setText(artist.getName());
-//        mArtistAddressView.setText(artist.getAddress());
-//        mArtistContactView.setText(artist.getContact());
-//        mArtistIntroducitonView.setText(artist.getIntroduction());
-//        mArtistHonorView.setText(artist.getHonor());
-//
-//        Glide.with(this)
-//                .load(artist.getAvatar())
-//                .fitCenter()
-//                .error(R.mipmap.avatar_default)
-//                .into(mArtistAvatarView);
+        mArtistNameView.setText(artist.getName());
+        mArtistAddressView.setText(artist.getAddress());
+        mArtistContactView.setText(artist.getContact());
+        mArtistIntroducitonView.setText(artist.getIntroduction());
+        mArtistHonorView.setText(artist.getHonor());
+
+        Glide.with(this)
+                .load(artist.getAvatar())
+                .fitCenter()
+                .error(R.mipmap.avatar_default)
+                .into(mArtistAvatarView);
     }
 
     @Override

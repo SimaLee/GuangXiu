@@ -1,7 +1,6 @@
 package com.simalee.guangxiu.view.quiz;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
