@@ -2,23 +2,21 @@ package com.simalee.guangxiu.view.history;
 
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
-import com.simalee.guangxiu.data.entity.DevelopmentItem;
+import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.model.DataCallback;
 
-import java.util.List;
-
 /**
- * Created by zb.yang on 2018/5/7.
+ * Created by zb.yang on 2018/5/17.
  */
 
-public class DevelopmentPresenter extends BasePresenter<DevelopmentContract.DevelopmentView>implements DevelopmentContract.DevelopmentPresenter{
+public class DevelopmentItemPresenter extends BasePresenter<DevelopmentItemContract.DevelopmentItemView> implements DevelopmentItemContract.DevelopmentItemPresenter {
     @Override
-    public void loadDevelopmentView() {
-        DataManager.getInstance().getDevelopmentProcess(new DataCallback<List<DevelopmentItem>>() {
+    public void loadDevelopmentItemView(int id) {
+        DataManager.getInstance().getDevelopmentItem(id, new DataCallback<ArtFeature>() {
             @Override
-            public void onSuccess(List<DevelopmentItem> data) {
+            public void onSuccess(ArtFeature data) {
                 if(isViewAttached()){
-                    mView.showDevelopmentView(data);
+                    mView.showDevelopmentItemView(data);
                 }
             }
 

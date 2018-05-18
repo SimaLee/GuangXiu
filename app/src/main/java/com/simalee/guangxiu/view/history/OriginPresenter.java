@@ -1,8 +1,10 @@
 package com.simalee.guangxiu.view.history;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,28 @@ import java.util.List;
 public class OriginPresenter extends BasePresenter<OriginContract.OriginView>implements OriginContract.OriginPresenter{
     @Override
     public void loadOrigin() {
-        mView.showOrigin(testMultiItemContainer());
+        DataManager.getInstance().getOrigin(new DataCallback<ArtFeature>() {
+            @Override
+            public void onSuccess(ArtFeature data) {
+                if(isViewAttached()){
+                    mView.showOrigin(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if(isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if(isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
     }
 
     private ArtFeature testMultiItemContainer() {

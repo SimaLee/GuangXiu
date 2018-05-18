@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.SuperKotlin.pictureviewer.ImagePagerActivity;
 import com.SuperKotlin.pictureviewer.PictureConfig;
@@ -13,6 +14,10 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.view.technique.EmbroideryActivity;
+import com.unistrong.yang.zb_permission.Permission;
+import com.unistrong.yang.zb_permission.ZbPermission;
+import com.unistrong.yang.zb_permission.ZbPermissionFail;
+import com.unistrong.yang.zb_permission.ZbPermissionSuccess;
 
 import java.util.ArrayList;
 
@@ -72,6 +77,10 @@ public class EmbroideryContentActivity extends BaseMVPActivity<EmbroideryPresent
                         .needDownload(true)//是否支持图片下载
                         .setPlacrHolder(R.mipmap.avatar_default)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
                         .build();
+                ZbPermission.with(EmbroideryContentActivity.this)
+                        .addRequestCode(100)
+                        .permissions(Permission.STORAGE)
+                        .request();
                 ImagePagerActivity.startActivity(EmbroideryContentActivity.this, config);
             }
         });
@@ -103,5 +112,15 @@ public class EmbroideryContentActivity extends BaseMVPActivity<EmbroideryPresent
     protected void createPresenter() {
         mPresenter = new EmbroideryPresenter();
         mPresenter.attachView(this);
+    }
+
+    @ZbPermissionSuccess(requestCode = 100)
+    public void permissionSuccessContact() {
+
+    }
+
+    @ZbPermissionFail(requestCode = 100)
+    public void permissionFailContact() {
+        Toast.makeText(EmbroideryContentActivity.this, "请求存储权限失败" , Toast.LENGTH_SHORT).show();
     }
 }

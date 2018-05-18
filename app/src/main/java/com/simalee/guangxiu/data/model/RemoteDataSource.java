@@ -6,13 +6,16 @@ import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.DataSource;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
+import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
+import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
@@ -511,6 +514,263 @@ public class RemoteDataSource implements DataSource {
                                 callback.onFailure(msg);
                             }
                         } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getTeachingVideoList(int version, final DataCallback<List<TeachingContentItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_TEACHING_VIDEO)
+                .addParams("version",String.valueOf(version))
+                .addParams("type","0")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG,"onResponse getTeachingVideoList "+ response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseTeachingContentItemList(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    /**
+     *
+     * @param version
+     * @param callback
+     */
+    @Override
+    public void getAllWorkList(int version, final DataCallback<List<EmbroideryWorkItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_ALL_WORK)
+                .addParams("version",String.valueOf(version))
+                .addParams("type","0")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e(TAG, "onError: ", e);
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG,"onResponse getAllWorkList "+ response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseAllWorkItemList(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getOrigin(int version, final DataCallback<ArtFeature> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_ORIGIN)
+                .addParams("version",String.valueOf(version))
+                .addParams("id","0")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "get Origin onResponse: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseArtFeature(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+
+    @Override
+    public void getFutureDevelopment(int version, final DataCallback<ArtFeature> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_FUTURE_DEVELOPMENT)
+                .addParams("version",String.valueOf(version))
+                .addParams("id","2")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "get Future Development onResponse: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseArtFeature(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getCultureMeaning(int version, final DataCallback<ArtFeature> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_CULTURE_MEANING)
+                .addParams("version",String.valueOf(version))
+                .addParams("id","1")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "get culture meaning onResponse: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseArtFeature(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getDevelopmentProcess(int version, final DataCallback<List<DevelopmentItem>> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_DEVELOPMENT_PROCESS)
+                .addParams("version",String.valueOf(version))
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "get development process onResponse: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONArray data = jsonObject.getJSONArray("data");
+                                callback.onSuccess(ResponseParser.parseDevelopmentItem(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void getDevelopmentItem(int version, int id, final DataCallback<ArtFeature> callback) {
+        OkHttpUtils.post()
+                .url(UrlConstants.URL_GET_DEVELOPMENT_ITEM)
+                .addParams("version",String.valueOf(version))
+                .addParams("id",id+"")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        callback.onError();
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.d(TAG, "get development item onResponse: " + response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("msg");
+
+                            if (code.equals("200")){
+
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                callback.onSuccess(ResponseParser.parseArtFeature(data));
+
+                            }else{
+                                callback.onFailure(msg);
+                            }
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }

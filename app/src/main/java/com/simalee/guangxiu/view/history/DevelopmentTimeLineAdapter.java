@@ -1,12 +1,18 @@
 package com.simalee.guangxiu.view.history;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
 
@@ -23,6 +29,7 @@ import java.util.List;
  */
 
 public class DevelopmentTimeLineAdapter extends RecyclerView.Adapter<DevelopmentTimeLineAdapter.ViewHolder> {
+    private static final String TAG = "DevelopmentTimeLine";
     Context mContext;
     List<DevelopmentItem> mList;
 
@@ -47,8 +54,25 @@ public class DevelopmentTimeLineAdapter extends RecyclerView.Adapter<Development
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.shortDesTV.setText(mList.get(position).getShortDescription());
-        holder.timePointTV.setText(mList.get(position).getTimePoint());
+        final DevelopmentItem developmentItem = mList.get(position);
+        if(developmentItem == null)
+            return;
+        holder.shortDesTV.setText(developmentItem.getDes());
+        Glide.with(mContext)
+                .load(developmentItem.getImageUrl())
+                .placeholder(R.mipmap.bg_introduction_default)
+                .crossFade()
+                .into(holder.timePointIV);
+        holder.developmentItemRL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,DevelopmentItemActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(DevelopmentItem.TAG,developmentItem);
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -58,13 +82,20 @@ public class DevelopmentTimeLineAdapter extends RecyclerView.Adapter<Development
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView shortDesTV;
-        TextView timePointTV;
-
+        ImageView timePointIV;
+        RelativeLayout developmentItemRL;
         public ViewHolder(View view) {
             super(view);
             shortDesTV = (TextView) view.findViewById(R.id.shortDesTV);
-            timePointTV = (TextView) view.findViewById(R.id.timePointTV);
+            timePointIV = (ImageView) view.findViewById(R.id.timePointIV);
+            developmentItemRL = (RelativeLayout)view.findViewById(R.id.developmentItemRL);
         }
     }
 
+    public void setDevelopmentItemList(List<DevelopmentItem> list){
+        if(list == null)
+            return;
+        mList = list;
+        notifyDataSetChanged();
+    }
 }

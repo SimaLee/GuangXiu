@@ -36,6 +36,7 @@
             android:configChanges="orientation|keyboard"
             android:screenOrientation="portrait"/>
         <activity android:name=".view.cartoon.EmbroideryContentActivity"/>
+        <activity android:name=".view.history.DevelopmentItemActivity"/>
 
 
 

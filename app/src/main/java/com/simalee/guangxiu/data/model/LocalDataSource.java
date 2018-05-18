@@ -6,13 +6,16 @@ import android.util.Log;
 import com.simalee.guangxiu.data.DataSource;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
+import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
+import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
@@ -146,4 +149,38 @@ public class LocalDataSource implements DataSource {
         return mVersionDao.getVersionPairAt(index);
     }
 
+    @Override
+    public void getTeachingVideoList(int version, DataCallback<List<TeachingContentItem>> callback) {
+
+    }
+
+    @Override
+    public void getAllWorkList(int version, DataCallback<List<EmbroideryWorkItem>> callback) {
+
+    }
+
+    @Override
+    public void getOrigin(int version, DataCallback<ArtFeature> callback) {
+
+    }
+
+    @Override
+    public void getFutureDevelopment(int version, DataCallback<ArtFeature> callback) {
+
+    }
+
+    @Override
+    public void getCultureMeaning(int version, DataCallback<ArtFeature> callback) {
+
+    }
+
+    @Override
+    public void getDevelopmentProcess(int version, DataCallback<List<DevelopmentItem>> callback) {
+
+    }
+
+    @Override
+    public void getDevelopmentItem(int version, int id, DataCallback<ArtFeature> callback) {
+
+    }
 }

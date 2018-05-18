@@ -2,7 +2,9 @@ package com.simalee.guangxiu.data.model;
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
+import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
+import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.QuizOptionItem;
@@ -10,6 +12,7 @@ import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.TextImageItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
@@ -44,7 +47,7 @@ public class ResponseParser {
         Version version = new Version();
 
         version.setVer_origin(jsonObject.getInt("ver_origin"));
-        version.setVer_meaning(jsonObject.getInt("ver_meanning"));
+        version.setVer_meaning(jsonObject.getInt("ver_meaning"));
         version.setVer_phase(jsonObject.getInt("ver_phase"));
         version.setVer_development(jsonObject.getInt("ver_development"));
         version.setVer_art(jsonObject.getInt("ver_art"));
@@ -311,5 +314,83 @@ public class ResponseParser {
         }
         Collections.sort(textImageItemList);
         return textImageItemList;
+    }
+
+    /**
+     * 教学内容 jsonArray解析
+     * @param jsonArray
+     * @return
+     * @throws Exception
+     */
+    public static List<TeachingContentItem> parseTeachingContentItemList(JSONArray jsonArray) throws Exception{
+        int len = jsonArray.length();
+        List<TeachingContentItem> teachingContentItemList = new ArrayList<>(len);
+        JSONObject item;
+        TeachingContentItem teachingContentItem;
+        for(int i = 0;i<len;i++){
+            item = jsonArray.getJSONObject(i);
+
+            String name = item.getString("name");
+            String video = item.getString("video");
+            String cover = item.getString("cover");
+            String des = item.getString("des");
+            int type = item.getInt("type");
+            int time = item.getInt("time");
+
+            teachingContentItem = new TeachingContentItem(name,time,cover,video,type);
+            teachingContentItemList.add(teachingContentItem);
+        }
+        return teachingContentItemList;
+    }
+
+    /**
+     * 解析作品列表
+     * @param jsonArray
+     * @return
+     * @throws Exception
+     */
+    public static List<EmbroideryWorkItem> parseAllWorkItemList(JSONArray jsonArray) throws Exception{
+        int len = jsonArray.length();
+        List<EmbroideryWorkItem> embroideryWorkItems = new ArrayList<>(len);
+        JSONObject item;
+        EmbroideryWorkItem embroideryWorkItem;
+        for(int i = 0;i<len;i++){
+            item = jsonArray.getJSONObject(i);
+
+            String url = item.getString("image");
+            String workName = item.getString("name");
+            String des = item.getString("des");
+            String author = item.getString("author");
+            int type = item.getInt("type");
+
+            embroideryWorkItem = new EmbroideryWorkItem(url,workName,des,author,type);
+            embroideryWorkItems.add(embroideryWorkItem);
+        }
+        return embroideryWorkItems;
+    }
+
+    public static List<DevelopmentItem> parseDevelopmentItem(JSONArray jsonArray)throws Exception{
+        int len = jsonArray.length();
+        List<DevelopmentItem> developmentItems = new ArrayList<>(len);
+        JSONObject item;
+        DevelopmentItem developmentItem;
+        for(int i = 0;i<len;i++){
+            item = jsonArray.getJSONObject(i);
+
+            int seq = item.getInt("seq");
+            String des = item.getString("des");
+            int id = item.getInt("id");
+            String url = item.getString("image");
+
+            developmentItem = new DevelopmentItem();
+            developmentItem.setImageUrl(url);
+            developmentItem.setDes(des);
+            developmentItem.setDevelopmentItemId(id);
+            developmentItem.setSeq(seq);
+
+            developmentItems.add(developmentItem);
+        }
+
+        return developmentItems;
     }
 }

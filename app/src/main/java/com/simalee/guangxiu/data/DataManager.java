@@ -6,13 +6,16 @@ import android.util.Log;
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
+import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
+import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
@@ -531,6 +534,240 @@ public class DataManager {
                 }
             });
 
+        }
+    }
+
+
+    /**
+     * 获取教学视频数据
+     * @param callback
+     */
+    public void getTeachingVideoList(final DataCallback<List<TeachingContentItem>> callback) {
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_VIDEO);
+        Log.d(TAG, "getTeachingVideoList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+
+            mLocalDataSource.getTeachingVideoList(versionPair.getOldVersion(),callback);
+
+        }else{
+
+            mRemoteDataSource.getTeachingVideoList(versionPair.getOldVersion(),new DataCallback<List<TeachingContentItem>>() {
+                @Override
+                public void onSuccess(List<TeachingContentItem> data) {
+                    callback.onSuccess(data);
+                    //todo 数据保存
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    mLocalDataSource.getTeachingVideoList(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+
+        }
+    }
+
+    /**
+     * 获取作品列表
+     * @param callback
+     */
+    public void getAllWorkList(final DataCallback<List<EmbroideryWorkItem>> callback) {
+
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MASTER_WORK);
+        Log.d(TAG, "getAllWorkList: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected ||!hasNewVersion){
+
+            mLocalDataSource.getAllWorkList(versionPair.getOldVersion(),callback);
+
+        }else{
+
+            mRemoteDataSource.getAllWorkList(versionPair.getOldVersion(),new DataCallback<List<EmbroideryWorkItem>>() {
+                @Override
+                public void onSuccess(List<EmbroideryWorkItem> data) {
+                    callback.onSuccess(data);
+                    //todo 数据保存
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    mLocalDataSource.getAllWorkList(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+
+        }
+    }
+
+    public void getOrigin(final DataCallback<ArtFeature> callback){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_ORIGIN);
+        Log.d(TAG, "getOrigin: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getOrigin(versionPair.getOldVersion(),callback);
+        }else{
+
+            mRemoteDataSource.getOrigin(versionPair.getOldVersion(),new DataCallback<ArtFeature>() {
+                @Override
+                public void onSuccess(ArtFeature data) {
+                    //todo 数据保存
+                    callback.onSuccess(data);
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    //网络获取失败时 使用本地数据
+                    mLocalDataSource.getOrigin(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+    }
+
+    public void getFutureDevelopment(final DataCallback<ArtFeature> callback){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_DEVELOPMENT);
+        Log.d(TAG, "getFutureDevelopment: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getFutureDevelopment(versionPair.getOldVersion(),callback);
+        }else{
+
+            mRemoteDataSource.getFutureDevelopment(versionPair.getOldVersion(),new DataCallback<ArtFeature>() {
+                @Override
+                public void onSuccess(ArtFeature data) {
+                    //todo 数据保存
+                    callback.onSuccess(data);
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    //网络获取失败时 使用本地数据
+                    mLocalDataSource.getFutureDevelopment(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+    }
+
+    public void getCultureMeaning(final DataCallback<ArtFeature> callback){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_MEANING);
+        Log.d(TAG, "getCultureMeaning: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getCultureMeaning(versionPair.getOldVersion(),callback);
+        }else{
+
+            mRemoteDataSource.getCultureMeaning(versionPair.getOldVersion(),new DataCallback<ArtFeature>() {
+                @Override
+                public void onSuccess(ArtFeature data) {
+                    //todo 数据保存
+                    callback.onSuccess(data);
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    //网络获取失败时 使用本地数据
+                    mLocalDataSource.getCultureMeaning(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+    }
+
+    public void getDevelopmentProcess(final DataCallback<List<DevelopmentItem>> callback){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_PHASE);
+        Log.d(TAG, "getDevelopmentProcess: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getDevelopmentProcess(versionPair.getOldVersion(),callback);
+        }else{
+
+            mRemoteDataSource.getDevelopmentProcess(versionPair.getOldVersion(),new DataCallback<List<DevelopmentItem>>() {
+                @Override
+                public void onSuccess(List<DevelopmentItem> data) {
+                    //todo 数据保存
+                    callback.onSuccess(data);
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    //网络获取失败时 使用本地数据
+                    mLocalDataSource.getDevelopmentProcess(versionPair.getOldVersion(),callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        }
+    }
+
+    public void getDevelopmentItem(final int id, final DataCallback<ArtFeature> callback){
+        boolean isNetworkConnected = NetUtils.isNetworkConnected(mApplicationContext);
+        final VersionPair versionPair = mLocalDataSource.getVersionInfo(VersionDao.INDEX_VER_PHASE);
+        Log.d(TAG, "getDevelopmentProcess: versionPair " + versionPair);
+        boolean hasNewVersion = versionPair.hasNewVersion();
+
+        if (!isNetworkConnected || !hasNewVersion ){
+            mLocalDataSource.getDevelopmentItem(versionPair.getOldVersion(),id,callback);
+        }else{
+
+            mRemoteDataSource.getDevelopmentItem(versionPair.getOldVersion(),id,new DataCallback<ArtFeature>() {
+                @Override
+                public void onSuccess(ArtFeature data) {
+                    //todo 数据保存
+                    callback.onSuccess(data);
+                }
+
+                @Override
+                public void onFailure(String msg) {
+                    //网络获取失败时 使用本地数据
+                    mLocalDataSource.getDevelopmentItem(versionPair.getOldVersion(),id,callback);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
         }
     }
 }

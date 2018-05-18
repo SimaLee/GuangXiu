@@ -3,13 +3,16 @@ package com.simalee.guangxiu.data;
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
+import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
+import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
@@ -115,4 +118,47 @@ public interface DataSource{
      * @param callback
      */
     void getQuizList(int version,DataCallback<List<QuizItem>> callback);
+
+    /**
+     * 获取教学视频数据
+     *
+     */
+    void getTeachingVideoList(int version,DataCallback<List<TeachingContentItem>> callback);
+
+    /**
+     * 获取所有作品列表
+     * @param version
+     * @param callback
+     */
+    void getAllWorkList(int version, DataCallback<List<EmbroideryWorkItem>> callback);
+
+    /**
+     * 获取历史起源
+     * @param version
+     * @param callback
+     */
+    void getOrigin(int version,DataCallback<ArtFeature> callback);
+
+    /**
+     * 获取未来发展
+     * @param version
+     * @param callback
+     */
+    void getFutureDevelopment(int version,DataCallback<ArtFeature> callback);
+
+    /**
+     * 获取文化寓意
+     * @param version
+     * @param callback
+     */
+    void getCultureMeaning(int version,DataCallback<ArtFeature> callback);
+
+    /**
+     * 获取发展过程
+     * @param version
+     * @param callback
+     */
+    void getDevelopmentProcess(int version, DataCallback<List<DevelopmentItem>> callback);
+
+    void getDevelopmentItem(int version, int id, DataCallback<ArtFeature> callback);
 }

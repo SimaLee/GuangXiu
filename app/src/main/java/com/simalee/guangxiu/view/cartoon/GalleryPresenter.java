@@ -1,15 +1,44 @@
 package com.simalee.guangxiu.view.cartoon;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zb.yang on 2018/5/14.
  */
 
 public class GalleryPresenter extends BasePresenter<GalleryContarct.GalleryView> implements GalleryContarct.GalleryPresenter {
+
+    @Override
+    public void loadGalleryView() {
+        DataManager.getInstance().getAllWorkList(new DataCallback<List<EmbroideryWorkItem>>() {
+            @Override
+            public void onSuccess(List<EmbroideryWorkItem> data) {
+                if(isViewAttached()){
+                    mView.showGalleryView(data);
+                }
+            }
+
+            @Override
+            public void onFailure(String msg) {
+                if(isViewAttached()){
+                    mView.showError();
+                }
+            }
+
+            @Override
+            public void onError() {
+                if(isViewAttached()){
+                    mView.showError();
+                }
+            }
+        });
+    }
 
     public ArrayList<EmbroideryWorkItem> getTestData(){
         ArrayList<EmbroideryWorkItem> arrayList = new ArrayList<>();

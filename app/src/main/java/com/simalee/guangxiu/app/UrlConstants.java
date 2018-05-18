@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.app;
 
+import com.simalee.guangxiu.base.BaseMVPActivity;
+
 /**
  * Created by Lee Sima on 2018/5/8.
  */
@@ -74,8 +76,40 @@ public interface UrlConstants {
 
 
     //---------------------------------------------------------------
-    public static final String URL_GET_ORIGIN = BASE_URL + "/GraphicItem/";
 
+    /**
+     * 获取教学视频列表
+     */
+    public static final String URL_GET_TEACHING_VIDEO = BASE_URL +"/Teaching/video";
 
+    /**
+     * 获取所有作品列表
+     */
+    public static final String URL_GET_ALL_WORK = BASE_URL + "/MasterInfo/work";
+
+    /**
+     * 获取广绣历史起源
+     */
+    public static final String URL_GET_ORIGIN = BASE_URL +"/Origin";
+
+    /**
+     * 获取广绣未来发展
+     */
+    public static final String URL_GET_FUTURE_DEVELOPMENT = BASE_URL +"/Development";
+
+    /**
+     * 获取文化寓意
+     */
+    public static final String URL_GET_CULTURE_MEANING = BASE_URL +"/Meaning";
+
+    /**
+     * 获取发展过程
+     */
+    public static final String URL_GET_DEVELOPMENT_PROCESS = BASE_URL +"/PhaseInfo/phases";
+
+    /**
+     * 获取发展过程具体项
+     */
+    public static final String URL_GET_DEVELOPMENT_ITEM = BASE_URL +"/Phases/item";
 
 }

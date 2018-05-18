@@ -1,7 +1,9 @@
 package com.simalee.guangxiu.view.teaching;
 
 import com.simalee.guangxiu.base.BasePresenter;
+import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.TeachingContentItem;
+import com.simalee.guangxiu.data.model.DataCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,22 @@ import java.util.List;
 public class TeachingPresenter extends BasePresenter<TeachingContract.TeachingTypeView>implements TeachingContract.ITeachingTypePresenter{
     @Override
     public void loadTeachingType() {
+        DataManager.getInstance().getTeachingVideoList(new DataCallback<List<TeachingContentItem>>() {
+            @Override
+            public void onSuccess(List<TeachingContentItem> data) {
+                mView.showTeachingType(data);
+            }
 
+            @Override
+            public void onFailure(String msg) {
+                mView.showError();
+            }
+
+            @Override
+            public void onError() {
+                mView.showError();
+            }
+        });
     }
 
     public ArrayList<TeachingContentItem> getVideoListData() {

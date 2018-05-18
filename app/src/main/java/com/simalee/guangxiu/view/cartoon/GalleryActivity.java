@@ -20,6 +20,7 @@ import com.simalee.guangxiu.data.entity.ThemeFilterItem;
 import com.simalee.guangxiu.data.entity.UseWorkFilterItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zb.yang on 2018/5/13.
@@ -52,7 +53,9 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
         menuHeaderView = new RightSideslipLay(GalleryActivity.this);
         navigationView.addView(menuHeaderView);
         worksRCV.setLayoutManager(new LinearLayoutManager(GalleryActivity.this));
-
+        mEmbroideryWorkItems = new ArrayList<>();
+        mGalleryAdapter = new GalleryAdapter(GalleryActivity.this,mEmbroideryWorkItems);
+        worksRCV.setAdapter(mGalleryAdapter);
     }
 
     @Override
@@ -68,9 +71,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
 
     @Override
     protected void initData() {
-        mEmbroideryWorkItems = mPresenter.getTestData();
-        mGalleryAdapter = new GalleryAdapter(GalleryActivity.this,mEmbroideryWorkItems);
-        worksRCV.setAdapter(mGalleryAdapter);
+       mPresenter.loadGalleryView();
     }
 
     @Override
@@ -92,6 +93,12 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
     @Override
     public void showError() {
 
+    }
+
+    @Override
+    public void showGalleryView(List<EmbroideryWorkItem> list) {
+        mEmbroideryWorkItems = (ArrayList<EmbroideryWorkItem>)list;
+        mGalleryAdapter.setEmbroideryWorkItems(mEmbroideryWorkItems);
     }
 
     public void closeMenu() {

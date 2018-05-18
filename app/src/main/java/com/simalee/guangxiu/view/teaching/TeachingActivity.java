@@ -14,6 +14,7 @@ import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -41,8 +42,10 @@ public class TeachingActivity extends BaseMVPActivity<TeachingPresenter>implemen
     }
 
     @Override
-    public void showTeachingType() {
-
+    public void showTeachingType(List<TeachingContentItem> data) {
+        organizeData(data);
+//        TeachingContentItem teachingContentItem = data.get(0);
+//        Log.i(TAG,teachingContentItem.getCoverUrl());
     }
 
     @Override
@@ -80,7 +83,7 @@ public class TeachingActivity extends BaseMVPActivity<TeachingPresenter>implemen
         mTeachingContentRCV.setLayoutManager(new LinearLayoutManager(this));
         mTeachingContentRCV.setHasFixedSize(true);
 
-        organizeData(mPresenter.getVideoListData());
+//        organizeData(mPresenter.getVideoListData());
 
         teachingTypeAdapter = new TeachingTypeAdapter(this,mTeachingTypeItems);
         mTeachingTypeRCV.setAdapter(teachingTypeAdapter);
@@ -97,9 +100,11 @@ public class TeachingActivity extends BaseMVPActivity<TeachingPresenter>implemen
                 }
             }
         });
+
+        mPresenter.loadTeachingType();
     }
 
-    private void organizeData(ArrayList<TeachingContentItem> list){
+    private void organizeData(List<TeachingContentItem> list){
         if(list == null || list.size() <=0){
             return;
         }
@@ -128,7 +133,8 @@ public class TeachingActivity extends BaseMVPActivity<TeachingPresenter>implemen
             mTeachingContentItems.addAll(mTeachingContentItemHashMap.get(integer));
         }
 
-
+        videoAdapter.setmTeachContentList(mTeachingContentItems);
+        teachingTypeAdapter.setTeachingTypeItems(mTeachingTypeItems);
     }
 
     @Override

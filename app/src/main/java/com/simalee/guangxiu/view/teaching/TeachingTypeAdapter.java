@@ -86,4 +86,12 @@ public class TeachingTypeAdapter extends RecyclerView.Adapter<TeachingTypeAdapte
     public int getCurrentPosition() {
         return currentPosition;
     }
+
+    public void setTeachingTypeItems(ArrayList<TeachingTypeItem> list){
+        if(list==null){
+            return;
+        }
+        teachingTypeItems = list;
+        notifyDataSetChanged();
+    }
 }

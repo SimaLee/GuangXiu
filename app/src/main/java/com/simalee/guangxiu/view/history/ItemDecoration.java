@@ -41,11 +41,11 @@ public class ItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         outRect.left = distance;
         outRect.right = distance;
-        outRect.bottom = 3 * distance;
+        outRect.bottom = 4 * distance;
         if (parent.getChildAdapterPosition(view) == 0) {
             outRect.top = distance;
         } else if (parent.getChildAdapterPosition(view) == 1) {
-            outRect.top = 4 * distance;
+            outRect.top = 6 * distance;
         }
 
         if (parent.getChildAdapterPosition(view) % 2 == 0) {

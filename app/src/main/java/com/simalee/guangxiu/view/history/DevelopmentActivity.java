@@ -37,6 +37,12 @@ public class DevelopmentActivity extends BaseMVPActivity<DevelopmentPresenter> i
     }
 
     @Override
+    public void showDevelopmentView(List<DevelopmentItem> data) {
+        mList = data;
+        mAdapter.setDevelopmentItemList(data);
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.activity_development;
     }
@@ -46,6 +52,8 @@ public class DevelopmentActivity extends BaseMVPActivity<DevelopmentPresenter> i
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.addItemDecoration(new ItemDecoration(this,80));
+        mAdapter = new DevelopmentTimeLineAdapter(this, mList);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
@@ -55,15 +63,7 @@ public class DevelopmentActivity extends BaseMVPActivity<DevelopmentPresenter> i
 
     @Override
     protected void initData() {
-        for (int i = 0; i < 7; i++) {
-            DevelopmentItem item = new DevelopmentItem();
-            item.setShortDescription("我从未见过如此厚颜无耻之人");
-            item.setTimePoint("明");
-            mList.add(item);
-        }
-
-        mAdapter = new DevelopmentTimeLineAdapter(this, mList);
-        mRecyclerView.setAdapter(mAdapter);
+        mPresenter.loadDevelopmentView();
     }
 
     @Override
