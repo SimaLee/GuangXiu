@@ -145,7 +145,9 @@ public class DataManager {
         boolean hasNewVersion = versionPair.hasNewVersion();
 
         if (!isNetworkConnected || !hasNewVersion ){
+
             mLocalDataSource.getArtFeature(versionPair.getOldVersion(),callback);
+
         }else{
 
             mRemoteDataSource.getArtFeature(versionPair.getOldVersion(),new DataCallback<ArtFeature>() {
@@ -153,6 +155,7 @@ public class DataManager {
                 public void onSuccess(ArtFeature data) {
                     //todo 数据保存
                     callback.onSuccess(data);
+                    mLocalDataSource.saveArtFeature(versionPair.getNewVersion(),data);
                 }
 
                 @Override

@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.view.technique;
 
+import android.util.Log;
+
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.ArtFeature;
@@ -33,6 +35,7 @@ public class ArtFeaturePresenter extends BasePresenter<TechniqueContract.ArtFeat
 
             @Override
             public void onFailure(String msg) {
+                Log.e(TAG, "onFailure: " + msg);
                 if (isViewAttached()){
                     mView.showError();
                 }
