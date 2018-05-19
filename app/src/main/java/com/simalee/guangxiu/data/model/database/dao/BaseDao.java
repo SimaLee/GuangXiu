@@ -28,11 +28,11 @@ public abstract class BaseDao<T> {
      * @param tableName
      * @param nullColumnHack
      * @param values
-     * @return
+     * @return 插入成功返回插入的数据的行号 否则是为-1
      */
     public long insert(String tableName, String nullColumnHack, ContentValues values){
 
-        long ret = 0;
+        long ret = -1;
         SQLiteDatabase database = mHelper.getWritableDatabase();
         database.beginTransaction();
 
@@ -57,12 +57,12 @@ public abstract class BaseDao<T> {
      * @param nullColumnHack
      * @param values
      * @param conflictAlgorithm 发生冲突时的操作 使用replace 可以在插入unique约束的字段时 如果不存在，则更新，否则插入{@link SQLiteDatabase#CONFLICT_REPLACE}
-     * @return
+     * @return 插入成功返回插入的数据的行号 否则是为-1
      */
     public long insertWithOnConflict(String tableName, String nullColumnHack,
                                      ContentValues values,int conflictAlgorithm){
 
-        long ret = 0;
+        long ret = -1;
         SQLiteDatabase database = mHelper.getWritableDatabase();
         database.beginTransaction();
 

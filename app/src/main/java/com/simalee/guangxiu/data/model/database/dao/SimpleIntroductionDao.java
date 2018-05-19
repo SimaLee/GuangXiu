@@ -29,15 +29,21 @@ public class SimpleIntroductionDao extends BaseDao<SimpleIntroduction> {
      * 使用replace 可以在插入unique约束的字段时 如果不存在，则更新，否则插
      * @param version     版本号需要传递进来
      * @param introduction
+     * @return 是否插入成功
      */
-    public void saveSimpleIntroduction(int version, SimpleIntroduction introduction){
+    public boolean saveSimpleIntroduction(int version, SimpleIntroduction introduction){
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(DBConstants.TableIntroduction.COLUMN_VERSION,version);
         contentValues.put(DBConstants.TableIntroduction.COLUMN_DESCRIPTION,introduction.getDescription());
         contentValues.put(DBConstants.TableIntroduction.COLUMN_BACKGROUND,introduction.getBackgroundImg());
 
-        insertWithOnConflict(DBConstants.TableIntroduction.TABLE_NAME,null,contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+        long ret = insertWithOnConflict(DBConstants.TableIntroduction.TABLE_NAME,null,contentValues, SQLiteDatabase.CONFLICT_REPLACE);
+
+        if (ret == -1){
+            return false;
+        }
+        return true;
     }
 
     /**

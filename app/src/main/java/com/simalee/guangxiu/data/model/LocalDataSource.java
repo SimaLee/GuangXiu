@@ -70,13 +70,22 @@ public class LocalDataSource implements DataSource {
     }
 
     /**
-     * 保存广绣简要介绍
+     * 保存广绣简要介绍 更新数据版本号
      * @param version
      * @param introduction
      */
     public void saveIntroduction(int version,SimpleIntroduction introduction){
         Log.d(TAG, "saveIntroduction: " + introduction);
-        mSimpleIntroductionDao.saveSimpleIntroduction(version,introduction);
+        boolean success = mSimpleIntroductionDao.saveSimpleIntroduction(version,introduction);
+
+        if (success){
+            int ret = updateVersion(VersionDao.INDEX_VER_DESC);
+            if (ret != -1){
+                Log.i(TAG, "saveIntroduction: update version code successfully");
+            }
+        }else{
+            Log.e(TAG, "saveIntroduction: fail to update version code");
+        }
     }
 
     @Override
@@ -173,6 +182,14 @@ public class LocalDataSource implements DataSource {
      */
     public VersionPair getVersionInfo(int index){
         return mVersionDao.getVersionPairAt(index);
+    }
+
+    /**
+     * @param index
+     * @return
+     */
+    public int updateVersion(int index){
+        return mVersionDao.updateVersion(index);
     }
 
     @Override
