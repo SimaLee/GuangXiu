@@ -174,12 +174,25 @@
                 android:text="名家作品:"
                 android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tv_work_list_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_work_list"
+                android:layout_marginTop="10dp"
+                android:text="目前还没有该大师的作品列表哦！"
+                android:textSize="30sp"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                />
+
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_work_list"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_introduction"
                     android:layout_below="@id/tv_work_list"
+                    android:layout_marginTop="2dp"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="2dp">
 

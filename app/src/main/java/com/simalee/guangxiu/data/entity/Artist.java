@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.data.entity;
 
+import java.util.List;
+
 /**
  * Created by Lee Sima on 2018/5/10.
  */
@@ -62,6 +64,15 @@ public class Artist {
         this.introduction = introduction;
     }
 
+
+    public List<EmbroideryWorkItem> getWorkList() {
+        return workList;
+    }
+
+    public void setWorkList(List<EmbroideryWorkItem> workList) {
+        this.workList = workList;
+    }
+
     public Artist() {
         id = "";
         name = "";
@@ -82,6 +93,7 @@ public class Artist {
                 ", contact='" + contact + '\'' +
                 ", honor='" + honor + '\'' +
                 ", introduction='" + introduction + '\'' +
+                ", workList=" + workList +
                 '}';
     }
 
@@ -113,4 +125,10 @@ public class Artist {
      * 名家简介
      */
     String introduction;
+
+
+    /**
+     * 名家作品列表
+     */
+    List<EmbroideryWorkItem> workList;
 }

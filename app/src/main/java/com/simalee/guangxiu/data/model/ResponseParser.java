@@ -191,15 +191,36 @@ public class ResponseParser {
      * @throws JSONException
      */
     public static Artist parseArtistInfo(JSONObject jsonObject) throws JSONException{
+
+        JSONObject artistObject = jsonObject.getJSONObject("desc");
         Artist artist = new Artist();
+        artist.setName(artistObject.getString("name"));
+        artist.setAvatar(artistObject.getString("avatar"));
+        artist.setAddress(artistObject.getString("address"));
+        artist.setContact(artistObject.getString("contract"));
+        artist.setHonor(artistObject.getString("honor"));
+        artist.setIntroduction(artistObject.getString("introduction"));
 
-        artist.setName(jsonObject.getString("name"));
-        artist.setAvatar(jsonObject.getString("avatar"));
-        artist.setAddress(jsonObject.getString("address"));
-        artist.setContact(jsonObject.getString("contract"));
-        artist.setHonor(jsonObject.getString("honor"));
-        artist.setIntroduction(jsonObject.getString("introduction"));
+        JSONArray workArray = jsonObject.getJSONArray("work");
+        int size = workArray.length();
+        List<EmbroideryWorkItem> workItems = new ArrayList<>(size);
+        EmbroideryWorkItem tempItem;
+        JSONObject tempObject;
+        for (int i = 0; i < size; i++) {
 
+            tempObject = workArray.getJSONObject(i);
+
+            tempItem = new EmbroideryWorkItem();
+            tempItem.setAuthorName(tempObject.getString("author"));
+            tempItem.setType(tempObject.getInt("type"));
+            tempItem.setWorkName(tempObject.getString("name"));
+            tempItem.setWorkDescription(tempObject.getString("des"));
+            tempItem.setImageUrl(tempObject.getString("image"));
+
+            workItems.add(tempItem);
+        }
+
+        artist.setWorkList(workItems);
         //todo 作品列表解析
         return artist;
     }

@@ -28,7 +28,7 @@ public class ArtistPresenter extends BasePresenter<ArtistContract.ArtistView> im
             @Override
             public void onSuccess(List<Artist> data) {
                 if (isViewAttached()){
-                    mView.showArtistList(fakeArtistList());
+                    mView.showArtistList(data);
                 }
             }
 

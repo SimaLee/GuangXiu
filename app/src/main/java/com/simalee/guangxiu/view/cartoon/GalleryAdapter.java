@@ -16,6 +16,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zb.yang on 2018/5/15.
@@ -25,8 +26,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     private static final String TAG = "GalleryAdapter";
     public static final String EMBROIDERY_WORK_ITEM_KEY = "EmbroideryWorkItem";
     private Context mContext;
-    private ArrayList<EmbroideryWorkItem> embroideryWorkItems;
-    public GalleryAdapter(Context context,ArrayList<EmbroideryWorkItem> embroideryWorkItems) {
+    private List<EmbroideryWorkItem> embroideryWorkItems;
+    public GalleryAdapter(Context context,List<EmbroideryWorkItem> embroideryWorkItems) {
         super();
         mContext = context;
         this.embroideryWorkItems = embroideryWorkItems;
@@ -86,7 +87,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         }
     }
 
-    public void setEmbroideryWorkItems(ArrayList<EmbroideryWorkItem> list){
+    public void setEmbroideryWorkItems(List<EmbroideryWorkItem> list){
         if(list == null){
             return;
         }

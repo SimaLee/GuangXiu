@@ -14,7 +14,10 @@ public class EmbroideryWorkItem implements Parcelable {
     private String authorName;
     private int type;
 
-    public EmbroideryWorkItem(String imageUrl,String workName,String workDescription,String authorName,int type) {
+    public EmbroideryWorkItem() {
+    }
+
+    public EmbroideryWorkItem(String imageUrl, String workName, String workDescription, String authorName, int type) {
         super();
         this.imageUrl = imageUrl;
         this.workName = workName;
@@ -115,4 +118,15 @@ public class EmbroideryWorkItem implements Parcelable {
             return new EmbroideryWorkItem[size];
         }
     };
+
+    @Override
+    public String toString() {
+        return "EmbroideryWorkItem{" +
+                "imageUrl='" + imageUrl + '\'' +
+                ", workName='" + workName + '\'' +
+                ", workDescription='" + workDescription + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }
