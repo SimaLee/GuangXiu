@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_main_2"
+    android:background="@color/colorMainBackground"
     tools:context="com.simalee.guangxiu.view.main.MainActivity">
 
 
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_history"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.142" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_technique"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_history"
         app:layout_constraintVertical_bias="0.015" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_artists"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_technique"
         app:layout_constraintVertical_bias="0.06" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_cartoon"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_artists"
         app:layout_constraintVertical_bias="0.06" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_teaching"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_cartoon"
         app:layout_constraintVertical_bias="0.06" />
 
-    <TextView
+    <Button
         android:id="@+id/tv_quiz"
         style="@style/TextBackgroundStyle"
         android:layout_width="wrap_content"

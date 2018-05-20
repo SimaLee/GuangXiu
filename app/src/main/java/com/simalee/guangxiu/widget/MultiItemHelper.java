@@ -125,7 +125,7 @@ public class MultiItemHelper {
             //添加换行符
             textView.setText(TEXT_PREFIX + splits[i]);
             textView.setPadding(20,10,20,10);
-            textView.setTextSize(20f);
+            textView.setTextSize(18f);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             textView.setLayoutParams(layoutParams);
 

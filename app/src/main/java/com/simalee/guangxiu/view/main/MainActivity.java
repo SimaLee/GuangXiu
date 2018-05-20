@@ -4,6 +4,7 @@ package com.simalee.guangxiu.view.main;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,12 +23,12 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     private static final String TAG = "MainActivity";
 
     private TextView mLogoView;
-    private TextView mHistoryView;
-    private TextView mTechniqueView;
-    private TextView mArtistsView;
-    private TextView mCartoonView;
-    private TextView mTeachingView;
-    private TextView mQuizView;
+    private Button mHistoryView;
+    private Button mTechniqueView;
+    private Button mArtistsView;
+    private Button mCartoonView;
+    private Button mTeachingView;
+    private Button mQuizView;
 
 
     @Override

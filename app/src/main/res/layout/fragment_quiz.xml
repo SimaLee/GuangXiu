@@ -13,10 +13,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="1.广绣属于以下哪种刺绣呢？"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="4dp"
-        android:gravity="center|left"
-        android:textColor="@color/colorAccent"/>
+        android:gravity="center|left"/>
 
     <ImageView
         android:id="@+id/iv_quiz_image"
@@ -30,12 +29,13 @@
     <ListView
         android:id="@+id/lv_options"
         android:layout_below="@id/iv_quiz_image"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="4dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/bg_introduction">
+        android:layout_marginRight="10dp">
 
     </ListView>
 
@@ -53,6 +53,6 @@
         android:text="粤绣属于中国四大名绣之一，包含潮绣和广绣，各有特色"
         android:maxLines="5"
         android:padding="10dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/colorPrimary"/>
 </RelativeLayout>
