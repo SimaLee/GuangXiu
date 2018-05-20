@@ -43,6 +43,7 @@
             android:layout_marginBottom="2dp"
             android:text="上一题"
             android:textSize="18sp"
+            android:background="@drawable/selector_main_btn"
             android:gravity="center" />
 
         <Button
@@ -53,10 +54,12 @@
             android:layout_marginRight="20dp"
             android:padding="5dp"
             android:text="下一题"
+            android:background="@drawable/selector_main_btn"
             android:textSize="18sp"
             android:gravity="center"/>
 
         <Button
+            android:background="@drawable/selector_main_btn"
             android:id="@+id/tv_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

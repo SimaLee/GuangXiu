@@ -2,7 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="历史介绍"
+        style="@style/TitleTextStyle"/>
    <LinearLayout
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -13,38 +20,42 @@
            android:layout_height="wrap_content"
            android:orientation="horizontal">
            <Button
+               android:background="@drawable/selector_history_intro_btn"
                android:id="@+id/originBtn"
-               android:layout_width="100dp"
-               android:layout_height="100dp"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
                android:text="@string/origin"
-               android:textSize="18sp"/>
+               android:textSize="20sp"/>
            <Button
-               android:layout_marginLeft="20dp"
+               android:background="@drawable/selector_history_intro_btn"
+               android:layout_marginLeft="40dp"
                android:id="@+id/developmentBtn"
-               android:layout_width="100dp"
-               android:layout_height="100dp"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
                android:text="@string/development"
-               android:textSize="18sp"/>
+               android:textSize="20sp"/>
        </LinearLayout>
 
        <LinearLayout
-           android:layout_marginTop="20dp"
+           android:layout_marginTop="40dp"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:orientation="horizontal">
            <Button
+               android:background="@drawable/selector_history_intro_btn"
                android:id="@+id/futureDevelopmentBtn"
-               android:layout_width="100dp"
-               android:layout_height="100dp"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
                android:text="@string/future_development"
-               android:textSize="18sp"/>
+               android:textSize="20sp"/>
            <Button
-               android:layout_marginLeft="20dp"
+               android:background="@drawable/selector_history_intro_btn"
+               android:layout_marginLeft="40dp"
                android:id="@+id/culturalMeaningBtn"
-               android:layout_width="100dp"
-               android:layout_height="100dp"
+               android:layout_width="120dp"
+               android:layout_height="120dp"
                android:text="@string/cultural_meaning"
-               android:textSize="18sp"/>
+               android:textSize="20sp"/>
        </LinearLayout>
 
    </LinearLayout>

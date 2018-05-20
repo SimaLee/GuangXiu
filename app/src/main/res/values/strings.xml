@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GuangXiu</string>
-    <string name="origin">起源</string>
-    <string name="development">发展</string>
+    <string name="origin">历史起源</string>
+    <string name="development">发展过程</string>
     <string name="future_development">未来发展</string>
     <string name="cultural_meaning">文化寓意</string>
 

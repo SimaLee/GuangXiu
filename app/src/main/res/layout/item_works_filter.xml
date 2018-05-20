@@ -10,5 +10,6 @@
         android:background="@drawable/bg_filter_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorTextContent"
         android:textSize="16sp"/>
 </LinearLayout>
