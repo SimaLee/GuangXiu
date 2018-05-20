@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 /**
  * Created by Lee Sima on 2018/5/8.
@@ -15,7 +15,7 @@ public class EmbroideryIntroductionActivity extends BaseMVPActivity<EmbroideryPr
 
     private static final String TAG = "EmbroideryIntroductionA";
 
-    private MultiItemContainer mContainer;
+    private MultiItemContainerNew mContainer;
     private TextView mTitleView;
 
     @Override

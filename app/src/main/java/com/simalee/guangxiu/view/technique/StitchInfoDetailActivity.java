@@ -6,7 +6,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.StitchInfoDetail;
 import com.simalee.guangxiu.data.entity.StitchItem;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class StitchInfoDetailActivity extends BaseMVPActivity<StitchInfoPresente
 
     private static final String TAG = "StitchInfoDetailActivit";
 
-    private MultiItemContainer mContainer;
+    private MultiItemContainerNew mContainer;
     private TextView mTitleView;
     @Override
     public void showLoading() {

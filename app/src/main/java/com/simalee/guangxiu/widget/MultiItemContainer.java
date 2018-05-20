@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MultiItemContainer extends LinearLayout{
 
-    private static final String TAG = "MultiItemContainer";
+    private static final String TAG = "MultiItemContainerNew";
 
     private MultiItemHelper mItemHelper;
 

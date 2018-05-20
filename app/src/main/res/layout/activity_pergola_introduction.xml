@@ -12,27 +12,19 @@
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:text="花架介绍"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="5dp"
         style="@style/TitleTextStyle"/>
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title"
-        android:layout_marginTop="10dp">
 
-        <com.simalee.guangxiu.widget.MultiItemContainer
+        <com.simalee.guangxiu.widget.MultiItemContainerNew
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title">
 
-        </com.simalee.guangxiu.widget.MultiItemContainer>
-
-    </android.support.v4.widget.NestedScrollView>
+        </com.simalee.guangxiu.widget.MultiItemContainerNew>
 
 
 </RelativeLayout>

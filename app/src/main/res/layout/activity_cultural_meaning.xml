@@ -8,18 +8,13 @@
         android:layout_height="40dp"
         android:text="文化寓意"
         style="@style/TitleTextStyle"/>
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title"
-        android:layout_marginTop="10dp">
 
-        <com.simalee.guangxiu.widget.MultiItemContainer
+        <com.simalee.guangxiu.widget.MultiItemContainerNew
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title">
 
-        </com.simalee.guangxiu.widget.MultiItemContainer>
+        </com.simalee.guangxiu.widget.MultiItemContainerNew>
 
-    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

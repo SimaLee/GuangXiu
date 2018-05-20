@@ -9,6 +9,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 /**
  * Created by Lee Sima on 2018/5/5.
@@ -42,7 +43,7 @@ public class IntroductionActivity extends BaseMVPActivity<IntroductionPresenter>
         Log.d(TAG, "showIntroduction: " + introduction);
         mIntroduction.setText(introduction.getDescription());
         Glide.with(this)
-                .load(UrlConstants.BASE_FILE_URL + introduction.getBackgroundImg())
+                .load(UrlUtils.getImageUrl(introduction.getBackgroundImg()))
                 .fitCenter()
                 .error(R.mipmap.bg_introduction_default)
                 .into(mImage);

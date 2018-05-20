@@ -7,7 +7,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 /**
  * Created by zb.yang on 2018/5/17.
@@ -16,7 +16,7 @@ import com.simalee.guangxiu.widget.MultiItemContainer;
 public class DevelopmentItemActivity extends BaseMVPActivity<DevelopmentItemPresenter> implements DevelopmentItemContract.DevelopmentItemView {
     private static final String TAG = "DevelopmentItem";
 
-    private MultiItemContainer multiItemContainer;
+    private MultiItemContainerNew multiItemContainer;
     @Override
     public void showLoading() {
 
@@ -44,7 +44,7 @@ public class DevelopmentItemActivity extends BaseMVPActivity<DevelopmentItemPres
 
     @Override
     protected void initViews() {
-        multiItemContainer = (MultiItemContainer)findViewById(R.id.container);
+        multiItemContainer = (MultiItemContainerNew)findViewById(R.id.container);
     }
 
     @Override

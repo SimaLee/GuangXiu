@@ -3,6 +3,7 @@ package com.simalee.guangxiu.view.artist;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 import com.simalee.guangxiu.view.cartoon.GalleryActivity;
 import com.simalee.guangxiu.view.cartoon.GalleryAdapter;
 
@@ -75,7 +77,8 @@ public class ArtistInfoActivity extends BaseMVPActivity<ArtistPresenter> impleme
         mArtistIntroductionView.setText(artist.getIntroduction());
         mArtistHonorView.setText(artist.getHonor());
 
-        mAvataUrl = UrlConstants.BASE_FILE_URL + artist.getAvatar();
+        mAvataUrl = UrlUtils.getImageUrl(artist.getAvatar());
+        Log.d(TAG, "showArtist: image:" + mAvataUrl);
         Glide.with(this)
                 .load(mAvataUrl)
                 .fitCenter()

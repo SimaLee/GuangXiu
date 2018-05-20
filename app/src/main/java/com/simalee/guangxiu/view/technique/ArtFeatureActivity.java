@@ -3,7 +3,7 @@ package com.simalee.guangxiu.view.technique;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.ArtFeature;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 /**
  * Created by Lee Sima on 2018/5/7.
@@ -13,7 +13,7 @@ public class ArtFeatureActivity extends BaseMVPActivity<ArtFeaturePresenter> imp
 
     private static final String TAG = "ArtFeatureActivity";
 
-    private MultiItemContainer mContainer;
+    private MultiItemContainerNew mContainer;
 
     @Override
     public void showLoading() {

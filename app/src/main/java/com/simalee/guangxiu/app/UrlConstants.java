@@ -48,7 +48,7 @@ public interface UrlConstants {
     /**
      * 获取绣种介绍
      */
-    public static final String URL_GET_EMBROIDERY_INTRODUCTION = BASE_URL + "/Embroidery/specific";
+    public static final String URL_GET_EMBROIDERY_INTRODUCTION = BASE_URL + "/Embroider/item";
 
 
     /**

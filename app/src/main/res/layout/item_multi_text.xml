@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        tools:text="\t这是第二个Text\n100-100\t宋建隆二年（961 年），朝廷诏令各地种桑养蚕，发展丝织业。广绣开始从深闺小院和皇室内庭走向市场，发展为一项重要的民间副业。由于宋仁宗嘉佑年间（1056-1063 年），朝廷派人重修大庾通道，极大地改善了这条通道的交通状况，使外省的丝绸产品源源不断流入广东。这为广绣吸纳外来绣种的工艺和技法提供了可能，也使广绣受到北绣欣赏品的影响，欣赏品的工艺日臻成熟."/>
+
+</RelativeLayout>

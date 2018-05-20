@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.entity.TextImageItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,7 +83,7 @@ public class MultiItemHelper {
 
         mViewIndexMap.put(imageView,imageCounter);
         //添加列表
-        mImageUrlList.add(imageCounter,UrlConstants.BASE_FILE_URL + itemInfo.getImageurl());
+        mImageUrlList.add(imageCounter, UrlUtils.getImageUrl(itemInfo.getImageurl()));
         imageCounter++;
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +107,7 @@ public class MultiItemHelper {
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         //todo 图片加载
         Glide.with(mContainer.getContext())
-                .load(UrlConstants.BASE_FILE_URL+itemInfo.getImageurl())
+                .load(UrlUtils.getImageUrl(itemInfo.getImageurl()))
                 .error(R.mipmap.embroidery_default)
                 .override(itemInfo.getWidth(),itemInfo.getHeight())
                 .into(imageView);

@@ -107,4 +107,12 @@ public class TextImageItem implements Comparable<TextImageItem>{
         }
         return (this.sequence - o.getSequence());
     }
+
+    public boolean isImageItem(){
+        return TYPE_IMAGE == this.type;
+    }
+
+    public boolean isTextItem(){
+        return TYPE_TEXT == this.type;
+    }
 }

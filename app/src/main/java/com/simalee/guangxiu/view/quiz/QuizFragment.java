@@ -26,6 +26,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.QuizOptionItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +122,7 @@ public class QuizFragment extends Fragment {
         }else{
             mQuizImageView.setVisibility(View.VISIBLE);
             Glide.with(this)
-                    .load(UrlConstants.BASE_FILE_URL + mQuizItem.getImage())
+                    .load(UrlUtils.getImageUrl(mQuizItem.getImage()))
                     .error(R.mipmap.embroidery_default)
                     .into(mQuizImageView);
 
@@ -132,7 +133,7 @@ public class QuizFragment extends Fragment {
                     Log.d(TAG, "onClick: quizImage: " + mQuizItem.getImage());
                     ArrayList<String> imageUrlList = new ArrayList<>();
                     if (mQuizItem != null){
-                        imageUrlList.add(UrlConstants.BASE_FILE_URL + mQuizItem.getImage());
+                        imageUrlList.add(UrlUtils.getImageUrl(mQuizItem.getImage()));
                     }
 
                     PictureConfig config = new PictureConfig.Builder()

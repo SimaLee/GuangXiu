@@ -3,7 +3,7 @@ package com.simalee.guangxiu.view.technique;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 /**
  * Created by Lee Sima on 2018/5/7.
@@ -13,7 +13,7 @@ public class PergolaIntroductionActivity extends BaseMVPActivity<PergolaPresente
 
     private static final String TAG = "PergolaIntroductionActi";
 
-    private MultiItemContainer mContainer;
+    private MultiItemContainerNew mContainer;
 
     @Override
     public void showLoading() {

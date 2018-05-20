@@ -7,7 +7,7 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
-import com.simalee.guangxiu.widget.MultiItemContainer;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class ThreadIntroductionActivity extends BaseMVPActivity<ThreadPresenter>
 
     private static final String TAG = "ThreadIntroActivity";
 
-    private MultiItemContainer mContainer;
+    private MultiItemContainerNew mContainer;
     private TextView mTitleView;
     @Override
     public void showLoading() {

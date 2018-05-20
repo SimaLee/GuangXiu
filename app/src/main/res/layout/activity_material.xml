@@ -16,8 +16,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_title"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="花架"
+        android:layout_centerHorizontal="true"
+        android:text="花架介绍"
+        android:gravity="center"
         style="@style/TextBackgroundStyle" />
 
     <TextView
@@ -26,8 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_pergola"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="绣针"
+        android:layout_alignLeft="@id/tv_pergola"
+        android:text="绣针介绍"
+        android:gravity="center"
         style="@style/TextBackgroundStyle" />
 
     <TextView
@@ -36,8 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_stitch"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="绣线"
+        android:layout_alignLeft="@id/tv_stitch"
+        android:text="绣线介绍"
+        android:gravity="center"
         style="@style/TextBackgroundStyle" />
 
 
