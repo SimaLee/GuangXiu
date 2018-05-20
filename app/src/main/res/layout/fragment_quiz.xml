@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -39,20 +40,26 @@
 
     </ListView>
 
+
+    <TextView
+        android:id="@+id/tv_explanation_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lv_options"
+        android:layout_alignLeft="@id/tv_quiz_question"
+        android:layout_marginTop="5dp"
+        android:text="答案解析:"
+        android:textSize="18sp"
+        android:padding="6dp"
+        />
     <TextView
         android:id="@+id/tv_quiz_explanation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lv_options"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/bg_introduction"
+        android:layout_below="@id/tv_explanation_indicator"
+        android:layout_alignLeft="@id/tv_explanation_indicator"
         android:text="粤绣属于中国四大名绣之一，包含潮绣和广绣，各有特色"
+        android:paddingLeft="10dp"
         android:maxLines="5"
-        android:padding="10dp"
-        android:textSize="18sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textSize="18sp"/>
 </RelativeLayout>

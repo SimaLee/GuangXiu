@@ -118,21 +118,21 @@ public class MultiItemHelper {
 
     private void createAndAddTextView(TextImageItem itemInfo) {
 
-        String[] splits = itemInfo.getText().split(SEPERATOR);
-        TextView textView;
-        for (int i = 0; i < splits.length; i++){
-            textView = new TextView(mContainer.getContext());
-            //添加换行符
-            textView.setText(TEXT_PREFIX + splits[i]);
-            textView.setPadding(20,10,20,10);
-            textView.setTextSize(18f);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            textView.setLayoutParams(layoutParams);
+        String text = itemInfo.getText();
+        String content = text.replace(SEPERATOR,TEXT_PREFIX);
 
-            mContainer.addView(textView,viewCounter);
-            Log.d(TAG, "createAndAddTextView: addView "+viewCounter);
-            viewCounter++;
-        }
+        TextView textView = new TextView(mContainer.getContext());
+        //添加换行符
+        textView.setText(TEXT_PREFIX + content);
+        textView.setPadding(20,10,20,10);
+        textView.setTextSize(18f);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        textView.setLayoutParams(layoutParams);
+
+        mContainer.addView(textView,viewCounter);
+        Log.d(TAG, "createAndAddTextView: addView "+viewCounter);
+        viewCounter++;
+
     }
 
 
