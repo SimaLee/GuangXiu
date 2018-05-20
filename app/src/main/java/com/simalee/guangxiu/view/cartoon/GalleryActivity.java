@@ -1,5 +1,6 @@
 package com.simalee.guangxiu.view.cartoon;
 
+import android.media.Image;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,7 +31,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
     private DrawerLayout drawer;
     private LinearLayout navigationView;
     private RightSideslipLay menuHeaderView;
-    private TextView mFrameTv;
+    private ImageView mFrameTv;
     private RecyclerView worksRCV;
 
     private ArrayList<EmbroideryWorkItem> mEmbroideryWorkItems;
@@ -44,7 +46,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
         worksRCV = (RecyclerView)findViewById(R.id.worksRCV);
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (LinearLayout) findViewById(R.id.navView);
-        mFrameTv = (TextView) findViewById(R.id.screenTv);
+        mFrameTv = (ImageView) findViewById(R.id.screenTv);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 
         menuHeaderView = new RightSideslipLay(GalleryActivity.this);

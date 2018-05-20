@@ -12,12 +12,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:fitsSystemWindows="true">
-        <TextView
+        <ImageView
+            android:layout_marginTop="10dp"
             android:id="@+id/screenTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="筛选"
-            android:textSize="20sp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/filter"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/worksRCV"
             android:layout_width="match_parent"
