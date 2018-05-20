@@ -137,7 +137,7 @@ public class QuizOptionListAdapter extends BaseAdapter {
         return mSelectedList.get(position);
     }
 
-    private String getOptionIndicator(int number){
+    public String getOptionIndicator(int number){
         char res = (char)('A' + number);
         return String.valueOf(res);
     }

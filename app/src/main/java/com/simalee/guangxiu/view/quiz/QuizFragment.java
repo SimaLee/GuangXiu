@@ -54,6 +54,7 @@ public class QuizFragment extends Fragment {
     private TextView mQuestionView;
     private ImageView mQuizImageView;
     private ListView mOptionsListView;
+    private TextView mExplanationIndicatorView;
     private TextView mExplanationView;
 
     private QuizOptionListAdapter mOptionListAdapter;
@@ -78,6 +79,11 @@ public class QuizFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        if(getArguments() != null){
+            mQuizIndex = getArguments().getInt(KEY_INDEX);
+            mQuizItem = (QuizItem) getArguments().getSerializable(KEY_ITEM);
+
+        }
         mCheckAnswerReceiver = new CheckAnswerReceiver();
         IntentFilter filter = new IntentFilter(QuizActivity.ACTION_CHECK_ANSWER);
         LocalBroadcastManager.getInstance(getContext()).registerReceiver(mCheckAnswerReceiver,filter);
@@ -100,24 +106,15 @@ public class QuizFragment extends Fragment {
         mQuestionView = rootView.findViewById(R.id.tv_quiz_question);
         mQuizImageView = rootView.findViewById(R.id.iv_quiz_image);
         mOptionsListView = rootView.findViewById(R.id.lv_options);
+        mExplanationIndicatorView = rootView.findViewById(R.id.tv_explanation_indicator);
         mExplanationView = rootView.findViewById(R.id.tv_quiz_explanation);
 
-        if(getArguments() != null){
-            mQuizIndex = getArguments().getInt(KEY_INDEX);
-            mQuizItem = (QuizItem) getArguments().getSerializable(KEY_ITEM);
-
-        }
         return rootView;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mQuestionView.setText(mQuizItem.getQuestion());
-        //初始的时候不显示解析
-        mExplanationView.setText(mQuizItem.getExplanation());
-        mExplanationView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
         if (TextUtils.isEmpty(mQuizItem.getImage())){
             mQuizImageView.setVisibility(View.GONE);
@@ -171,12 +168,32 @@ public class QuizFragment extends Fragment {
             mOptionListAdapter.notifyOptionSelected(mSelectedIndex);
         }
 
+        mQuestionView.setText(mQuizItem.getSequence() + ". "+mQuizItem.getQuestion());
+        //初始的时候不显示解析
+        mExplanationView.setText(generateExplanation());
+        mExplanationView.setMovementMethod(ScrollingMovementMethod.getInstance());
+
         if (mQuizChecked){
-            mExplanationView.setVisibility(View.VISIBLE);
+            showExplanation(true);
         }else{
-            mExplanationView.setVisibility(View.INVISIBLE);
+            showExplanation(false);
         }
 
+    }
+
+    /**
+     * 生成解析文案
+     * @return
+     */
+    private String generateExplanation() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("\t正确答案为: ");
+        stringBuilder.append(mOptionListAdapter.getOptionIndicator(mQuizItem.getAnswerId()));
+        stringBuilder.append(".\n\t");
+        stringBuilder.append(mQuizItem.getExplanation());
+
+        return stringBuilder.toString();
     }
 
     @Override
@@ -194,7 +211,21 @@ public class QuizFragment extends Fragment {
         }else{
             Toast.makeText(getContext(),"很遗憾你答错了！",Toast.LENGTH_SHORT).show();
         }
-        mExplanationView.setVisibility(View.VISIBLE);
+        showExplanation(true);
+    }
+
+    /**
+     * 设置答案解析是否显示
+     * @param isShow
+     */
+    private void showExplanation(boolean isShow){
+        if (isShow){
+            mExplanationIndicatorView.setVisibility(View.VISIBLE);
+            mExplanationView.setVisibility(View.VISIBLE);
+        }else{
+            mExplanationIndicatorView.setVisibility(View.INVISIBLE);
+            mExplanationView.setVisibility(View.INVISIBLE);
+        }
     }
 
     private QuizItem testItem() {
