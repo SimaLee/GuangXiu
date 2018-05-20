@@ -26,7 +26,6 @@ public class Version {
     int ver_pergola;//花架版本号
     int ver_desc;//(logo)广绣介绍版本号
     int ver_master;//名家版本号
-    int ver_masterdesc;//名家简介版本号
     int ver_masterwork;//名家作品版本号
     int ver_video;//视频教学版本号
     int ver_answer;//答题闯关版本号
@@ -49,7 +48,6 @@ public class Version {
                 ", ver_pergola=" + ver_pergola +
                 ", ver_desc=" + ver_desc +
                 ", ver_master=" + ver_master +
-                ", ver_masterdesc=" + ver_masterdesc +
                 ", ver_masterwork=" + ver_masterwork +
                 ", ver_video=" + ver_video +
                 ", ver_answer=" + ver_answer +
@@ -143,14 +141,6 @@ public class Version {
 
     public void setVer_master(int ver_master) {
         this.ver_master = ver_master;
-    }
-
-    public int getVer_masterdesc() {
-        return ver_masterdesc;
-    }
-
-    public void setVer_masterdesc(int ver_masterdesc) {
-        this.ver_masterdesc = ver_masterdesc;
     }
 
     public int getVer_masterwork() {

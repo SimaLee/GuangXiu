@@ -8,4 +8,11 @@
     <color name="buttonClickColor">#FFBBA9</color>
     <color name="buttonUnClickColor">#8F8F8F</color>
     <color name="drawerContentColor">#F4F4F4</color>
+
+    <color name="colorTextContent">#d93b2f22</color>
+    <color name="colorMainBackground">#fffff2</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+
+
 </resources>

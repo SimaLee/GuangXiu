@@ -41,7 +41,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(DBConstants.TableVersion.SQL_CREATE_TABLE);
         //创建广绣简要介绍表
         db.execSQL(DBConstants.TableIntroduction.SQL_CREATE_TABLE);
-
+        //创建广绣艺术特点表
+        db.execSQL(DBConstants.TabeleArtFeature.SQL_CREATE_TABLE);
     }
 
 }

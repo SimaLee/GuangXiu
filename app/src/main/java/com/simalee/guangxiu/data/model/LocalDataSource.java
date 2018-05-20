@@ -20,6 +20,7 @@ import com.simalee.guangxiu.data.entity.TeachingContentItem;
 import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
+import com.simalee.guangxiu.data.model.database.dao.ArtFeatureDao;
 import com.simalee.guangxiu.data.model.database.dao.SimpleIntroductionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionPair;
@@ -39,11 +40,14 @@ public class LocalDataSource implements DataSource {
 
     private VersionDao mVersionDao;
     private SimpleIntroductionDao mSimpleIntroductionDao;
+    private ArtFeatureDao mArtFeatureDao;
 
     public LocalDataSource(Context context){
         mContext = context;
         mVersionDao = new VersionDao(context);
         mSimpleIntroductionDao = new SimpleIntroductionDao(context);
+        mArtFeatureDao = new ArtFeatureDao(context);
+
     }
 
 
@@ -70,18 +74,60 @@ public class LocalDataSource implements DataSource {
     }
 
     /**
-     * 保存广绣简要介绍
+     * 保存广绣简要介绍 更新数据版本号
      * @param version
      * @param introduction
      */
     public void saveIntroduction(int version,SimpleIntroduction introduction){
         Log.d(TAG, "saveIntroduction: " + introduction);
-        mSimpleIntroductionDao.saveSimpleIntroduction(version,introduction);
+        boolean success = mSimpleIntroductionDao.saveSimpleIntroduction(version,introduction);
+
+        if (success){
+            int ret = updateVersion(VersionDao.INDEX_VER_DESC);
+            if (ret != -1){
+                Log.i(TAG, "saveIntroduction: update version code successfully");
+            }
+        }else{
+            Log.e(TAG, "saveIntroduction: fail to update version code");
+        }
     }
 
     @Override
     public void getArtFeature(int version, DataCallback<ArtFeature> callback) {
+        if (callback == null){
+            return;
+        }
 
+        ArtFeature result = mArtFeatureDao.getArtFeature(version);
+
+        if (result != null){
+            callback.onSuccess(result);
+        }else{
+            callback.onFailure("加载广绣艺术特点失败!");
+        }
+    }
+
+    /**
+     * 保存广绣艺术特点 更新数据版本号
+     * @param version
+     * @param artFeature
+     * @return
+     */
+    public void saveArtFeature(int version,ArtFeature artFeature){
+        Log.d(TAG, "saveArtFeature: " + artFeature);
+        boolean success = mArtFeatureDao.saveArtFeature(version,artFeature);
+
+        if (success){
+
+            int ret = updateVersion(VersionDao.INDEX_VER_ART);
+            if (ret != -1){
+                Log.i(TAG, "saveArtFeature: update version code successfully");
+            }else{
+                Log.e(TAG, "saveArtFeature: fail to update version code");
+            }
+        }else{
+            Log.e(TAG, "saveArtFeature: fail to save ArtFeature");
+        }
     }
 
     @Override
@@ -173,6 +219,14 @@ public class LocalDataSource implements DataSource {
      */
     public VersionPair getVersionInfo(int index){
         return mVersionDao.getVersionPairAt(index);
+    }
+
+    /**
+     * @param index
+     * @return
+     */
+    public int updateVersion(int index){
+        return mVersionDao.updateVersion(index);
     }
 
     @Override
