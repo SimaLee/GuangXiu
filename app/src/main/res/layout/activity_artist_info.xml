@@ -33,14 +33,14 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:text="姓名:"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="1dp"
         android:gravity="center"/>
 
     <ImageView
         android:id="@+id/iv_artist_avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignTop="@id/tv_name"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
@@ -55,21 +55,48 @@
         android:layout_marginLeft="10dp"
         android:layout_alignBottom="@id/tv_name"
         android:text="李狗蛋"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         android:transitionName="tv_name"/>
+
+            <TextView
+
+                android:id="@+id/tv_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_name"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="联系方式:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_artist_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_contact"
+                android:layout_marginLeft="2dp"
+                android:layout_alignTop="@id/tv_contact"
+                android:layout_toLeftOf="@id/iv_artist_avatar"
+                android:layout_marginRight="8dp"
+                android:textSize="18sp"
+                android:padding="3dp"
+                android:text="12345678901"
+                android:gravity="center|left" />
 
     <TextView
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_name"
-        android:layout_below="@+id/tv_artist_name"
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/iv_artist_avatar"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:padding="3dp"
         android:text="联系地址:"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_artist_address"
@@ -77,16 +104,16 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tv_address"
         android:layout_marginLeft="2dp"
-        android:layout_toLeftOf="@id/iv_artist_avatar"
-        android:layout_marginRight="8dp"
         android:padding="3dp"
         android:layout_alignTop="@id/tv_address"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:text="广东省广州市番禺区小谷围华南理工大学"
         android:gravity="center|left" />
 
+
+
     <TextView
-        android:id="@+id/tv_contact"
+        android:id="@+id/tv_introduction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_name"
@@ -94,32 +121,8 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:padding="3dp"
-        android:text="联系方式:"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/tv_artist_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tv_contact"
-        android:layout_marginLeft="2dp"
-        android:layout_alignTop="@id/tv_contact"
-        android:textSize="20sp"
-        android:padding="3dp"
-        android:text="12345678901"
-        android:gravity="center|left" />
-
-    <TextView
-        android:id="@+id/tv_introduction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/tv_name"
-        android:layout_below="@+id/tv_artist_contact"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:padding="3dp"
         android:text="个人简介:"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_artist_introduction"
@@ -130,7 +133,7 @@
         android:layout_marginRight="2dp"
         android:layout_marginLeft="2dp"
         android:layout_alignTop="@id/tv_introduction"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="3dp"
         android:text="名家介绍内容"
         android:gravity="top|left" />
@@ -156,7 +159,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="2dp"
         android:layout_marginLeft="2dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="3dp"
         android:text="荣誉描述"
         android:gravity="center|left" />
@@ -171,7 +174,7 @@
                 android:gravity="center"
                 android:padding="3dp"
                 android:text="名家作品:"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/tv_work_list_empty"
@@ -180,7 +183,7 @@
                 android:layout_below="@id/tv_work_list"
                 android:layout_marginTop="10dp"
                 android:text="目前还没有该大师的作品列表哦！"
-                android:textSize="30sp"
+                android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:visibility="gone"
                 />

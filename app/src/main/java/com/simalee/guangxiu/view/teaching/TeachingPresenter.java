@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.view.teaching;
 
+import android.util.Log;
+
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.TeachingContentItem;
@@ -19,6 +21,7 @@ public class TeachingPresenter extends BasePresenter<TeachingContract.TeachingTy
             @Override
             public void onSuccess(List<TeachingContentItem> data) {
                 mView.showTeachingType(data);
+                Log.i("TeachingPresenter",data.toString());
             }
 
             @Override

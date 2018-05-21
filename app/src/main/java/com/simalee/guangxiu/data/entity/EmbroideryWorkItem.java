@@ -67,7 +67,7 @@ public class EmbroideryWorkItem implements Parcelable {
     }
 
     public boolean isUseType(int useType){
-        int currentUseType = type/10;
+        int currentUseType = type/10 -1;
         if(currentUseType == useType){
             return true;
         }else{
@@ -76,7 +76,7 @@ public class EmbroideryWorkItem implements Parcelable {
     }
 
     public boolean isThemeType(int themeType){
-        int currentUseType = type%10;
+        int currentUseType = type%10 -1;
         if(currentUseType == themeType){
             return true;
         }else{

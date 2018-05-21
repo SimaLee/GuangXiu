@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.TeachingContentItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 import com.xiao.nicevideoplayer.NiceVideoPlayer;
 import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
@@ -72,11 +73,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
             mController.setTitle(video.getVideoName());
             mController.setLenght(video.getVideoTime());
             Glide.with(itemView.getContext())
-                    .load(video.getCoverUrl())
+                    .load(UrlUtils.getImageUrl(video.getCoverUrl()))
                     .placeholder(R.mipmap.bg_introduction_default)
                     .crossFade()
                     .into(mController.imageView());
-            mVideoPlayer.setUp(video.getVideoUrl(), null);
+            mVideoPlayer.setUp(UrlUtils.getImageUrl(video.getVideoUrl()), null);
         }
     }
 

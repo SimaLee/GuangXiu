@@ -1,8 +1,12 @@
 package com.simalee.guangxiu.view.cartoon;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +46,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     }
 
     @Override
-    public void onBindViewHolder(GalleryViewHolder holder, final int position) {
+    public void onBindViewHolder(final GalleryViewHolder holder, final int position) {
         final EmbroideryWorkItem embroideryWorkItem = embroideryWorkItems.get(position);
         if(embroideryWorkItem!=null){
             holder.bindData(embroideryWorkItem);
@@ -54,7 +58,13 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(EMBROIDERY_WORK_ITEM_KEY,embroideryWorkItem);
                 intent.putExtras(bundle);
-                mContext.startActivity(intent);
+
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) mContext,
+                                new Pair<View, String>(holder.embroideryIV,"iv_embroidery"));
+
+                ActivityCompat.startActivity(mContext,intent,options.toBundle());
+                //mContext.startActivity(intent);
             }
         });
     }
@@ -65,9 +75,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
     }
 
     public class GalleryViewHolder extends RecyclerView.ViewHolder{
-        private RelativeLayout embroideryItemRL;
-        private ImageView embroideryIV;
-        private TextView workNameTV;
+
+        public RelativeLayout embroideryItemRL;
+        public ImageView embroideryIV;
+        public TextView workNameTV;
+
         public GalleryViewHolder(View itemView) {
             super(itemView);
             embroideryItemRL = (RelativeLayout)itemView.findViewById(R.id.embroideryItemRL);

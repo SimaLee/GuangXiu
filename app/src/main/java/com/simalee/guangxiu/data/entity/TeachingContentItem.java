@@ -98,4 +98,17 @@ public class TeachingContentItem {
     public void setVideoType(int videoType) {
         this.videoType = videoType;
     }
+
+    @Override
+    public String toString() {
+        return "TeachingContentItem{" +
+                "videoId='" + videoId + '\'' +
+                ", videoUrl='" + videoUrl + '\'' +
+                ", coverUrl='" + coverUrl + '\'' +
+                ", videoName='" + videoName + '\'' +
+                ", videoDesc='" + videoDesc + '\'' +
+                ", videoTime=" + videoTime +
+                ", videoType=" + videoType +
+                '}';
+    }
 }

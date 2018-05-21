@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.view.cartoon;
 
+import android.util.Log;
+
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
@@ -21,6 +23,7 @@ public class GalleryPresenter extends BasePresenter<GalleryContarct.GalleryView>
             public void onSuccess(List<EmbroideryWorkItem> data) {
                 if(isViewAttached()){
                     mView.showGalleryView(data);
+                    Log.i("loadGallery",data.toString());
                 }
             }
 

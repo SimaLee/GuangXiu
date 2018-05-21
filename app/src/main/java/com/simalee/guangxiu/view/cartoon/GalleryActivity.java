@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
@@ -31,6 +32,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
     private RightSideslipLay menuHeaderView;
     private ImageView mFrameTv;
     private RecyclerView worksRCV;
+    private TextView noWorksTV;
 
     private ArrayList<EmbroideryWorkItem> mEmbroideryWorkItems;
     private GalleryAdapter mGalleryAdapter;
@@ -45,6 +47,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
         drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (LinearLayout) findViewById(R.id.navView);
         mFrameTv = (ImageView) findViewById(R.id.filterIv);
+        noWorksTV = (TextView)findViewById(R.id.noWorksTV);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
 
         menuHeaderView = new RightSideslipLay(GalleryActivity.this);
@@ -95,9 +98,17 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
     @Override
     public void showGalleryView(List<EmbroideryWorkItem> list) {
         mEmbroideryWorkItems = (ArrayList<EmbroideryWorkItem>)list;
+        isNoWorks(mEmbroideryWorkItems);
         mGalleryAdapter.setEmbroideryWorkItems(mEmbroideryWorkItems);
     }
 
+    public void isNoWorks(ArrayList<EmbroideryWorkItem> mEmbroideryWorkItems){
+        if(mEmbroideryWorkItems==null || mEmbroideryWorkItems.size() == 0){
+            noWorksTV.setVisibility(View.VISIBLE);
+        }else{
+            noWorksTV.setVisibility(View.GONE);
+        }
+    }
     public void closeMenu() {
         drawer.closeDrawer(GravityCompat.END);
     }
@@ -149,6 +160,7 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
         if(clickSize == 0){
             embroideryWorkItems = mEmbroideryWorkItems;
         }
+        isNoWorks(embroideryWorkItems);
         mGalleryAdapter.setEmbroideryWorkItems(embroideryWorkItems);
     }
 }
