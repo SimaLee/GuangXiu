@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 import com.unistrong.yang.zb_permission.Permission;
 import com.unistrong.yang.zb_permission.ZbPermission;
 import com.unistrong.yang.zb_permission.ZbPermissionFail;
@@ -66,7 +67,7 @@ public class EmbroideryContentActivity extends BaseMVPActivity<EmbroideryPresent
             public void onClick(View v) {
                 ArrayList<String> list = new ArrayList<>();
                 if(embroideryWorkItem!=null){
-                    list.add(embroideryWorkItem.getImageUrl());
+                    list.add(UrlUtils.getImageUrl(embroideryWorkItem.getImageUrl()));
                 }
                 PictureConfig config = new PictureConfig.Builder()
                         .setListData(list)//图片数据List<String> list
@@ -99,9 +100,10 @@ public class EmbroideryContentActivity extends BaseMVPActivity<EmbroideryPresent
                     .append("》");
             authorNameAndWorkNameTV.setText(stringBuilder.toString());
             Glide.with(EmbroideryContentActivity.this)
-                    .load(embroideryWorkItem.getImageUrl())
-                    .placeholder(R.mipmap.bg_introduction_default)
+                    .load(UrlUtils.getImageUrl(embroideryWorkItem.getImageUrl()))
+                    .placeholder(R.drawable.ic_refresh_white_18dp)
                     .crossFade()
+                    .error(R.mipmap.embroidery_default)
                     .into(embroideryImageIV);
             embroideryDescriptionTV.setText(embroideryWorkItem.getWorkDescription());
         }

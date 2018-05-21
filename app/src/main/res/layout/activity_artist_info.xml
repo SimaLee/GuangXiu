@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@mipmap/bg_introduction_default"
-        android:alpha="0.30"/>
+        android:alpha="0.15"/>
 
     <TextView
         android:id="@+id/tv_title"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tv_contact"
         android:layout_marginLeft="2dp"
-        android:layout_alignBottom="@id/tv_contact"
+        android:layout_alignTop="@id/tv_contact"
         android:textSize="20sp"
         android:padding="3dp"
         android:text="12345678901"

@@ -105,7 +105,6 @@ public class MultiItemHelper {
 
         imageView.setLayoutParams(layoutParams);
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        //todo 图片加载
         Glide.with(mContainer.getContext())
                 .load(UrlUtils.getImageUrl(itemInfo.getImageurl()))
                 .error(R.mipmap.embroidery_default)

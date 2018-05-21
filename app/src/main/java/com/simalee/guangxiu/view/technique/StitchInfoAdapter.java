@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.StitchItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -92,7 +93,9 @@ public class StitchInfoAdapter extends RecyclerView.Adapter<StitchInfoAdapter.Vi
         public void bindData(StitchItem item){
             mStitchName.setText(item.getName());
             Glide.with(mContext.get())
-                    .load(item.getImage())
+                    .load(UrlUtils.getImageUrl(item.getImage()))
+                    .crossFade()
+                    .placeholder(R.drawable.ic_refresh_white_18dp)
                     .error(R.mipmap.ic_launcher)
                     .into(mStitchImage);
         }

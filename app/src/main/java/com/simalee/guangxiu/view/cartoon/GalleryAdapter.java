@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,8 +80,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
                 return;
             }
             Glide.with(itemView.getContext())
-                    .load(embroideryWorkItem.getImageUrl())
-                    .placeholder(R.mipmap.embroidery_default)
+                    .load(UrlUtils.getImageUrl(embroideryWorkItem.getImageUrl()))
+                    .placeholder(R.drawable.ic_refresh_white_18dp)
+                    .error(R.mipmap.embroidery_default)
                     .crossFade()
                     .into(embroideryIV);
             workNameTV.setText(embroideryWorkItem.getWorkName());

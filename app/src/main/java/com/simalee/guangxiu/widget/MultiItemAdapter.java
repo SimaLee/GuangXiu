@@ -197,7 +197,6 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
             if (itemInfo == null){
                 return;
             }
-            //todo 文字切割
             if (itemInfo.isTextItem()){
                 mTextView.setText(parseContent(itemInfo.getText()));
                 Log.d(TAG, "bindData: Text:" + itemInfo.getText());
