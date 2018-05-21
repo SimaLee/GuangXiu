@@ -1,5 +1,6 @@
 package com.simalee.guangxiu.widget;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
@@ -12,6 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.data.entity.TextImageItem;
@@ -245,10 +250,30 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
                 layoutParams.height = itemInfo.getHeight();
                 mImageView.setLayoutParams(layoutParams);
 
+                //加载动画
+                final ObjectAnimator anim = ObjectAnimator.ofInt(mImageView, "ImageLevel", 0, 10000);
+                anim.setDuration(1200);
+                anim.setRepeatCount(ObjectAnimator.INFINITE);
+                anim.start();
                 //图片加载
                 Glide.with(mContext)
                         .load(UrlUtils.getImageUrl(itemInfo.getImageurl()))
+                        .crossFade()
+                        .placeholder(R.drawable.rotate_loading)
                         .error(R.mipmap.embroidery_default)
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                anim.cancel();
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                anim.cancel();
+                                return false;
+                            }
+                        })
                         .into(mImageView);
                 Log.d(TAG, "bindData: Image: " + itemInfo.getImageurl());
             }

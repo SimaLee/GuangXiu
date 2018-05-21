@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 共享元素动画 style-->
+    <style name="OptionsActivity" parent="AppTheme">
+
+    </style>
+
     <!-- 首页的text背景 -->
     <style name="TextBackgroundStyle">
         <item name="android:textColor">@color/colorTextContent</item>

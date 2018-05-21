@@ -14,7 +14,8 @@
         android:paddingBottom="2dp"
         android:paddingRight="2dp"
         android:scaleType="fitCenter"
-        android:src="@mipmap/avatar_default"/>
+        android:src="@mipmap/avatar_default"
+        android:transitionName="iv_avatar"/>
 
     <TextView
         android:id="@+id/tv_artist_name"
@@ -25,6 +26,7 @@
         android:text="李某某"
         android:textSize="16sp"
         android:gravity="center_horizontal"
-        android:layout_below="@id/iv_artist"/>
+        android:layout_below="@id/iv_artist"
+        android:transitionName="tv_name"/>
 
 </RelativeLayout>

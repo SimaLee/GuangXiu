@@ -9,6 +9,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 共享元素动画 style v21 -->
+    <style name="OptionsActivity" parent="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
     <!-- 首页的text背景 v21以上 -->
     <style name="TextBackgroundStyle">
         <item name="android:textColor">@color/colorTextContent</item>

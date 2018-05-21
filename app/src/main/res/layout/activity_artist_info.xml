@@ -6,12 +6,20 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/bg_introduction_default"
+        android:src="@mipmap/bg_introduction_default"
         android:alpha="0.30"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="大师风范"
+        style="@style/TitleTextStyle"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_title">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,7 +44,8 @@
         android:layout_alignTop="@id/tv_name"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
-        android:src="@mipmap/avatar_default"/>
+        android:src="@mipmap/avatar_default"
+        android:transitionName="iv_avatar"/>
 
     <TextView
         android:id="@+id/tv_artist_name"
@@ -47,7 +56,8 @@
         android:layout_alignBottom="@id/tv_name"
         android:text="李狗蛋"
         android:textSize="20sp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:transitionName="tv_name"/>
 
     <TextView
         android:id="@+id/tv_address"

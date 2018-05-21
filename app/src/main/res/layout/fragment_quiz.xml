@@ -5,6 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/bg_introduction_default"
+        android:alpha="0.30"/>
+
     <TextView
         android:id="@+id/tv_quiz_question"
         android:layout_width="wrap_content"

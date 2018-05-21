@@ -1,9 +1,13 @@
 package com.simalee.guangxiu.view.artist;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
@@ -66,11 +70,17 @@ public class ArtistListActivity extends BaseMVPActivity<ArtistPresenter> impleme
     protected void initListeners() {
         mAdapter.setItemClickListener(new ArtistListAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(int position, Artist item) {
+            public void onItemClick(View nameView,View avatarView, int position, Artist item) {
                 Log.d(TAG, "onItemClick: " + item);
                 Intent intent = new Intent(ArtistListActivity.this,ArtistInfoActivity.class);
                 intent.putExtra("id",item.getId());
-                startActivity(intent);
+
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(ArtistListActivity.this,
+                        new Pair<View, String>(avatarView,"iv_avatar"));
+
+                ActivityCompat.startActivity(ArtistListActivity.this,intent,options.toBundle());
+                //startActivity(intent);
             }
         });
     }

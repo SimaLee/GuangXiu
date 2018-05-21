@@ -88,7 +88,7 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Vi
                 public void onClick(View v) {
                     if (mItemClickListener != null){
                         int position = getAdapterPosition();
-                        mItemClickListener.onItemClick(position,mArtistList.get(position));
+                        mItemClickListener.onItemClick(mArtistName,mArtistImage,position,mArtistList.get(position));
                     }
                 }
             });
@@ -106,6 +106,6 @@ public class ArtistListAdapter extends RecyclerView.Adapter<ArtistListAdapter.Vi
     }
 
     public interface OnItemClickListener{
-        void onItemClick(int position,Artist item);
+        void onItemClick(View nameView,View avatarView,int position,Artist item);
     }
 }

@@ -51,8 +51,12 @@
         <activity android:name=".view.technique.StitchInfoDetailActivity"/>
         <activity android:name=".view.technique.EmbroideryActivity"/>
         <activity android:name=".view.technique.EmbroideryIntroductionActivity"/>
-        <activity android:name=".view.artist.ArtistListActivity"/>
-        <activity android:name=".view.artist.ArtistInfoActivity"/>
+
+        <activity android:name=".view.artist.ArtistListActivity"
+            android:theme="@style/OptionsActivity"/>
+        <activity android:name=".view.artist.ArtistInfoActivity"
+            android:theme="@style/OptionsActivity"/>
+
         <activity android:name=".view.quiz.QuizActivity"/>
 
     </application>

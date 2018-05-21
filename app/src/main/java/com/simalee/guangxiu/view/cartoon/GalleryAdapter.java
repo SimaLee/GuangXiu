@@ -80,7 +80,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
             }
             Glide.with(itemView.getContext())
                     .load(embroideryWorkItem.getImageUrl())
-                    .placeholder(R.mipmap.bg_introduction_default)
+                    .placeholder(R.mipmap.embroidery_default)
                     .crossFade()
                     .into(embroideryIV);
             workNameTV.setText(embroideryWorkItem.getWorkName());
