@@ -4,16 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-
 /**
- * Created by Lee Sima on 2018/5/3.
+ * Created by Lee Sima on 2018/5/22.
  */
 
-public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompatActivity {
-
-    private static final String TAG = "BaseMVPActivity";
-
-    protected P mPresenter;
+public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,19 +18,14 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompat
         }
         initViews();
         initListeners();
-        createPresenter();
 
         initData();
-
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPresenter != null){
-            mPresenter.detachView();
-        }
     }
 
     /**
@@ -56,9 +46,4 @@ public abstract class BaseMVPActivity<P extends BasePresenter> extends AppCompat
      * 完成数据的初始化
      */
     protected abstract void initData();
-
-    /**
-     * 创建presenter
-     */
-    protected abstract void createPresenter();
 }

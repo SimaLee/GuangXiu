@@ -15,12 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.main.MainActivity">
+
+
+        <activity android:name=".view.main.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+
+        <activity android:name=".view.main.MainActivity">
         </activity>
 
         <activity android:name=".view.main.IntroductionActivity"/>
@@ -61,8 +67,9 @@
 
         <activity android:name=".view.quiz.QuizActivity"/>
 
-
-        <activity android:name=".view.main.SplashActivity"/>
+        <activity android:name=".view.main.NewMainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"/>
 
     </application>
 

@@ -2,9 +2,7 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/buttonClickColor">
+    android:layout_height="match_parent">
 
 
     <RelativeLayout
@@ -15,20 +13,20 @@
         <RelativeLayout
             android:id="@+id/titleRL"
             android:layout_width="match_parent"
-            android:layout_height="45dp">
+            android:layout_height="40dp"
+            android:background="@color/buttonClickColor">
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="作品展示"
-                android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 style="@style/TitleTextStyle"/>
             <ImageView
                 android:layout_marginTop="10dp"
                 android:id="@+id/filterIv"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@mipmap/filter"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"

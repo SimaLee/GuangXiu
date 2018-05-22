@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#FFBBA9</color>
     <color name="colorAccent">#FFBBA9</color>
 
-    <color name="colorYellow">#efd345</color>
+    <color name="colorLittleRed">#e7e7888e</color>
     <color name="buttonClickColor">#FFBBA9</color>
     <color name="buttonUnClickColor">#8F8F8F</color>
     <color name="drawerContentColor">#F4F4F4</color>
@@ -14,5 +14,7 @@
 
     <color name="colorWhite">#FFFFFF</color>
 
+    <color name="color_tab_text_selected">#e9e1df</color>
+    <color name="color_tab_text_unselected">#202020</color>
 
 </resources>
