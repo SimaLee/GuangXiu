@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.view.technique;
 
+import android.util.Log;
+
 import com.simalee.guangxiu.base.BasePresenter;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.TextImageItem;
@@ -25,6 +27,7 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
         DataManager.getInstance().getThreadList(new DataCallback<List<ThreadItem>>() {
             @Override
             public void onSuccess(List<ThreadItem> data) {
+                Log.d(TAG, "onSuccess: " + data);
                 if (isViewAttached()){
                     mView.showThreadList(data);
                 }

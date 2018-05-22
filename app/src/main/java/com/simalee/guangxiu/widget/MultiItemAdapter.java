@@ -169,6 +169,32 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
         notifyItemInserted(mTextImageItemList.size());
     }
 
+    /**
+     * 清除显示的内容
+     */
+    public void clear(){
+        if (mTextImageItemList != null){
+            mTextImageItemList.clear();
+            mImageUrlList.clear();
+            mImageIndexMap.clear();
+            notifyDataSetChanged();
+        }
+    }
+
+    /**
+     * 将内容数据替换成新的数据
+     * @param textImageItems
+     */
+    public void replaceItems(List<TextImageItem> textImageItems){
+        if (mTextImageItemList != null){
+            mTextImageItemList.clear();
+            addItems(textImageItems);
+        }else{
+            mTextImageItemList = textImageItems;
+            notifyDataSetChanged();
+        }
+    }
+
     public abstract class MultiViewHolder extends RecyclerView.ViewHolder{
 
         public MultiViewHolder(View itemView) {
@@ -184,6 +210,7 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
         private static final String SEPERATOR = "GX/";
         private static final String FIRST_PREFIX = "\t\t";
         private static final String TEXT_PREFIX = "\n\t\t";
+        private static final String NEWLINE = "\n";
 
         private TextView mTextView;
 
@@ -212,7 +239,8 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
             if (content == null){
                 return " ";
             }
-            String result = content.replace(SEPERATOR,TEXT_PREFIX);
+            String stepOne = content.replace(NEWLINE,"");
+            String result = stepOne.replace(SEPERATOR,TEXT_PREFIX);
             return FIRST_PREFIX + result;
         }
     }

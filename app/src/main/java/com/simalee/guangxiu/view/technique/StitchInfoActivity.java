@@ -47,7 +47,7 @@ public class StitchInfoActivity extends BaseMVPActivity<StitchInfoPresenter> imp
     @Override
     protected void initViews() {
         mRecyclerView = findViewById(R.id.rv_stitch_list);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mAdapter = new StitchInfoAdapter(this,new ArrayList<StitchItem>());
         mRecyclerView.setAdapter(mAdapter);
     }

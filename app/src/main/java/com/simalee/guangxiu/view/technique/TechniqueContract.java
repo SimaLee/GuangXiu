@@ -47,9 +47,9 @@ public interface TechniqueContract {
         void onStitchClick();
         void onThreadClick();
 
-        void showPergolaIntroduction();
-        void showStitchIntroduction();
-        void showThreadList();
+        void showPergolaIntroduction(PergolaIntroduction introduction);
+        void showStitchIntroduction(StitchIntroduction introduction);
+        void showThreadList(List<ThreadItem> threadItemList);
     }
 
     interface IMaterialPresenter{
@@ -60,6 +60,7 @@ public interface TechniqueContract {
         void loadPergolaIntroduction();
         void loadStitchIntroduction();
         void loadThreadList();
+
     }
 
     //花架相关介绍

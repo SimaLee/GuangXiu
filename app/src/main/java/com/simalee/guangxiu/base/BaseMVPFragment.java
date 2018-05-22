@@ -63,6 +63,14 @@ public abstract class BaseMVPFragment<P extends BasePresenter> extends Fragment 
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null){
+            mPresenter.detachView();
+        }
+    }
+
+    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser){

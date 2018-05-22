@@ -3,12 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="艺术特点"
-        style="@style/TitleTextStyle"/>
+    <!--<TextView-->
+        <!--android:id="@+id/tv_title"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:text="艺术特点"-->
+        <!--style="@style/TitleTextStyle"/>-->
 
 
         <com.simalee.guangxiu.widget.MultiItemContainerNew
@@ -19,5 +19,13 @@
 
         </com.simalee.guangxiu.widget.MultiItemContainerNew>
 
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="暂时还没有数据哦！"/>
 
 </RelativeLayout>

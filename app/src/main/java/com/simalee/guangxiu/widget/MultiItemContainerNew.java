@@ -78,4 +78,16 @@ public class MultiItemContainerNew extends RecyclerView {
         }
     }
 
+    public void replaceItems(List<TextImageItem> textImageItems){
+        if (mAdapter != null){
+            mAdapter.replaceItems(textImageItems);
+        }
+    }
+
+    public void clear(){
+        if (mAdapter != null){
+            mAdapter.clear();
+        }
+    }
+
 }
