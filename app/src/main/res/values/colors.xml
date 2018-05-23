@@ -17,4 +17,8 @@
     <color name="color_tab_text_selected">#e9e1df</color>
     <color name="color_tab_text_unselected">#202020</color>
 
+    <color name="fragmentBackgroundColor">#EEEEEE</color>
+    <color name="colorLine">#EEEEEE</color>
+
+
 </resources>

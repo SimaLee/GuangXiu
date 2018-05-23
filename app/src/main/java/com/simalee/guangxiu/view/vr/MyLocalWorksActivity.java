@@ -59,8 +59,9 @@ public class MyLocalWorksActivity extends BaseMVPActivity<MyLocalWorksPresenter>
             Log.i(TAG,data.toString());
             mLocalEmbtoideryWorks =data;
             myLocalWorksAdapter.setEmbroideryWorkItems(data);
+            noWorksTV.setVisibility(View.GONE);
         }else{
-
+            noWorksTV.setVisibility(View.VISIBLE);
         }
     }
 

@@ -64,7 +64,7 @@ public class LocalEmbroideryContentActivity extends AppCompatActivity {
         vrPanoramaView = (VrPanoramaView)findViewById(R.id.vrPanoramaView);
 
         if(localEmbroideryWork!=null){
-            authorNameAndWorkNameTV.setText(localEmbroideryWork.getAuthorName()+"大师作品《"+localEmbroideryWork.getWorkName()+"》");
+            authorNameAndWorkNameTV.setText("大师"+localEmbroideryWork.getAuthorName()+"作品《"+localEmbroideryWork.getWorkName()+"》");
             Bitmap bitmap = BitmapFactory.decodeFile(localEmbroideryWork.getWorkPath());
             embroideryDescriptionTV.setText(localEmbroideryWork.getWorkDes());
             if(localEmbroideryWork.getType() == LocalEmbroideryWork.PANO_TYPE){

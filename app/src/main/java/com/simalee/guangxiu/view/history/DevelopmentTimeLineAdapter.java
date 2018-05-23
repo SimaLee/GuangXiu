@@ -11,9 +11,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.SuperKotlin.pictureviewer.ImageUtil;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
+import com.simalee.guangxiu.utils.UrlUtils;
 
 import java.util.List;
 
@@ -58,7 +60,7 @@ public class DevelopmentTimeLineAdapter extends RecyclerView.Adapter<Development
             return;
         holder.shortDesTV.setText(developmentItem.getDes());
         Glide.with(mContext)
-                .load(developmentItem.getImageUrl())
+                .load(UrlUtils.getImageUrl(developmentItem.getImageUrl()))
                 .placeholder(R.mipmap.bg_introduction_default)
                 .crossFade()
                 .into(holder.timePointIV);
