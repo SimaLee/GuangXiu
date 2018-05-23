@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.view.ViewGroup;
 
 import com.simalee.guangxiu.data.entity.ProcessItem;
 
@@ -41,4 +42,10 @@ public class ProcessPageAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return mProcessItemList == null? 0: mProcessItemList.size();
     }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        super.destroyItem(container, position, object);
+    }
+
 }

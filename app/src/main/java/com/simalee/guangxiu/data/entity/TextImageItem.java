@@ -41,6 +41,20 @@ public class TextImageItem implements Comparable<TextImageItem>{
      */
     String imageurl;
 
+    public int getLocalImageId() {
+        return localImageId;
+    }
+
+    public void setLocalImageId(int localImageId) {
+        this.localImageId = localImageId;
+    }
+
+    /**
+     * 本地图片资源id 设置了本地资源id后
+     * 不对imageUrl进行加载，转而加载本地资源
+     */
+    int localImageId = -1;
+
     public String getId() {
         return id;
     }
@@ -107,6 +121,7 @@ public class TextImageItem implements Comparable<TextImageItem>{
                 ", width=" + width +
                 ", height=" + height +
                 ", imageurl='" + imageurl + '\'' +
+                ", localImageId='" + localImageId + '\'' +
                 '}';
     }
 
