@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
@@ -24,7 +25,13 @@ public class ProcessActivity extends BaseMVPActivity<ProcessPresenter> implement
     private ImageView mNextView;
 
     private ProcessPageAdapter mPageAdapter;
+    private int mProcessSize;
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     public void showLoading() {
@@ -47,21 +54,79 @@ public class ProcessActivity extends BaseMVPActivity<ProcessPresenter> implement
         if (processItemList == null || processItemList.size() == 0){
             return;
         }
+        mProcessSize = processItemList.size();
 
         mPageAdapter = new ProcessPageAdapter(getSupportFragmentManager(),processItemList);
         mProcessViewPager.setAdapter(mPageAdapter);
-        mProcessViewPager.setOffscreenPageLimit(2);
+        mProcessViewPager.setOffscreenPageLimit(3);
+        mProcessViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.d(TAG, "onPageSelected: " + position);
+                notifyArrowChanged(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    /**
+     * 用于更新箭头是否显示
+     * @param position
+     */
+    private void notifyArrowChanged(int position) {
+
+        if (position == 0){
+
+            mPreviousView.setVisibility(View.INVISIBLE);
+            mNextView.setVisibility(View.VISIBLE);
+
+        }else if (position == mProcessSize - 1){
+
+            mPreviousView.setVisibility(View.VISIBLE);
+            mNextView.setVisibility(View.INVISIBLE);
+
+        }else{
+
+            mPreviousView.setVisibility(View.VISIBLE);
+            mNextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void showPreProcess() {
         Log.d(TAG, "showPreProcess: ");
+        int position = mProcessViewPager.getCurrentItem();
+        if (position == 0){
+            Toast.makeText(this,"第一道工序了哦",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int preIndex = position - 1;
+        if (preIndex >= 0 && preIndex < mProcessSize){
+            mProcessViewPager.setCurrentItem(preIndex,true);
+        }
     }
 
     @Override
     public void showNextProcess() {
         Log.d(TAG, "showNextProcess: ");
+        int position = mProcessViewPager.getCurrentItem();
+        if (position == mProcessSize - 1 ){
+            Toast.makeText(this,"没有更多工序了哦",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int nextIndex = position + 1;
+        if (nextIndex >= 0 && nextIndex < mProcessSize){
+            mProcessViewPager.setCurrentItem(nextIndex,true);
+        }
     }
 
     @Override
@@ -73,6 +138,8 @@ public class ProcessActivity extends BaseMVPActivity<ProcessPresenter> implement
     protected void initViews() {
         mProcessViewPager = findViewById(R.id.vp_process);
         mPreviousView = findViewById(R.id.iv_arrow_left);
+        //初始时不显示
+        mPreviousView.setVisibility(View.INVISIBLE);
         mNextView = findViewById(R.id.iv_arrow_right);
     }
 

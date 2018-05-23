@@ -2,6 +2,7 @@ package com.simalee.guangxiu.view.technique;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -49,6 +50,12 @@ public class ProcessFragment extends BaseFragment {
             mProcessIndex = getArguments().getInt(KEY_INDEX);
             mProcessItem = (ProcessItem) getArguments().getSerializable(KEY_ITEM);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: index:" + mProcessIndex);
     }
 
     @Override

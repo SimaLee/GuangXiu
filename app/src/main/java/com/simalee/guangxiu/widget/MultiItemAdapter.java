@@ -95,7 +95,8 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
     private void updateIndexMapFor(int position){
 
         TextImageItem tempItem = mTextImageItemList.get(position);
-        if (tempItem.isImageItem()){
+        //todo 资源文件的放大
+        if (tempItem.isImageItem() && tempItem.getLocalImageId()== -1){
             int curImageCounter = mImageUrlList.size();
             mImageUrlList.add(UrlUtils.getImageUrl(tempItem.getImageurl()));
             mImageIndexMap.put(position,curImageCounter);
@@ -256,9 +257,12 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (mOnImageClickListener != null){
-                        int imageIndex =  mImageIndexMap.get(position);
-                        mOnImageClickListener.onImageClick(mImageUrlList,imageIndex);
+                    // TODO: 2018/5/23 支持资源文件的点击放大
+                    if (mTextImageItemList.get(position).getLocalImageId() == -1){
+                        if (mOnImageClickListener != null){
+                            int imageIndex =  mImageIndexMap.get(position);
+                            mOnImageClickListener.onImageClick(mImageUrlList,imageIndex);
+                        }
                     }
                 }
             });
@@ -270,38 +274,48 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
                 return;
             }
             if (itemInfo.isImageItem()){
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mImageView.getLayoutParams();
+                //无配置时使用原本大小
+                if (itemInfo.getHeight() != 0 && itemInfo.getWidth()!= 0){
+                    RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mImageView.getLayoutParams();
 
-                layoutParams.width = itemInfo.getWidth();
-                layoutParams.height = itemInfo.getHeight();
-                mImageView.setLayoutParams(layoutParams);
-
+                    layoutParams.width = itemInfo.getWidth();
+                    layoutParams.height = itemInfo.getHeight();
+                    mImageView.setLayoutParams(layoutParams);
+                }
                 //加载动画
                 final ObjectAnimator anim = ObjectAnimator.ofInt(mImageView, "ImageLevel", 0, 10000);
                 anim.setDuration(1200);
                 anim.setRepeatCount(ObjectAnimator.INFINITE);
                 anim.start();
                 //图片加载
-                Glide.with(mContext)
-                        .load(UrlUtils.getImageUrl(itemInfo.getImageurl()))
-                        .crossFade()
-                        .placeholder(R.drawable.rotate_loading)
-                        .error(R.mipmap.embroidery_default)
-                        .listener(new RequestListener<String, GlideDrawable>() {
-                            @Override
-                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                                anim.cancel();
-                                return false;
-                            }
+                if (itemInfo.getLocalImageId() != -1){
+                    //设置了本地资源 加载
+                    Glide.with(mContext)
+                            .load(itemInfo.getLocalImageId())
+                            .crossFade()
+                            .into(mImageView);
+                }else{
+                    Glide.with(mContext)
+                            .load(UrlUtils.getImageUrl(itemInfo.getImageurl()))
+                            .crossFade()
+                            .placeholder(R.drawable.rotate_loading)
+                            .error(R.mipmap.embroidery_default)
+                            .listener(new RequestListener<String, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    anim.cancel();
+                                    return false;
+                                }
 
-                            @Override
-                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                anim.cancel();
-                                return false;
-                            }
-                        })
-                        .into(mImageView);
-                Log.d(TAG, "bindData: Image: " + itemInfo.getImageurl());
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    anim.cancel();
+                                    return false;
+                                }
+                            })
+                            .into(mImageView);
+                    Log.d(TAG, "bindData: Image: " + itemInfo.getImageurl());
+                }
             }
         }
     }
