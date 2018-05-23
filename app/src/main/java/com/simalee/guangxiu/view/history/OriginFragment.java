@@ -28,7 +28,6 @@ public class OriginFragment extends BaseMVPFragment<OriginPresenter> implements 
         Bundle bundle = new Bundle();
         instance.setArguments(bundle);
         return instance;
-
     }
 
     @Override

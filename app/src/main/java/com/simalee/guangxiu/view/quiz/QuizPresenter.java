@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Lee Sima on 2018/5/11.
  */
 
-public class QuizPresenter extends BasePresenter<QuizContract.QuizView> implements QuizContract.IQuziPresenter{
+public class QuizPresenter extends BasePresenter<QuizContract.QuizView> implements QuizContract.IQuizPresenter {
 
     private static final String TAG = "QuizPresenter";
 

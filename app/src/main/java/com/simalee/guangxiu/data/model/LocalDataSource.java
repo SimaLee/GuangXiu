@@ -118,6 +118,11 @@ public class LocalDataSource implements DataSource {
      * @return
      */
     public void saveArtFeature(int version,ArtFeature artFeature){
+
+        if (artFeature.getItemList().size() == 0){
+            return;
+        }
+
         Log.d(TAG, "saveArtFeature: " + artFeature);
         boolean success = mArtFeatureDao.saveArtFeature(version,artFeature);
 

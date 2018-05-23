@@ -10,7 +10,10 @@ import android.widget.LinearLayout;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseFragment;
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
+import com.simalee.guangxiu.view.history.NewHistoryActivity;
 import com.simalee.guangxiu.view.quiz.QuizActivity;
+import com.simalee.guangxiu.view.technique.NewTechniqueActivity;
+import com.simalee.guangxiu.view.technique.ProcessActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
 import com.simalee.guangxiu.view.vr.MyLocalWorksActivity;
 
@@ -59,7 +62,7 @@ public class IntroductionFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: history");
-                Intent intent = new Intent(mContext, HistoryIntroductionActivity.class);
+                Intent intent = new Intent(mContext, NewHistoryActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +71,7 @@ public class IntroductionFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: technique");
-                Intent intent = new Intent(mContext, TechniqueActivity.class);
+                Intent intent = new Intent(mContext, NewTechniqueActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +81,7 @@ public class IntroductionFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: process");
-                Intent intent = new Intent(mContext, HistoryIntroductionActivity.class);
+                Intent intent = new Intent(mContext, ProcessActivity.class);
                 startActivity(intent);
             }
         });

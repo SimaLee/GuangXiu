@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
+import com.simalee.guangxiu.data.entity.PergolaIntroduction;
+import com.simalee.guangxiu.data.entity.StitchIntroduction;
+import com.simalee.guangxiu.data.entity.ThreadItem;
+
+import java.util.List;
 
 /**
  * Created by Lee Sima on 2018/5/7.
@@ -58,19 +63,20 @@ public class MaterialActivity extends BaseMVPActivity<MaterialPresenter> impleme
     }
 
     @Override
-    public void showPergolaIntroduction() {
+    public void showPergolaIntroduction(PergolaIntroduction introduction) {
 
     }
 
     @Override
-    public void showStitchIntroduction() {
+    public void showStitchIntroduction(StitchIntroduction introduction) {
 
     }
 
     @Override
-    public void showThreadList() {
+    public void showThreadList(List<ThreadItem> threadItemList) {
 
     }
+
 
     @Override
     protected int getLayoutId() {

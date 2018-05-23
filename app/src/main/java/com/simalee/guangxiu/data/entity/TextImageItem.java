@@ -98,6 +98,19 @@ public class TextImageItem implements Comparable<TextImageItem>{
     }
 
     @Override
+    public String toString() {
+        return "TextImageItem{" +
+                "id='" + id + '\'' +
+                ", sequence=" + sequence +
+                ", type=" + type +
+                ", text='" + text + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", imageurl='" + imageurl + '\'' +
+                '}';
+    }
+
+    @Override
     public int compareTo(@NonNull TextImageItem o) {
         if (o == null){
             return -1;

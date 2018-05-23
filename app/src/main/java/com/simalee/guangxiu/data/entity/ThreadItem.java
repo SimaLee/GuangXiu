@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.data.entity;
 
+import java.util.List;
+
 /**
  * Created by Lee Sima on 2018/5/7.
  */
@@ -30,6 +32,15 @@ public class ThreadItem {
         this.image = image;
     }
 
+
+    public List<TextImageItem> getItemList() {
+        return mItemList;
+    }
+
+    public void setItemList(List<TextImageItem> itemList) {
+        mItemList = itemList;
+    }
+
     public ThreadItem() {
     }
 
@@ -39,6 +50,7 @@ public class ThreadItem {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", image='" + image + '\'' +
+                ", mItemList=" + mItemList +
                 '}';
     }
 
@@ -54,4 +66,9 @@ public class ThreadItem {
      * 绣线的图片
      */
     String image;
+
+    /**
+     * 绣线的介绍
+     */
+    private List<TextImageItem> mItemList;
 }

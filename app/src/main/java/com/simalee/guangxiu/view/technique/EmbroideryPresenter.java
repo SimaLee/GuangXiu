@@ -23,7 +23,7 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
     private static final String ID_DAILY = 112+"";
     private static final String ID_SACRIFICE = 113+"";
 
-    private static final String NAME_APPRECIATE = "欣赏品";
+    public static final String NAME_APPRECIATE = "欣赏品";
     public static final String NAME_DAILY = "日用品";
     public static final String NAME_SACRIFICE = "祭祀用品";
     @Override
@@ -73,6 +73,22 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
             }
         });
 
+    }
+
+    public String getEmbroideryIdAt(int position){
+        if (position < 0 || position >= 3){
+            throw new IndexOutOfBoundsException("can't get id for: " + position);
+        }
+        if (position == 0){
+            return ID_DAILY;
+        }
+        if (position == 1){
+            return ID_APPRECIATE;
+
+        }if (position == 2){
+            return ID_SACRIFICE;
+        }
+        return "";
     }
 
     private EmbroideryIntroduction fakeIntroduction() {

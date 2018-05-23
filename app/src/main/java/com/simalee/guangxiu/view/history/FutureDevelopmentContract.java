@@ -8,8 +8,8 @@ import com.simalee.guangxiu.data.entity.ArtFeature;
  */
 
 public class FutureDevelopmentContract {
-    interface FuturalDevelopmentView extends BaseView{
-        void showFuturalDevelopment(ArtFeature artFeature);
+    interface FutureDevelopmentView extends BaseView{
+        void showFutureDevelopment(ArtFeature artFeature);
     }
 
     interface FutureDevelopmentPresenter{

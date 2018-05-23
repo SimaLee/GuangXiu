@@ -18,7 +18,7 @@ public interface QuizContract {
         void showAnswer();
     }
 
-    interface IQuziPresenter{
+    interface IQuizPresenter {
         void loadQuizList();
         void loadPreQuiz();
         void loadNextQuiz();

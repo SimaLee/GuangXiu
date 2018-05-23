@@ -75,6 +75,12 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".view.history.NewHistoryActivity"/>
+
+        <activity android:name=".view.technique.NewTechniqueActivity"/>
+
+        <activity android:name=".view.technique.ProcessActivity"/>
+
     </application>
 
 </manifest>

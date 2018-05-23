@@ -118,6 +118,7 @@ public class ResponseParser {
         int len = jsonArray.length();
         ThreadItem item ;
         JSONObject jsonObject;
+        JSONArray contentArray;
         for ( int i =0; i< len;i++){
 
             jsonObject = jsonArray.getJSONObject(i);
@@ -126,7 +127,8 @@ public class ResponseParser {
             item.setId(jsonObject.getString("id"));
             item.setName(jsonObject.getString("name"));
             item.setImage(jsonObject.getString("image"));
-
+            contentArray = jsonObject.getJSONArray("content");
+            item.setItemList(parseItemListFromArray(contentArray));
             itemList.add(item);
         }
         return itemList;
@@ -211,7 +213,7 @@ public class ResponseParser {
             tempObject = workArray.getJSONObject(i);
 
             tempItem = new EmbroideryWorkItem();
-            tempItem.setAuthorName(tempObject.getString("author"));
+            tempItem.setAuthorName(tempObject.getString("author_name"));
             tempItem.setType(tempObject.getInt("type"));
             tempItem.setWorkName(tempObject.getString("name"));
             tempItem.setWorkDescription(tempObject.getString("des"));
@@ -337,6 +339,38 @@ public class ResponseParser {
     }
 
     /**
+     * 绣线使用的返回格式解析
+     * @param jsonArray
+     * @return
+     * @throws JSONException
+     */
+    private static List<TextImageItem> parseItemListFromArray(JSONArray jsonArray) throws JSONException{
+
+        int len = jsonArray.length();
+
+        List<TextImageItem> textImageItemList = new ArrayList<>(len);
+        TextImageItem textImageItem;
+        JSONObject item;
+        for (int i = 0; i < len; i++){
+
+            item = jsonArray.getJSONObject(i);
+
+            textImageItem = new TextImageItem();
+            textImageItem.setId(item.getString("id"));
+            textImageItem.setSequence(item.getInt("seq"));
+            textImageItem.setType(item.getInt("type"));
+            textImageItem.setText(item.getString("text"));
+            textImageItem.setImageurl(item.getString("image"));
+            textImageItem.setHeight(item.getInt("height"));
+            textImageItem.setWidth(item.getInt("width"));
+
+            textImageItemList.add(textImageItem);
+        }
+        Collections.sort(textImageItemList);
+        return textImageItemList;
+    }
+
+    /**
      * 教学内容 jsonArray解析
      * @param jsonArray
      * @return
@@ -380,7 +414,7 @@ public class ResponseParser {
             String url = item.getString("image");
             String workName = item.getString("name");
             String des = item.getString("des");
-            String author = item.getString("author");
+            String author = item.getString("author_name");
             int type = item.getInt("type");
 
             embroideryWorkItem = new EmbroideryWorkItem(url,workName,des,author,type);

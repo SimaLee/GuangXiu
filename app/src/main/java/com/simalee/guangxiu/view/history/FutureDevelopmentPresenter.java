@@ -13,14 +13,14 @@ import java.util.List;
  * Created by zb.yang on 2018/5/7.
  */
 
-public class FutureDevelopmentPresenter extends BasePresenter<FutureDevelopmentContract.FuturalDevelopmentView> implements FutureDevelopmentContract.FutureDevelopmentPresenter {
+public class FutureDevelopmentPresenter extends BasePresenter<FutureDevelopmentContract.FutureDevelopmentView> implements FutureDevelopmentContract.FutureDevelopmentPresenter {
     @Override
     public void loadFutureDevelopment() {
         DataManager.getInstance().getFutureDevelopment(new DataCallback<ArtFeature>() {
             @Override
             public void onSuccess(ArtFeature data) {
                 if(isViewAttached()){
-                    mView.showFuturalDevelopment(data);
+                    mView.showFutureDevelopment(data);
                 }
             }
 
