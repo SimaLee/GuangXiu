@@ -158,4 +158,10 @@ public class MyLocalWorksActivity extends BaseMVPActivity<MyLocalWorksPresenter>
         View rootview = LayoutInflater.from( MyLocalWorksActivity.this).inflate(R.layout.activity_my_local_works, null);
         mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mPresenter.loadMyLocalWorksView();
+    }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseFragment;
@@ -25,11 +26,11 @@ public class IntroductionFragment extends BaseFragment {
 
     private static final String TAG = "IntroductionFragment";
 
-    private LinearLayout mHistoryView;
-    private LinearLayout mTechniqueView;
-    private LinearLayout mProcessView;
-    private LinearLayout mQuizView;
-    private LinearLayout mLocalWorksView;
+    private RelativeLayout mHistoryView;
+    private RelativeLayout mTechniqueView;
+    private RelativeLayout mProcessView;
+    private RelativeLayout mQuizView;
+    private RelativeLayout mLocalWorksView;
 
     public IntroductionFragment(){
 

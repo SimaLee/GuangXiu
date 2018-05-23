@@ -147,6 +147,8 @@ public class TeachingFragment extends BaseMVPFragment<TeachingPresenter> impleme
         if(list == null || list.size() <=0){
             return;
         }
+        mTeachingContentItemHashMap = new HashMap<>();
+        mTeachingContentItems = new ArrayList<>();
         Log.i(TAG,"data list size is "+ list.size());
         for(int i = 0;i<list.size();i++){
             TeachingContentItem teachingContentItem = list.get(i);

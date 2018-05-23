@@ -19,15 +19,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.SuperKotlin.pictureviewer.ImagePagerActivity;
+import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.LocalEmbroideryWork;
+import com.simalee.guangxiu.utils.UrlUtils;
+import com.simalee.guangxiu.view.cartoon.EmbroideryContentActivity;
 import com.unistrong.yang.zb_permission.Permission;
 import com.unistrong.yang.zb_permission.ZbPermission;
 import com.unistrong.yang.zb_permission.ZbPermissionFail;
 import com.unistrong.yang.zb_permission.ZbPermissionSuccess;
+
+import java.util.ArrayList;
 
 /**
  * Created by zb.yang on 2018/5/22.
@@ -211,6 +217,22 @@ public class AddEmbroideryWorkActivity extends BaseMVPActivity<AddEmbroideryWork
         photoIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<String> list = new ArrayList<>();
+
+                list.add(workPath);
+                PictureConfig config = new PictureConfig.Builder()
+                        .setListData(list)//图片数据List<String> list
+                        .setPosition(0)//图片下标（从第position张图片开始浏览）
+                        .setDownloadPath("pictureviewer")//图片下载文件夹地址
+                        .setIsShowNumber(false)//是否显示数字下标
+                        .needDownload(true)//是否支持图片下载
+                        .setPlacrHolder(R.mipmap.avatar_default)//占位符图片（图片加载完成前显示的资源图片，来源drawable或者mipmap）
+                        .build();
+                ZbPermission.with(AddEmbroideryWorkActivity.this)
+                        .addRequestCode(100)
+                        .permissions(Permission.STORAGE)
+                        .request();
+                ImagePagerActivity.startActivity(AddEmbroideryWorkActivity.this, config);
             }
         });
 
@@ -319,5 +341,15 @@ public class AddEmbroideryWorkActivity extends BaseMVPActivity<AddEmbroideryWork
     @ZbPermissionFail(requestCode = STROAGE_PER_REQUEST_CODE)
     public void permissionFail() {
         Toast.makeText(AddEmbroideryWorkActivity.this,"permission denied!!",Toast.LENGTH_SHORT).show();
+    }
+
+    @ZbPermissionSuccess(requestCode = 100)
+    public void permissionSuccessContact() {
+
+    }
+
+    @ZbPermissionFail(requestCode = 100)
+    public void permissionFailContact() {
+        Toast.makeText(AddEmbroideryWorkActivity.this, "请求存储权限失败" , Toast.LENGTH_SHORT).show();
     }
 }

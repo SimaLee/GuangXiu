@@ -180,6 +180,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_below="@id/workDesRL"
                 android:id="@+id/photoIv"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"/>
 
