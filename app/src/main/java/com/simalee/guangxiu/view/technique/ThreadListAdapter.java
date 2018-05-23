@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.utils.UrlUtils;
+import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -74,11 +75,14 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Vi
 
         private ImageView mThreadImage;
         private TextView mThreadName;
+        private MultiItemContainerNew mContainer;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mThreadImage = itemView.findViewById(R.id.iv_thread);
             mThreadName = itemView.findViewById(R.id.tv_thread_name);
+            mContainer = itemView.findViewById(R.id.container);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -97,6 +101,8 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Vi
                     .placeholder(R.drawable.ic_refresh_white_18dp)
                     .error(R.mipmap.ic_launcher)
                     .into(mThreadImage);
+
+            mContainer.replaceItems(item.getItemList());
         }
     }
 

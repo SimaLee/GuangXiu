@@ -262,7 +262,6 @@ public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.Mult
                     }
                 }
             });
-            //todo 点击事件绑定
         }
 
         @Override

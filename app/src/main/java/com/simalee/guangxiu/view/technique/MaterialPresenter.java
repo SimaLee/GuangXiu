@@ -98,6 +98,7 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
 
     @Override
     public void loadThreadList() {
+
         DataManager.getInstance().getThreadList(new DataCallback<List<ThreadItem>>() {
             @Override
             public void onSuccess(List<ThreadItem> data) {

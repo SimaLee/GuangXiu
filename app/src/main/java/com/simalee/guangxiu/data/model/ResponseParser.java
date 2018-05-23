@@ -213,7 +213,7 @@ public class ResponseParser {
             tempObject = workArray.getJSONObject(i);
 
             tempItem = new EmbroideryWorkItem();
-            tempItem.setAuthorName(tempObject.getString("author"));
+            tempItem.setAuthorName(tempObject.getString("author_name"));
             tempItem.setType(tempObject.getInt("type"));
             tempItem.setWorkName(tempObject.getString("name"));
             tempItem.setWorkDescription(tempObject.getString("des"));
@@ -414,7 +414,7 @@ public class ResponseParser {
             String url = item.getString("image");
             String workName = item.getString("name");
             String des = item.getString("des");
-            String author = item.getString("author");
+            String author = item.getString("author_name");
             int type = item.getInt("type");
 
             embroideryWorkItem = new EmbroideryWorkItem(url,workName,des,author,type);

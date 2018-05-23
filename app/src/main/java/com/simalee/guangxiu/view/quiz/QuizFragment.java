@@ -117,7 +117,7 @@ public class QuizFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if (TextUtils.isEmpty(mQuizItem.getImage())){
+        if (TextUtils.isEmpty(mQuizItem.getImage()) || "null".equals(mQuizItem.getImage())){
             mQuizImageView.setVisibility(View.GONE);
         }else{
             mQuizImageView.setVisibility(View.VISIBLE);

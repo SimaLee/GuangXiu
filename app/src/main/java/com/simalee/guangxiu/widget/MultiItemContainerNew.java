@@ -79,6 +79,9 @@ public class MultiItemContainerNew extends RecyclerView {
     }
 
     public void replaceItems(List<TextImageItem> textImageItems){
+        if(textImageItems == null || textImageItems.size() == 0){
+            return;
+        }
         if (mAdapter != null){
             mAdapter.replaceItems(textImageItems);
         }

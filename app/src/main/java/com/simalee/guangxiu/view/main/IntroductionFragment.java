@@ -13,6 +13,7 @@ import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.history.NewHistoryActivity;
 import com.simalee.guangxiu.view.quiz.QuizActivity;
 import com.simalee.guangxiu.view.technique.NewTechniqueActivity;
+import com.simalee.guangxiu.view.technique.ProcessActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
 
 /**
@@ -77,7 +78,7 @@ public class IntroductionFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: process");
-                Intent intent = new Intent(mContext, TechniqueActivity.class);
+                Intent intent = new Intent(mContext, ProcessActivity.class);
                 startActivity(intent);
             }
         });

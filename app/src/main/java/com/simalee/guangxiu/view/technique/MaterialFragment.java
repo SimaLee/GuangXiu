@@ -2,6 +2,7 @@ package com.simalee.guangxiu.view.technique;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.simalee.guangxiu.data.entity.StitchIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.widget.MultiItemContainerNew;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +28,7 @@ public class MaterialFragment extends BaseMVPFragment<MaterialPresenter> impleme
 
     private static final int INDEX_PERGOLA = 0;
     private static final int INDEX_NEEDLE = 1;
-    private static final int INDEX_THREAD = 1;
+    private static final int INDEX_THREAD = 2;
 
 
     private MultiItemContainerNew mPergolaContainer;//
@@ -34,6 +36,8 @@ public class MaterialFragment extends BaseMVPFragment<MaterialPresenter> impleme
     private RecyclerView mRecyclerView;//绣线单独的容器
     private TabLayout mTabLayout;
     private TextView mNoDataView;
+
+    private ThreadListAdapter mThreadListAdapter;
 
     public MaterialFragment(){
         super();
@@ -105,7 +109,12 @@ public class MaterialFragment extends BaseMVPFragment<MaterialPresenter> impleme
     @Override
     public void showThreadList(List<ThreadItem> threadItemList) {
         changeViewVisibility(INDEX_THREAD);
-        Toast.makeText(mContext,"获取绣线列表成功!",Toast.LENGTH_SHORT).show();
+        if (threadItemList == null || threadItemList.size() == 0){
+            mNoDataView.setVisibility(View.VISIBLE);
+        }else{
+            mNoDataView.setVisibility(View.INVISIBLE);
+            mThreadListAdapter.replaceData(threadItemList);
+        }
     }
 
     private void changeViewVisibility(int index) {
@@ -144,7 +153,12 @@ public class MaterialFragment extends BaseMVPFragment<MaterialPresenter> impleme
         mNoDataView = rootView.findViewById(R.id.tv_no_data);
         mTabLayout = rootView.findViewById(R.id.tab_type);
 
+        mThreadListAdapter = new ThreadListAdapter(mContext,new ArrayList<ThreadItem>());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerView.setAdapter(mThreadListAdapter);
+
         addTabs();
+
     }
 
     private void addTabs() {
