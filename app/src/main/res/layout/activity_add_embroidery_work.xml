@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA">
+
+
+        <RelativeLayout
+            android:id="@+id/titleRL"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@color/buttonClickColor">
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/cancleIv"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@mipmap/cancel"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:gravity="center" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="存储本地作品"
+                android:textSize="18sp"
+                android:textColor="#fff"/>
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/save"
+                android:id="@+id/saveEmbroideryIv"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/titleRL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/authorNameRl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_relative_layout">
+
+            <EditText
+                android:id="@+id/workAuthorEt"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="#999999"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:hint="作家名字"
+                android:background="@null"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tv_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:text="0/15"
+                android:textColor="#999"/>
+            <View
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/tv_tips"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#EEEEEE"
+                android:layout_alignParentBottom="true">
+            </View>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/workNameRl"
+            android:layout_below="@+id/authorNameRl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_relative_layout">
+
+            <EditText
+                android:id="@+id/workNameEt"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="#999999"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:hint="作品名"
+                android:background="@null"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/tv_tips_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:text="0/15"
+                android:textColor="#999"/>
+            <View
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/tv_tips_2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#EEEEEE"
+                android:layout_alignParentBottom="true">
+            </View>
+        </RelativeLayout>
+            
+        <RelativeLayout
+            android:id="@+id/workDesRL"
+            android:layout_below="@+id/workNameRl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_relative_layout">
+            <EditText
+                android:id="@+id/workDesEt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"
+                android:textColor="#999999"
+                android:background="@null"
+                android:layout_marginLeft="20dp"
+                android:paddingBottom="5dp"
+                android:lines="6"
+                android:maxLength="300"
+                android:layout_marginTop="10dp"
+                android:gravity="left"
+                android:hint="作品简介..."
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:layout_below="@+id/workDesEt"
+                android:id="@+id/tv_content_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                android:text="0/300"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="#999"/>
+        </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/addPictureIv"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/workDesRL"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@mipmap/add_picture"/>
+            <ImageView
+                android:visibility="gone"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/workDesRL"
+                android:id="@+id/photoIv"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"/>
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_below="@id/workDesRL"
+                android:id="@+id/prl_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                    android:visibility="gone"
+                    android:id="@+id/vrPanoramaView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_aspectRatio="178%"
+                    app:layout_widthPercent="100%"/>
+            </android.support.percent.PercentRelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

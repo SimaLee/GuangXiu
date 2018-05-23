@@ -2,6 +2,7 @@ package com.simalee.guangxiu.data.model;
 
 import android.content.Context;
 import android.content.IntentFilter;
+import android.database.Cursor;
 import android.util.Log;
 
 import com.simalee.guangxiu.data.DataSource;
@@ -10,6 +11,7 @@ import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.data.entity.LocalEmbroideryWork;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
@@ -21,6 +23,7 @@ import com.simalee.guangxiu.data.entity.ThreadIntroduction;
 import com.simalee.guangxiu.data.entity.ThreadItem;
 import com.simalee.guangxiu.data.entity.Version;
 import com.simalee.guangxiu.data.model.database.dao.ArtFeatureDao;
+import com.simalee.guangxiu.data.model.database.dao.LocalEmbroideryWorksDao;
 import com.simalee.guangxiu.data.model.database.dao.SimpleIntroductionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionDao;
 import com.simalee.guangxiu.data.model.database.dao.VersionPair;
@@ -41,13 +44,14 @@ public class LocalDataSource implements DataSource {
     private VersionDao mVersionDao;
     private SimpleIntroductionDao mSimpleIntroductionDao;
     private ArtFeatureDao mArtFeatureDao;
+    private LocalEmbroideryWorksDao mLocalEmbroideryWorksDao;
 
     public LocalDataSource(Context context){
         mContext = context;
         mVersionDao = new VersionDao(context);
         mSimpleIntroductionDao = new SimpleIntroductionDao(context);
         mArtFeatureDao = new ArtFeatureDao(context);
-
+        mLocalEmbroideryWorksDao = new LocalEmbroideryWorksDao(context);
     }
 
 
@@ -262,5 +266,13 @@ public class LocalDataSource implements DataSource {
     @Override
     public void getDevelopmentItem(int version, int id, DataCallback<ArtFeature> callback) {
 
+    }
+
+    public List<LocalEmbroideryWork> getLocalEmbroideryWorks(){
+        return mLocalEmbroideryWorksDao.getLocalEmbroideryWorks();
+    }
+
+    public boolean savaLocalEmbroideryWork(LocalEmbroideryWork localEmbroideryWork){
+        return  mLocalEmbroideryWorksDao.insertLocalEmbroideryWork(localEmbroideryWork);
     }
 }

@@ -33,4 +33,6 @@ dependencies {
     compile 'com.github.xiaoyanger0825:NiceVieoPlayer:v2.2'
     compile 'com.github.SuperKotlin:PictureViewer:2.0.1'
     compile 'com.github.Andy-13:ZbPermission:1.0.0'
+    compile 'com.android.support:percent:26.1.0'
+    compile 'com.google.vr:sdk-panowidget:1.80.0'
 }

@@ -45,7 +45,11 @@
         <activity android:name=".view.cartoon.EmbroideryContentActivity"
             android:theme="@style/OptionsActivity"/>
         <activity android:name=".view.history.DevelopmentItemActivity"/>
-
+        <activity android:name=".view.vr.MyLocalWorksActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".view.vr.AddEmbroideryWorkActivity"/>
+        <activity android:name=".view.vr.LocalEmbroideryContentActivity"
+            android:theme="@style/OptionsActivity"/>
 
 
         <activity android:name=".view.technique.TechniqueActivity"/>

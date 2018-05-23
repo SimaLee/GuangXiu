@@ -94,7 +94,32 @@ public interface DBConstants {
     }
 
 
+    /**
+     * 本地刺绣作品
+     */
+    interface LocalEmbroideryWorks{
+        String TABLE_NAME = "localEmbroideryWorks";
 
+        String COLUMN_ID = "id";
+        String COLUMN_TYPE = "type";
+        String COLUMN_AUTHOR_NAME = "author_name";
+        String COLUMN_WORK_NAME = "work_name";
+        String COLUMN_WORK_DES = "work_des";
+        String COLUMN_WORK_PATH = "work_path";
+
+        String SQL_CREATE_TABLE =
+                "create table if not exists " +TABLE_NAME +
+                        "("
+                        +COLUMN_ID + " integer primary key autoincrement" + SEPERATOR
+                        +COLUMN_TYPE + " integer DEFAULT 1"+ SEPERATOR
+                        +COLUMN_AUTHOR_NAME + " text NOT NULL" + SEPERATOR
+                        +COLUMN_WORK_NAME + " text NOT NULL " + SEPERATOR
+                        +COLUMN_WORK_DES + " text NOT NULL " + SEPERATOR
+                        +COLUMN_WORK_PATH + " text NOT NULL "
+                        +")";
+
+        String SQL_DROP_TABLE = "drop table "+TABLE_NAME;
+    }
 
 
 }

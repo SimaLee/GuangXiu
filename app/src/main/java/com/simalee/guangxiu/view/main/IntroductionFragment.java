@@ -12,6 +12,7 @@ import com.simalee.guangxiu.base.BaseFragment;
 import com.simalee.guangxiu.view.history.HistoryIntroductionActivity;
 import com.simalee.guangxiu.view.quiz.QuizActivity;
 import com.simalee.guangxiu.view.technique.TechniqueActivity;
+import com.simalee.guangxiu.view.vr.MyLocalWorksActivity;
 
 /**
  * Created by Lee Sima on 2018/5/22.
@@ -25,6 +26,7 @@ public class IntroductionFragment extends BaseFragment {
     private LinearLayout mTechniqueView;
     private LinearLayout mProcessView;
     private LinearLayout mQuizView;
+    private LinearLayout mLocalWorksView;
 
     public IntroductionFragment(){
 
@@ -48,6 +50,7 @@ public class IntroductionFragment extends BaseFragment {
         mTechniqueView = rootView.findViewById(R.id.ll_technique);
         mProcessView = rootView.findViewById(R.id.ll_process);
         mQuizView = rootView.findViewById(R.id.ll_quiz);
+        mLocalWorksView = rootView.findViewById(R.id.ll_my_local_works);
     }
 
     @Override
@@ -85,6 +88,14 @@ public class IntroductionFragment extends BaseFragment {
             public void onClick(View v) {
                 Log.d(TAG, "onClick: quiz");
                 Intent intent = new Intent(mContext, QuizActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mLocalWorksView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MyLocalWorksActivity.class);
                 startActivity(intent);
             }
         });

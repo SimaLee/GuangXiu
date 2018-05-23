@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+    <RelativeLayout
+        android:id="@+id/titleRL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/buttonClickColor">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="作品收藏"
+            android:gravity="center_vertical"
+            style="@style/TitleTextStyle"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/addWorksIv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/add"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:id="@+id/noWorksTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂时没有相应的作品哦"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/titleRL"
+        android:id="@+id/localWorksRCV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

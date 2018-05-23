@@ -1,6 +1,7 @@
 package com.simalee.guangxiu.data;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.util.Log;
 
 import com.simalee.guangxiu.data.entity.ArtFeature;
@@ -8,6 +9,7 @@ import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
 import com.simalee.guangxiu.data.entity.EmbroideryIntroduction;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
+import com.simalee.guangxiu.data.entity.LocalEmbroideryWork;
 import com.simalee.guangxiu.data.entity.PergolaIntroduction;
 import com.simalee.guangxiu.data.entity.QuizItem;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
@@ -772,5 +774,13 @@ public class DataManager {
                 }
             });
         }
+    }
+
+    public List<LocalEmbroideryWork> getLocalEmbroideryWorks(){
+        return mLocalDataSource.getLocalEmbroideryWorks();
+    }
+
+    public boolean saveLocalEmbroideryWork(LocalEmbroideryWork localEmbroideryWork){
+        return mLocalDataSource.savaLocalEmbroideryWork(localEmbroideryWork);
     }
 }
