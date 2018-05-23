@@ -62,7 +62,9 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
             @Override
             public void onSuccess(Version data) {
                 Log.d(TAG, "onSuccess: " + data);
-                mView.showToast("获取版本号成功！");
+                if (isViewAttached()){
+                    mView.showToast("获取版本号成功！");
+                }
             }
 
             @Override
