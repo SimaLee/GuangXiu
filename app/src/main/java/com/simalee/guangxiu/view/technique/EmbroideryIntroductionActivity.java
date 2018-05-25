@@ -19,21 +19,6 @@ public class EmbroideryIntroductionActivity extends BaseMVPActivity<EmbroideryPr
     private TextView mTitleView;
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.activity_embroidery_introduction;
     }

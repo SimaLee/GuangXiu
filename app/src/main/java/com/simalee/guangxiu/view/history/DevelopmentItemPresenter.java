@@ -12,10 +12,12 @@ import com.simalee.guangxiu.data.model.DataCallback;
 public class DevelopmentItemPresenter extends BasePresenter<DevelopmentItemContract.DevelopmentItemView> implements DevelopmentItemContract.DevelopmentItemPresenter {
     @Override
     public void loadDevelopmentItemView(int id) {
+        mView.showLoading();
         DataManager.getInstance().getDevelopmentItem(id, new DataCallback<ArtFeature>() {
             @Override
             public void onSuccess(ArtFeature data) {
                 if(isViewAttached()){
+                    mView.hideLoading();
                     mView.showDevelopmentItemView(data);
                 }
             }
@@ -23,14 +25,16 @@ public class DevelopmentItemPresenter extends BasePresenter<DevelopmentItemContr
             @Override
             public void onFailure(String msg) {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

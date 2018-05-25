@@ -58,21 +58,6 @@ public class OriginFragment extends BaseMVPFragment<OriginPresenter> implements 
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showOrigin(ArtFeature artFeature) {
         multiItemContainer.addItems(artFeature.getItemList());
     }

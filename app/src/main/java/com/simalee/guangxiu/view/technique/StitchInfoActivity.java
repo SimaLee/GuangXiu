@@ -24,20 +24,6 @@ public class StitchInfoActivity extends BaseMVPActivity<StitchInfoPresenter> imp
     private RecyclerView mRecyclerView;
     private StitchInfoAdapter mAdapter;
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

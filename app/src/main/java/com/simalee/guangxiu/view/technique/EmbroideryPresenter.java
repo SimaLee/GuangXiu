@@ -49,11 +49,12 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
 
     @Override
     public void loadEmbroideryIntroduction(String id) {
-
+        mView.showLoading();
         DataManager.getInstance().getEmbroideryWithId(id, new DataCallback<EmbroideryIntroduction>() {
             @Override
             public void onSuccess(EmbroideryIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showEmbroideryIntroduction(data);
                 }
             }
@@ -61,14 +62,16 @@ public class EmbroideryPresenter extends BasePresenter<TechniqueContract.Embroid
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

@@ -20,20 +20,6 @@ public class EmbroideryActivity extends BaseMVPActivity<EmbroideryPresenter> imp
     private TextView mDailyView;
     private TextView mAppriciateView;
     private TextView mSacrificeView;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

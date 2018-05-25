@@ -16,21 +16,6 @@ public class ArtFeatureActivity extends BaseMVPActivity<ArtFeaturePresenter> imp
     private MultiItemContainerNew mContainer;
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showArtFeature(ArtFeature feature) {
         mContainer.addItems(feature.getItemList());
     }

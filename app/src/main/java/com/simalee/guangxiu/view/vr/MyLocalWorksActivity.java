@@ -14,16 +14,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.LocalEmbroideryWork;
-import com.simalee.guangxiu.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by zb.yang on 2018/5/22.
@@ -38,20 +35,6 @@ public class MyLocalWorksActivity extends BaseMVPActivity<MyLocalWorksPresenter>
 
     private List<LocalEmbroideryWork> mLocalEmbtoideryWorks;
     private MyLocalWorksAdapter myLocalWorksAdapter;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     public void showMyLocalWorksView(List<LocalEmbroideryWork> data) {

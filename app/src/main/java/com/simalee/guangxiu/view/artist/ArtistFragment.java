@@ -46,21 +46,6 @@ public class ArtistFragment extends BaseMVPFragment<ArtistPresenter> implements 
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showArtistList(List<Artist> artistList) {
         mAdapter.replaceData(artistList);
     }

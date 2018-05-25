@@ -21,20 +21,6 @@ public class ThreadIntroductionActivity extends BaseMVPActivity<ThreadPresenter>
 
     private MultiItemContainerNew mContainer;
     private TextView mTitleView;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

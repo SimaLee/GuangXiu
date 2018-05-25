@@ -24,11 +24,13 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
 
     @Override
     public void loadThreadList() {
+        mView.showLoading();
         DataManager.getInstance().getThreadList(new DataCallback<List<ThreadItem>>() {
             @Override
             public void onSuccess(List<ThreadItem> data) {
                 Log.d(TAG, "onSuccess: " + data);
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showThreadList(data);
                 }
             }
@@ -36,14 +38,16 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });
@@ -51,10 +55,12 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
 
     @Override
     public void loadThreadIntroduction(String threadId) {
+        mView.showLoading();
         DataManager.getInstance().getThreadWithId(threadId,new DataCallback<ThreadIntroduction>() {
             @Override
             public void onSuccess(ThreadIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showThreadIntroduction(data);
                 }
             }
@@ -62,14 +68,16 @@ public class ThreadPresenter extends BasePresenter<TechniqueContract.ThreadView>
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

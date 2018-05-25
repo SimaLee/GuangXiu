@@ -13,20 +13,6 @@ public class OriginActivity extends BaseMVPActivity<OriginPresenter> implements 
     public static final String TAG = "OriginActivity";
 
     private MultiItemContainerNew multiItemContainer;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

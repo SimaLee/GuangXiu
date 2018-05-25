@@ -14,10 +14,12 @@ import java.util.List;
 public class DevelopmentPresenter extends BasePresenter<DevelopmentContract.DevelopmentView>implements DevelopmentContract.DevelopmentPresenter{
     @Override
     public void loadDevelopmentView() {
+        mView.showLoading();
         DataManager.getInstance().getDevelopmentProcess(new DataCallback<List<DevelopmentItem>>() {
             @Override
             public void onSuccess(List<DevelopmentItem> data) {
                 if(isViewAttached()){
+                    mView.hideLoading();
                     mView.showDevelopmentView(data);
                 }
             }
@@ -25,14 +27,16 @@ public class DevelopmentPresenter extends BasePresenter<DevelopmentContract.Deve
             @Override
             public void onFailure(String msg) {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

@@ -20,20 +20,6 @@ public class DevelopmentActivity extends BaseMVPActivity<DevelopmentPresenter> i
     RecyclerView mRecyclerView;
     List<DevelopmentItem> mList = new ArrayList<>();
     DevelopmentTimeLineAdapter mAdapter;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     public void showDevelopmentView(List<DevelopmentItem> data) {

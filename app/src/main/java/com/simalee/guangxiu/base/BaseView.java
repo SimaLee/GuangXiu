@@ -18,7 +18,8 @@ public interface BaseView {
 
      /**
       * 显示错误信息
+      * @param msg
       */
-     void showError();
+     void showErrorMsg(String msg);
 
 }

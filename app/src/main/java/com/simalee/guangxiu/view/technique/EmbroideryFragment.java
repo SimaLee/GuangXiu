@@ -41,21 +41,6 @@ public class EmbroideryFragment extends BaseMVPFragment<EmbroideryPresenter> imp
 
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void openIntroduction(String id, String name) {
         //do nothing
     }

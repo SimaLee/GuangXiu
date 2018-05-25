@@ -17,21 +17,31 @@ import java.util.List;
 public class TeachingPresenter extends BasePresenter<TeachingContract.TeachingTypeView>implements TeachingContract.ITeachingTypePresenter{
     @Override
     public void loadTeachingType() {
+        mView.showLoading();
         DataManager.getInstance().getTeachingVideoList(new DataCallback<List<TeachingContentItem>>() {
             @Override
             public void onSuccess(List<TeachingContentItem> data) {
-                mView.showTeachingType(data);
-                Log.i("TeachingPresenter",data.toString());
+                if (isViewAttached()){
+                    mView.hideLoading();
+                    mView.showTeachingType(data);
+                    Log.i("TeachingPresenter",data.toString());
+                }
             }
 
             @Override
             public void onFailure(String msg) {
-                mView.showError();
+                if (isViewAttached()) {
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
+                }
             }
 
             @Override
             public void onError() {
-                mView.showError();
+                if (isViewAttached()) {
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
+                }
             }
         });
     }

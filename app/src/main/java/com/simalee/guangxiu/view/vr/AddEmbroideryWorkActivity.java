@@ -26,8 +26,6 @@ import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.LocalEmbroideryWork;
-import com.simalee.guangxiu.utils.UrlUtils;
-import com.simalee.guangxiu.view.cartoon.EmbroideryContentActivity;
 import com.unistrong.yang.zb_permission.Permission;
 import com.unistrong.yang.zb_permission.ZbPermission;
 import com.unistrong.yang.zb_permission.ZbPermissionFail;
@@ -67,21 +65,6 @@ public class AddEmbroideryWorkActivity extends BaseMVPActivity<AddEmbroideryWork
     private String authorName = "";
     private String workDes = "";
 
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

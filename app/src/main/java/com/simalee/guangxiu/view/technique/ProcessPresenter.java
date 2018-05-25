@@ -22,7 +22,9 @@ public class ProcessPresenter extends BasePresenter<ProcessContract.ProcessView>
     @Override
     public void loadProcessItemList() {
         if (isViewAttached()){
+            mView.showLoading();
             mView.showProcessItemList(fakePrecessItemList());
+            mView.hideLoading();
         }
     }
 

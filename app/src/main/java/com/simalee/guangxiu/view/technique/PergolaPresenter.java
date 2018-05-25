@@ -33,14 +33,14 @@ public class PergolaPresenter extends BasePresenter<TechniqueContract.PergolaVie
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

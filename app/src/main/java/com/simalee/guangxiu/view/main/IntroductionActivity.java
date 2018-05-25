@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
-import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.SimpleIntroduction;
 import com.simalee.guangxiu.utils.UrlUtils;
@@ -23,20 +22,6 @@ public class IntroductionActivity extends BaseMVPActivity<IntroductionPresenter>
     private TextView mIntroduction;
     private ImageView mImage;
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     public void showIntroduction(SimpleIntroduction introduction) {
