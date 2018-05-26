@@ -37,8 +37,8 @@ public class NewMainActivity extends BaseActivity {
     private String[] names = {"广绣","作品","名家","教学"};
 
     private final int[] mImages = {
+            R.drawable.ic_g_translate_black_24dp,
             R.drawable.ic_assignment_black_24dp,
-            R.drawable.ic_android_black_24dp,
             R.drawable.ic_account_circle_black_24dp,
             R.drawable.ic_import_contacts_black_24dp
     };
