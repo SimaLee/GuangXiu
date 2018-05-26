@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Lee Sima on 2018/5/20.
  */
 
-public class MultiItemContainerNew extends RecyclerView {
+public class MultiItemContainerNew extends RecyclerView implements IContainer<TextImageItem>{
     private static final String TAG = "MultiItemContainerNew";
 
     private Context mContext;
@@ -72,12 +72,22 @@ public class MultiItemContainerNew extends RecyclerView {
      * 兼容旧的实现 添加接口
      * @param textImageItems
      */
+    @Override
     public void addItems(List<TextImageItem> textImageItems){
         if (mAdapter != null){
             mAdapter.addItems(textImageItems);
         }
     }
 
+    @Override
+    public void addItem(TextImageItem item) {
+        if (mAdapter != null){
+            mAdapter.addItem(item);
+        }
+    }
+
+
+    @Override
     public void replaceItems(List<TextImageItem> textImageItems){
         if(textImageItems == null || textImageItems.size() == 0){
             return;
@@ -87,6 +97,7 @@ public class MultiItemContainerNew extends RecyclerView {
         }
     }
 
+    @Override
     public void clear(){
         if (mAdapter != null){
             mAdapter.clear();
