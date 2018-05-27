@@ -33,20 +33,6 @@ public class EmbroideryContentActivity extends BaseMVPActivity<EmbroideryPresent
     private TextView embroideryDescriptionTV;
 
     private EmbroideryWorkItem embroideryWorkItem;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

@@ -19,20 +19,6 @@ public class HistoryIntroductionActivity extends BaseMVPActivity<HistoryIntroduc
     private Button futureDevelopmentBtn;
     private Button culturalMeaningBtn;
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

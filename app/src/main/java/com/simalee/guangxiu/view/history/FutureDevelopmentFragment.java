@@ -29,21 +29,6 @@ public class FutureDevelopmentFragment extends BaseMVPFragment<FutureDevelopment
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showFutureDevelopment(ArtFeature artFeature) {
         multiItemContainer.addItems(artFeature.getItemList());
     }

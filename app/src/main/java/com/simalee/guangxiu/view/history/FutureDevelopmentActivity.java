@@ -13,20 +13,6 @@ public class FutureDevelopmentActivity extends BaseMVPActivity<FutureDevelopment
     public static final String TAG = "FutureDevelopmentActivity";
 
     private MultiItemContainerNew multiItemContainer;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

@@ -19,11 +19,12 @@ public class QuizPresenter extends BasePresenter<QuizContract.QuizView> implemen
 
     @Override
     public void loadQuizList() {
-
+        mView.showLoading();
         DataManager.getInstance().getQuizList(new DataCallback<List<QuizItem>>() {
             @Override
             public void onSuccess(List<QuizItem> data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     if (data == null || data.size() == 0){
                         mView.showQuizList(fakeQuizList());
                     }else{
@@ -35,14 +36,16 @@ public class QuizPresenter extends BasePresenter<QuizContract.QuizView> implemen
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

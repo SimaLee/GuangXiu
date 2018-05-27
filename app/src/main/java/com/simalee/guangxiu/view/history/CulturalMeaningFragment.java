@@ -31,21 +31,6 @@ public class CulturalMeaningFragment extends BaseMVPFragment<CulturalMeaningPres
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showCulturalMeaning(ArtFeature artFeature) {
         multiItemContainer.addItems(artFeature.getItemList());
     }

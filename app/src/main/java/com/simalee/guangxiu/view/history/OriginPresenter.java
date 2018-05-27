@@ -16,10 +16,12 @@ import java.util.List;
 public class OriginPresenter extends BasePresenter<OriginContract.OriginView>implements OriginContract.OriginPresenter{
     @Override
     public void loadOrigin() {
+        mView.showLoading();
         DataManager.getInstance().getOrigin(new DataCallback<ArtFeature>() {
             @Override
             public void onSuccess(ArtFeature data) {
                 if(isViewAttached()){
+                    mView.hideLoading();
                     mView.showOrigin(data);
                 }
             }
@@ -27,14 +29,16 @@ public class OriginPresenter extends BasePresenter<OriginContract.OriginView>imp
             @Override
             public void onFailure(String msg) {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

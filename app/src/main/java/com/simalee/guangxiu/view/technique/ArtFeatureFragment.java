@@ -33,21 +33,6 @@ public class ArtFeatureFragment extends BaseMVPFragment<ArtFeaturePresenter> imp
 
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showArtFeature(ArtFeature feature) {
         if (feature.getItemList().size() == 0){
             mNoDataView.setVisibility(View.VISIBLE);

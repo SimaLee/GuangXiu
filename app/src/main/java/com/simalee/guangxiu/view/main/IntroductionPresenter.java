@@ -20,10 +20,12 @@ public class IntroductionPresenter extends BasePresenter<IntroductionContract.In
     @Override
     public void loadIntroduction() {
         //数据加载
+        mView.showLoading();
         DataManager.getInstance().getIntroduction(new DataCallback<SimpleIntroduction>() {
             @Override
             public void onSuccess(SimpleIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showIntroduction(data);
                 }
             }
@@ -31,14 +33,16 @@ public class IntroductionPresenter extends BasePresenter<IntroductionContract.In
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()) {
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()) {
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

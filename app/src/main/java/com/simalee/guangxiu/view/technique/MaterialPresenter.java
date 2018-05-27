@@ -45,10 +45,12 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
 
     @Override
     public void loadPergolaIntroduction() {
+        mView.showLoading();
         DataManager.getInstance().getPergolaIntroduction(new DataCallback<PergolaIntroduction>() {
             @Override
             public void onSuccess(PergolaIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showPergolaIntroduction(data);
                 }
             }
@@ -56,14 +58,16 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });
@@ -71,10 +75,12 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
 
     @Override
     public void loadStitchIntroduction() {
+        mView.showLoading();
         DataManager.getInstance().getStitchIntroduction(new DataCallback<StitchIntroduction>() {
             @Override
             public void onSuccess(StitchIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showStitchIntroduction(data);
                 }
             }
@@ -82,14 +88,16 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });
@@ -98,12 +106,13 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
 
     @Override
     public void loadThreadList() {
-
+        mView.showLoading();
         DataManager.getInstance().getThreadList(new DataCallback<List<ThreadItem>>() {
             @Override
             public void onSuccess(List<ThreadItem> data) {
                 Log.d(TAG, "onSuccess: " + data);
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showThreadList(data);
                 }
             }
@@ -111,14 +120,16 @@ public class MaterialPresenter extends BasePresenter<TechniqueContract.MaterialV
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

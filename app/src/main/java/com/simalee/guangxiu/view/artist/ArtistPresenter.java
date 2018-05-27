@@ -24,10 +24,13 @@ public class ArtistPresenter extends BasePresenter<ArtistContract.ArtistView> im
     @Override
     public void loadArtistList() {
 
+        mView.showLoading();
+
         DataManager.getInstance().getArtistList(new DataCallback<List<Artist>>() {
             @Override
             public void onSuccess(List<Artist> data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showArtistList(data);
                 }
             }
@@ -35,14 +38,16 @@ public class ArtistPresenter extends BasePresenter<ArtistContract.ArtistView> im
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });
@@ -72,14 +77,14 @@ public class ArtistPresenter extends BasePresenter<ArtistContract.ArtistView> im
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.showErrorMsg("无法访问到服务器！");
                 }
             }
         });

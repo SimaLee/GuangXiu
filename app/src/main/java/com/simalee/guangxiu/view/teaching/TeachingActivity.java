@@ -30,26 +30,12 @@ public class TeachingActivity extends BaseMVPActivity<TeachingPresenter>implemen
     private RecyclerView mTeachingContentRCV;
     private VideoAdapter videoAdapter;
     private TeachingTypeAdapter teachingTypeAdapter;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 
     @Override
     public void showTeachingType(List<TeachingContentItem> data) {
         organizeData(data);
 //        TeachingContentItem teachingContentItem = data.get(0);
 //        Log.i(TAG,teachingContentItem.getCoverUrl());
-    }
-
-    @Override
-    public void showError() {
-
     }
 
     @Override

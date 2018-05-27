@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.view.technique;
 
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
@@ -20,19 +22,13 @@ public class StitchInfoDetailActivity extends BaseMVPActivity<StitchInfoPresente
 
     private MultiItemContainerNew mContainer;
     private TextView mTitleView;
-    @Override
-    public void showLoading() {
+    private TextView mNoDataView;
 
-    }
 
     @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
+    public void showErrorMsg(String msg) {
+        super.showErrorMsg(msg);
+        showNoData(true);
     }
 
     @Override
@@ -44,6 +40,7 @@ public class StitchInfoDetailActivity extends BaseMVPActivity<StitchInfoPresente
     protected void initViews() {
         mContainer = findViewById(R.id.container);
         mTitleView = findViewById(R.id.tv_title);
+        mNoDataView = findViewById(R.id.tv_no_data);
     }
 
     @Override
@@ -72,7 +69,22 @@ public class StitchInfoDetailActivity extends BaseMVPActivity<StitchInfoPresente
 
     @Override
     public void showStitchInfo(StitchInfoDetail stitchInfoDetail) {
-        mContainer.addItems(stitchInfoDetail.getItemList());
+        if (stitchInfoDetail == null || stitchInfoDetail.getItemList() == null
+                || stitchInfoDetail.getItemList().size() == 0){
+            showNoData(true);
+        }else{
+            showNoData(false);
+           mContainer.addItems(stitchInfoDetail.getItemList());
+        }
+    }
+
+    private void showNoData(boolean isShow) {
+        Log.d(TAG, "showNoData: isShow " + isShow);
+        if (isShow){
+            mNoDataView.setVisibility(View.VISIBLE);
+        }else {
+            mNoDataView.setVisibility(View.INVISIBLE);
+        }
     }
 
 

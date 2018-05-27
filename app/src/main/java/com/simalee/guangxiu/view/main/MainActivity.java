@@ -126,7 +126,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onLogoClick() {
         Log.d(TAG, "onLogoClick: ");
-        shortToast("点击了logo");
+        showToast("点击了logo");
         Intent intent = new Intent(MainActivity.this,IntroductionActivity.class);
         startActivity(intent);
     }
@@ -134,7 +134,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onHistoryClick() {
         Log.d(TAG, "onHistoryClick: ");
-        shortToast("点击了历史");
+        showToast("点击了历史");
         Intent intent = new Intent(MainActivity.this, HistoryIntroductionActivity.class);
         startActivity(intent);
     }
@@ -142,7 +142,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onTechniqueClick() {
         Log.d(TAG, "onTechniqueClick: ");
-        shortToast("点击了技艺");
+        showToast("点击了技艺");
         Intent intent = new Intent(this, TechniqueActivity.class);
         startActivity(intent);
     }
@@ -150,7 +150,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onArtistClick() {
         Log.d(TAG, "onArtistClick: ");
-        shortToast("点击了名家");
+        showToast("点击了名家");
         Intent intent = new Intent(this, ArtistListActivity.class);
         startActivity(intent);
     }
@@ -158,7 +158,7 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onCartoonClick() {
         Log.d(TAG, "onCartoonClick: ");
-        shortToast("点击了动画");
+        showToast("点击了动画");
         Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
     }
@@ -166,14 +166,14 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
     @Override
     public void onTeachingClick() {
         Log.d(TAG, "onTeachingClick: ");
-        shortToast("点击了教学");
+        showToast("点击了教学");
         Intent intent = new Intent(this, TeachingActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onQuizClick() {
-        shortToast("点击了答题模块");
+        showToast("点击了答题模块");
         Intent intent = new Intent(this, QuizActivity.class);
         startActivity(intent);
     }
@@ -183,22 +183,4 @@ public class MainActivity extends BaseMVPActivity<MainPresenter> implements Main
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    private void shortToast(String msg){
-        Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
-    }
 }

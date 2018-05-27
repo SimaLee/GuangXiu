@@ -17,7 +17,7 @@ import java.util.List;
  * Created by Lee Sima on 2018/5/6.
  */
 
-public class MultiItemContainer extends LinearLayout{
+public class MultiItemContainer extends LinearLayout implements IContainer<TextImageItem>{
 
     private static final String TAG = "MultiItemContainerNew";
 
@@ -66,10 +66,17 @@ public class MultiItemContainer extends LinearLayout{
         });
     }
 
+    @Override
     public void addItem(TextImageItem itemInfo){
         mItemHelper.addItem(itemInfo);
     }
 
+    @Override
+    public void replaceItems(List<TextImageItem> itemList) {
+
+    }
+
+    @Override
     public void addItems(List<TextImageItem> imageItems){
         mItemHelper.addItems(imageItems);
     }
@@ -77,6 +84,7 @@ public class MultiItemContainer extends LinearLayout{
     /**
      * 清除所有子view
      */
+    @Override
     public void clear(){
         mItemHelper.clear();
         removeAllViews();

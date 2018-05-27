@@ -11,6 +11,15 @@
         android:text="直扭针"
         style="@style/TitleTextStyle"/>
 
+    <TextView
+        android:id="@+id/tv_no_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:text="暂时还没有数据哦！"/>
+
         <com.simalee.guangxiu.widget.MultiItemContainerNew
             android:id="@+id/container"
             android:layout_width="match_parent"

@@ -70,21 +70,6 @@ public class DevelopmentFragment extends BaseMVPFragment<DevelopmentPresenter> i
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showDevelopmentView(List<DevelopmentItem> data) {
         mList = data;
         mAdapter.setDevelopmentItemList(data);

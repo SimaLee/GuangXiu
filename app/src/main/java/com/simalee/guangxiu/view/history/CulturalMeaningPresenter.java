@@ -16,10 +16,12 @@ import java.util.List;
 public class CulturalMeaningPresenter extends BasePresenter<CulturalMeaningContract.CulturalView> implements CulturalMeaningContract.CulturalPresenter {
     @Override
     public void loadCulturalMeaning() {
+        mView.showLoading();
         DataManager.getInstance().getCultureMeaning(new DataCallback<ArtFeature>() {
             @Override
             public void onSuccess(ArtFeature data) {
                 if(isViewAttached()){
+                    mView.hideLoading();
                     mView.showCulturalMeaning(data);
                 }
             }
@@ -27,14 +29,16 @@ public class CulturalMeaningPresenter extends BasePresenter<CulturalMeaningContr
             @Override
             public void onFailure(String msg) {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

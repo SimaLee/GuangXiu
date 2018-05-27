@@ -21,11 +21,12 @@ public class StitchPresenter extends BasePresenter<TechniqueContract.StitchView>
 
     @Override
     public void loadStitchIntroduction() {
-
+        mView.showLoading();
         DataManager.getInstance().getStitchIntroduction(new DataCallback<StitchIntroduction>() {
             @Override
             public void onSuccess(StitchIntroduction data) {
                 if (isViewAttached()){
+                    mView.hideLoading();
                     mView.showStitchIntroduction(data);
                 }
             }
@@ -33,14 +34,16 @@ public class StitchPresenter extends BasePresenter<TechniqueContract.StitchView>
             @Override
             public void onFailure(String msg) {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if (isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

@@ -18,10 +18,12 @@ public class GalleryPresenter extends BasePresenter<GalleryContarct.GalleryView>
 
     @Override
     public void loadGalleryView() {
+        mView.showLoading();
         DataManager.getInstance().getAllWorkList(new DataCallback<List<EmbroideryWorkItem>>() {
             @Override
             public void onSuccess(List<EmbroideryWorkItem> data) {
                 if(isViewAttached()){
+                    mView.hideLoading();
                     mView.showGalleryView(data);
                     Log.i("loadGallery",data.toString());
                 }
@@ -30,14 +32,16 @@ public class GalleryPresenter extends BasePresenter<GalleryContarct.GalleryView>
             @Override
             public void onFailure(String msg) {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg(msg);
                 }
             }
 
             @Override
             public void onError() {
                 if(isViewAttached()){
-                    mView.showError();
+                    mView.hideLoading();
+                    mView.showErrorMsg("获取数据失败！");
                 }
             }
         });

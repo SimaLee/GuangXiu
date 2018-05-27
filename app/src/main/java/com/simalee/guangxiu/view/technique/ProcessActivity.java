@@ -34,21 +34,6 @@ public class ProcessActivity extends BaseMVPActivity<ProcessPresenter> implement
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showProcessItemList(List<ProcessItem> processItemList) {
         Log.d(TAG, "showProcessItemList: " + processItemList);
         if (processItemList == null || processItemList.size() == 0){

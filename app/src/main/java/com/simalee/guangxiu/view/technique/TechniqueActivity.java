@@ -23,21 +23,6 @@ public class TechniqueActivity extends BaseMVPActivity<TechniquePresenter> imple
     private TextView mStitchView;
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void onArtFeatureClick() {
         Log.d(TAG, "onArtFeatureClick: 艺术特点");
         Intent intent = new Intent(this,ArtFeatureActivity.class);

@@ -1,6 +1,5 @@
 package com.simalee.guangxiu.view.artist;
 
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,12 +11,10 @@ import com.SuperKotlin.pictureviewer.ImagePagerActivity;
 import com.SuperKotlin.pictureviewer.PictureConfig;
 import com.bumptech.glide.Glide;
 import com.simalee.guangxiu.R;
-import com.simalee.guangxiu.app.UrlConstants;
 import com.simalee.guangxiu.base.BaseMVPActivity;
 import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.EmbroideryWorkItem;
 import com.simalee.guangxiu.utils.UrlUtils;
-import com.simalee.guangxiu.view.cartoon.GalleryActivity;
 import com.simalee.guangxiu.view.cartoon.GalleryAdapter;
 
 import java.util.ArrayList;
@@ -44,21 +41,6 @@ public class ArtistInfoActivity extends BaseMVPActivity<ArtistPresenter> impleme
     private List<EmbroideryWorkItem> mEmbroideryWorkItems;
 
     private String mAvataUrl = null;
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     public void showArtistList(List<Artist> artistList) {

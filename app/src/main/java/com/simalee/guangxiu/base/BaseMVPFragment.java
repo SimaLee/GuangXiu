@@ -1,10 +1,10 @@
 package com.simalee.guangxiu.base;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +13,14 @@ import android.view.ViewGroup;
  * Created by Lee Sima on 2018/5/22.
  */
 
-public abstract class BaseMVPFragment<P extends BasePresenter> extends Fragment {
+public abstract class BaseMVPFragment<P extends BasePresenter> extends Fragment implements BaseView{
 
     private static final String TAG = "BaseMVPFragment";
 
     protected Context mContext;
     protected P mPresenter;
+
+    protected ProgressDialog mProgressDialog;
 
     //Fragment是否可见
     private boolean isUIVisible;
@@ -140,4 +142,28 @@ public abstract class BaseMVPFragment<P extends BasePresenter> extends Fragment 
      * 创建presenter
      */
     protected abstract void createPresenter();
+
+    @Override
+    public void showLoading() {
+        if (mProgressDialog == null){
+            mProgressDialog = new ProgressDialog(mContext);
+            mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        }
+        mProgressDialog.setCancelable(true);
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        if(mProgressDialog != null){
+            if (mProgressDialog.isShowing()){
+                mProgressDialog.dismiss();
+            }
+        }
+    }
+
+    @Override
+    public void showErrorMsg(String msg) {
+
+    }
 }

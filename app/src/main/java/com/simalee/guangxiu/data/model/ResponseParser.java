@@ -1,5 +1,7 @@
 package com.simalee.guangxiu.data.model;
 
+import android.text.TextUtils;
+
 import com.simalee.guangxiu.data.entity.ArtFeature;
 import com.simalee.guangxiu.data.entity.Artist;
 import com.simalee.guangxiu.data.entity.DevelopmentItem;
@@ -198,8 +200,19 @@ public class ResponseParser {
         Artist artist = new Artist();
         artist.setName(artistObject.getString("name"));
         artist.setAvatar(artistObject.getString("avatar"));
-        artist.setAddress(artistObject.getString("address"));
-        artist.setContact(artistObject.getString("contract"));
+
+        String address  = artistObject.getString("address");
+        if ("null".equals(address) || TextUtils.isEmpty(address)){
+            address = "暂无";
+        }
+        artist.setAddress(address);
+
+        String contract  = artistObject.getString("contract");
+        if ("null".equals(contract) || TextUtils.isEmpty(contract)){
+            contract = "暂无";
+        }
+        artist.setContact(contract);
+
         artist.setHonor(artistObject.getString("honor"));
         artist.setIntroduction(artistObject.getString("introduction"));
 

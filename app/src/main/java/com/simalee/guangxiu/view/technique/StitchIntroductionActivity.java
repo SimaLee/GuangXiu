@@ -14,20 +14,6 @@ public class StitchIntroductionActivity extends BaseMVPActivity<StitchPresenter>
     private static final String TAG = "StitchIntroductionActit";
 
     private MultiItemContainerNew mContainer;
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

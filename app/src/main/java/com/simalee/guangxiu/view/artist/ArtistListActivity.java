@@ -29,21 +29,6 @@ public class ArtistListActivity extends BaseMVPActivity<ArtistPresenter> impleme
     private ArtistListAdapter mAdapter;
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showArtistList(List<Artist> artistList) {
         mAdapter.replaceData(artistList);
     }

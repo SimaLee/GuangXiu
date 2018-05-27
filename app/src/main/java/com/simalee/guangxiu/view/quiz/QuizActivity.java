@@ -43,21 +43,6 @@ public class QuizActivity extends BaseMVPActivity<QuizPresenter> implements Quiz
     private int mCurrentQuizIndex = 0;
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showQuizList(List<QuizItem> quizItemList) {
         if (quizItemList == null || quizItemList.size() == 0){
             return;

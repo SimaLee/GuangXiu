@@ -42,22 +42,6 @@ public class StitchInfoFragment extends BaseMVPFragment<StitchInfoPresenter> imp
     }
 
 
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_stitch_info;

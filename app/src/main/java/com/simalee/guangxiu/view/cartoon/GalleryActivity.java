@@ -81,21 +81,6 @@ public class GalleryActivity extends BaseMVPActivity<GalleryPresenter> implement
     }
 
     @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
-    @Override
-    public void showError() {
-
-    }
-
-    @Override
     public void showGalleryView(List<EmbroideryWorkItem> list) {
         mEmbroideryWorkItems = (ArrayList<EmbroideryWorkItem>)list;
         isNoWorks(mEmbroideryWorkItems);

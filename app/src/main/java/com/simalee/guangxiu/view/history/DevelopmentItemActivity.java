@@ -17,25 +17,13 @@ public class DevelopmentItemActivity extends BaseMVPActivity<DevelopmentItemPres
     private static final String TAG = "DevelopmentItem";
 
     private MultiItemContainerNew multiItemContainer;
-    @Override
-    public void showLoading() {
 
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 
     @Override
     public void showDevelopmentItemView(ArtFeature artFeature) {
         multiItemContainer.addItems(artFeature.getItemList());
     }
 
-    @Override
-    public void showError() {
-
-    }
 
     @Override
     protected int getLayoutId() {

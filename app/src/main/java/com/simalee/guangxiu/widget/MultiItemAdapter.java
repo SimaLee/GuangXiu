@@ -31,7 +31,7 @@ import java.util.Map;
  * Created by Lee Sima on 2018/5/20.
  */
 
-public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.MultiViewHolder> {
+public class MultiItemAdapter extends RecyclerView.Adapter<MultiItemAdapter.MultiViewHolder>{
 
 
     private static final String TAG = "MultiItemAdapter";
