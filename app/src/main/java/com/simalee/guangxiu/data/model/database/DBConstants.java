@@ -80,7 +80,7 @@ public interface DBConstants {
                         "("
                         +COLUMN_DB_ID + " integer primary key autoincrement" + SEPERATOR
                         +COLUMN_VERSION + " integer NOT NULL"+ SEPERATOR
-                        +COLUMN_REAL_ID + " text NOT NULL" + SEPERATOR
+                        +COLUMN_REAL_ID + " text " + SEPERATOR
                         +COLUMN_SEQUENCE + " integer NOT NULL" + SEPERATOR
                         +COLUMN_TYPE + " integer DEFAULT 1" + SEPERATOR
                         +COLUMN_TEXT + " text " + SEPERATOR

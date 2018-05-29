@@ -13,6 +13,8 @@ import com.simalee.guangxiu.data.DataManager;
 import com.simalee.guangxiu.data.entity.Version;
 import com.simalee.guangxiu.data.model.DataCallback;
 
+import pl.com.salsoft.sqlitestudioremote.SQLiteStudioService;
+
 /**
  * Created by Lee Sima on 2018/5/22.
  */
@@ -36,7 +38,8 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //启动数据库连接 用于调试数据库
+        SQLiteStudioService.instance().start(this);
         DataManager.getInstance().getVersionCode(new DataCallback<Version>() {
             @Override
             public void onSuccess(Version data) {

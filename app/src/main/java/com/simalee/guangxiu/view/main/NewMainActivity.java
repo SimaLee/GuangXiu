@@ -64,7 +64,7 @@ public class NewMainActivity extends BaseActivity {
     private void setUpTabs() {
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
 
         mTabLayout.setupWithViewPager(mViewPager,false);
 
