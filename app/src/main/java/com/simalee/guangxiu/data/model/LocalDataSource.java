@@ -98,6 +98,7 @@ public class LocalDataSource implements DataSource {
 
     @Override
     public void getArtFeature(int version, DataCallback<ArtFeature> callback) {
+        Log.d(TAG, "getArtFeature: version: " + version);
         if (callback == null){
             return;
         }

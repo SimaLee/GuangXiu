@@ -42,7 +42,7 @@ public class ArtFeatureDao extends BaseDao<TextImageItem> {
         ContentValues contentValues;
         List<TextImageItem> textImageItems = artFeature.getItemList();
 
-        boolean allFinished = false;
+        boolean allFinished = true;
 
         for (TextImageItem item: textImageItems){
 
