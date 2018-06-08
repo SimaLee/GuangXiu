@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseFragment;
@@ -26,6 +27,7 @@ public class IntroductionFragment extends BaseFragment {
 
     private static final String TAG = "IntroductionFragment";
 
+    private TextView mLogoView;
     private RelativeLayout mHistoryView;
     private RelativeLayout mTechniqueView;
     private RelativeLayout mProcessView;
@@ -50,6 +52,7 @@ public class IntroductionFragment extends BaseFragment {
 
     @Override
     protected void initViews(View rootView) {
+        mLogoView = rootView.findViewById(R.id.tv_gx_introduction);
         mHistoryView = rootView.findViewById(R.id.ll_history);
         mTechniqueView = rootView.findViewById(R.id.ll_technique);
         mProcessView = rootView.findViewById(R.id.ll_process);
@@ -59,6 +62,15 @@ public class IntroductionFragment extends BaseFragment {
 
     @Override
     protected void initListeners() {
+
+        mLogoView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, IntroductionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mHistoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

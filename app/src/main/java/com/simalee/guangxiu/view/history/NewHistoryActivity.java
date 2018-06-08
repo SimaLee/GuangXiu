@@ -41,7 +41,7 @@ public class NewHistoryActivity extends BaseActivity {
 
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
 
         mTabLayout.setupWithViewPager(mViewPager,false);
 

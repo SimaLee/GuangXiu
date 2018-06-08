@@ -34,6 +34,7 @@ public class ArtFeatureDao extends BaseDao<TextImageItem> {
      * @return
      */
     public boolean saveArtFeature(int version,ArtFeature artFeature){
+        Log.d(TAG, "saveArtFeature: " + artFeature);
 
         if (artFeature == null){
             return false;
@@ -41,7 +42,7 @@ public class ArtFeatureDao extends BaseDao<TextImageItem> {
         ContentValues contentValues;
         List<TextImageItem> textImageItems = artFeature.getItemList();
 
-        boolean allFinished = false;
+        boolean allFinished = true;
 
         for (TextImageItem item: textImageItems){
 
@@ -57,7 +58,7 @@ public class ArtFeatureDao extends BaseDao<TextImageItem> {
             contentValues.put(DBConstants.TabeleArtFeature.COLUMN_IMAGE_HEIGHT,item.getHeight());
 
             long ret = insertWithOnConflict(DBConstants.TabeleArtFeature.TABLE_NAME,null,
-                    contentValues, SQLiteDatabase.CONFLICT_IGNORE);
+                    contentValues, SQLiteDatabase.CONFLICT_REPLACE);
 
             if (ret == -1){
                 allFinished = false;

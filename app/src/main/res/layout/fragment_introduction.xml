@@ -16,9 +16,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_title"
-        android:padding="4dp"
-        android:text="广绣是中国四大名绣之一，快来看看你对广绣了解多少吧！"
-        android:textSize="18sp"/>
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="广绣志"
+        android:textStyle="bold"
+        android:textSize="30sp"/>
 
     <LinearLayout
         android:layout_marginTop="40dp"
@@ -38,7 +40,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_assignment_black_24dp"
+                android:src="@drawable/ic_developer_board_black_24dp"
                 />
 
             <TextView
@@ -83,7 +85,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_account_circle_black_24dp"
+                android:src="@drawable/ic_dashboard_black_24dp"
                 android:layout_gravity="center_vertical"/>
 
             <TextView
@@ -128,7 +130,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_gesture_black_24dp"
+                android:src="@drawable/ic_movie_black_24dp"
                 android:layout_gravity="center_vertical"/>
 
             <TextView
@@ -184,7 +186,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
-                android:text="绣知多少"
+                android:text="广绣知多少"
                 android:textSize="18sp" />
             <ImageView
                 android:layout_centerVertical="true"
@@ -211,7 +213,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="20dp"
-                android:src="@drawable/ic_live_help_black_24dp"
+                android:src="@drawable/ic_camera_roll_black_24dp"
                 android:layout_gravity="center_vertical"/>
 
             <TextView

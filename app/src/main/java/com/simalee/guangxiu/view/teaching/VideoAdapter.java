@@ -57,6 +57,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoHolder>
         public VideoHolder(View itemView) {
             super(itemView);
             mVideoPlayer = (NiceVideoPlayer) itemView.findViewById(R.id.nice_video_player);
+            mVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE);//使用本地的MediaPlayer
             // 将列表中的每个视频设置为默认16:9的比例
             ViewGroup.LayoutParams params = mVideoPlayer.getLayoutParams();
             params.width = itemView.getResources().getDisplayMetrics().widthPixels; // 宽度为屏幕宽度
