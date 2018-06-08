@@ -112,6 +112,7 @@ public class DataManager {
     public void getVersionCode(final DataCallback<Version> callback) {
 
         if (!NetUtils.isNetworkConnected(mApplicationContext)){
+            callback.onFailure("失去网络连接");
             return;
         }
         //获取资料的版本号
@@ -124,12 +125,12 @@ public class DataManager {
 
             @Override
             public void onFailure(String msg) {
-
+                callback.onFailure(msg);
             }
 
             @Override
             public void onError() {
-
+                callback.onError();
             }
         });
     }
