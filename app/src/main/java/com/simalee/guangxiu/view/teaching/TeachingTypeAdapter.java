@@ -38,15 +38,22 @@ public class TeachingTypeAdapter extends RecyclerView.Adapter<TeachingTypeAdapte
 
     @Override
     public void onBindViewHolder(TeachingTypeViewHolder holder, final int position) {
-        TeachingTypeItem teachingTypeItem = teachingTypeItems.get(position);
+        final TeachingTypeItem teachingTypeItem = teachingTypeItems.get(position);
         holder.bindData(teachingTypeItem);
         holder.typeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(selectTypeBtnClickListener!=null){
-                    selectTypeBtnClickListener.selectTypeBtnClickListener(position);
-                    currentPosition = position;
-                }
+
+                        String name = teachingTypeItem.getTypeName();
+                        for(int i = 0;i<TeachingTypeItem.typeNameArray.length;i++){
+                            if(name.equals(TeachingTypeItem.typeNameArray[i])){
+                                selectTypeBtnClickListener.selectTypeBtnClickListener(i);
+                                currentPosition = position;
+                                break;
+                            }
+                        }
+                    }
             }
         });
     }
