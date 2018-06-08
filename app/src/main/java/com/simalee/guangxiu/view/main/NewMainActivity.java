@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.simalee.guangxiu.R;
 import com.simalee.guangxiu.base.BaseActivity;
@@ -46,6 +47,10 @@ public class NewMainActivity extends BaseActivity {
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private MainPageAdapter mAdapter;
+
+    //按两次返回键退出程序
+    private static final int TIME_INTERVAL = 1000;//1000ms内重复点击返回键退出
+    private long mBackPressed = 0L;
 
     @Override
     protected int getLayoutId() {
@@ -119,8 +124,18 @@ public class NewMainActivity extends BaseActivity {
             if (mVideoBackPressedListener.onVideoBackPressed()){
                 return;
             }
+
         }
-        super.onBackPressed();
+
+        {
+            if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis()){
+                super.onBackPressed();
+                return;
+            }else{
+                Toast.makeText(getBaseContext(),"再按一次退出应用",Toast.LENGTH_SHORT).show();
+                mBackPressed = System.currentTimeMillis();
+            }
+        }
     }
 
     public interface OnVideoBackPressedListener{

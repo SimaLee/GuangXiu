@@ -94,13 +94,14 @@ public class SplashActivity extends AppCompatActivity {
         mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                mVideoView.start();
+                Log.d(TAG, "onPrepared: ");
             }
         });
 
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+                Log.d(TAG, "onCompletion: ");
                 stopPlayVideo();
                 startMainActivity();
             }
@@ -109,6 +110,7 @@ public class SplashActivity extends AppCompatActivity {
         mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
             @Override
             public boolean onError(MediaPlayer mp, int what, int extra) {
+                Log.d(TAG, "onError: ");
                 stopPlayVideo();
                 return true;
             }
