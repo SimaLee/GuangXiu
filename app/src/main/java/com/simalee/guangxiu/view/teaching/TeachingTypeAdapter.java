@@ -44,16 +44,16 @@ public class TeachingTypeAdapter extends RecyclerView.Adapter<TeachingTypeAdapte
             @Override
             public void onClick(View v) {
                 if(selectTypeBtnClickListener!=null){
-
-                        String name = teachingTypeItem.getTypeName();
-                        for(int i = 0;i<TeachingTypeItem.typeNameArray.length;i++){
-                            if(name.equals(TeachingTypeItem.typeNameArray[i])){
-                                selectTypeBtnClickListener.selectTypeBtnClickListener(i);
-                                currentPosition = position;
-                                break;
-                            }
+                    String name = teachingTypeItem.getTypeName();
+                    for(int i = 0;i<TeachingTypeItem.typeNameArray.length;i++){
+                        if(name.equals(TeachingTypeItem.typeNameArray[i])){
+                            selectTypeBtnClickListener.selectTypeBtnClickListener(position,i);
+                            currentPosition = position;
+                            break;
                         }
                     }
+
+                }
             }
         });
     }
@@ -83,7 +83,7 @@ public class TeachingTypeAdapter extends RecyclerView.Adapter<TeachingTypeAdapte
     }
 
     public interface SelectTypeBtnClickListener{
-        void selectTypeBtnClickListener(int position);
+        void selectTypeBtnClickListener(int position,int type);
     }
 
     public void setTypeBtnClickListener(SelectTypeBtnClickListener listener){

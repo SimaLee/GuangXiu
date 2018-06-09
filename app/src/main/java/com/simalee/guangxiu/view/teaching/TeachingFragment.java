@@ -173,8 +173,7 @@ public class TeachingFragment extends BaseMVPFragment<TeachingPresenter> impleme
     }
 
 
-    @Override
-    public void selectTypeBtnClickListener(int position) {
+    public void selectTypeBtnClickListener(int position,int type) {
         if(position == teachingTypeAdapter.getCurrentPosition()){
             return;
         }
@@ -189,14 +188,14 @@ public class TeachingFragment extends BaseMVPFragment<TeachingPresenter> impleme
         }
 
 
-        if(position == 0){
+        if(type == 0){
             Set<Integer> typeSet = mTeachingContentItemHashMap.keySet();
             mTeachingContentItems = new ArrayList<>();
             for(Integer integer: typeSet){
                 mTeachingContentItems.addAll(mTeachingContentItemHashMap.get(integer));
             }
         }else{
-            mTeachingContentItems = mTeachingContentItemHashMap.get(position-1);
+            mTeachingContentItems = mTeachingContentItemHashMap.get(type-1);
         }
         Log.i(TAG,"mTeachingContentItems size is "+ mTeachingContentItems.size());
 
