@@ -7,7 +7,7 @@ package com.simalee.guangxiu.app;
 
 public interface UrlConstants {
 
-    public static final String IP_ADDRESS = "http://119.29.224.50";
+    public static final String IP_ADDRESS = "";//腾讯云服务器到期
     public static final String PORT = ":8080";
 
     public static final String BASE_URL = IP_ADDRESS + PORT + "/GuangXiu";
